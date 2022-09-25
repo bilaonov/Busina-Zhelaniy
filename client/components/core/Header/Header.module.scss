@@ -1,3 +1,47 @@
 .header {
-    display: none;
+    background-color: #fff;
+    position: fixed;
+    display: flex;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    div {
+        padding: 0 94px;
+    }
+    .menu {
+        display: flex;
+        width: 20%;
+        .text {
+            font-size: 22px;
+        }
+    }
+    .logoText {
+        width: 60%;
+        text-align: center;
+        font-family: Fasthand;
+
+        font-weight: 400;
+        font-size: 36px;
+        padding: 0;
+    }
+    .nav {
+        width: 20%;
+        justify-content: flex-end;
+        .item {
+            justify-content: flex-end;
+            display: flex;
+        }
+        .link {
+            &:first-child {
+                margin-left: 0;
+            }
+            margin-left: 40px;
+
+            list-style: none;
+            img {
+                cursor: pointer;
+            }
+        }
+    }
 }
