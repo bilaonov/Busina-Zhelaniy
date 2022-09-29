@@ -1,27 +1,29 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { RefObject } from 'react'
+import styles from '../Header.module.scss'
 
-interface IntrinsicAttributes {
+interface MenuProps {
     openMenu: (event: React.MouseEvent<HTMLElement>) => void
     closeMenu: (event: React.MouseEvent<HTMLElement>) => void
     menuRef: RefObject<HTMLDivElement>
     menuContentRef: RefObject<HTMLDivElement>
 }
 
-const Menu = ({ openMenu, closeMenu, menuRef, menuContentRef }: IntrinsicAttributes) => {
+const Menu = ({ openMenu, closeMenu, menuRef, menuContentRef }: MenuProps) => {
     return (
-        <div className="menu" ref={menuRef}>
-            <div className="menu__top">
-                <nav className="menu__nav-top">
-                    <div className="line-link" onClick={openMenu}>
+        <div className={styles.menu} ref={menuRef}>
+            <div className={styles.menuTop}>
+                <nav className={styles.menuNavTop}>
+                    <div className={styles.lineLink} onClick={openMenu}>
+                        <Image src="/icons8-jewel.svg" width="20" height="20" alt="Search" />
                         Иследовать
                     </div>
                 </nav>
 
-                <h2 className="menu__title">Busina Zhelaniy</h2>
+                <h2 className={styles.menuTitle}>Busina Zhelaniy</h2>
 
-                <div className="menu__side">
+                <div className={styles.menuSide}>
                     <ul>
                         <li>
                             <Link href="/">
@@ -66,27 +68,34 @@ const Menu = ({ openMenu, closeMenu, menuRef, menuContentRef }: IntrinsicAttribu
                     </ul>
                 </div>
             </div>
-            <div className="menu__content-wrap">
-                <div className="menu__content" ref={menuContentRef}>
-                    <nav className="menu__nav-content">
-                        <div className="column">
-                            <h4 className="column__title">New In</h4>
-                            <a href="#" className="line-link">
+            <div className={styles.menuContentWrap}>
+                <div
+                    className={styles.menuContent}
+                    ref={menuContentRef}
+                    onClick={() => alert('ttys')}
+                >
+                    <nav className={styles.menuNavContent}>
+                        <div className={styles.column}>
+                            <h4 className={styles.columnTitle}>New In</h4>
+                            <a href="#" className={styles.lineLink}>
                                 Blouses
                             </a>
-                            <h4 className="column__title">Discounts</h4>
-                            <a href="#" className="line-link">
+                            <h4 className={styles.columnTitle}>Discounts</h4>
+                            <a href="#" className={styles.lineLink}>
                                 T-Shirts
                             </a>
                         </div>
-                        <div className="column">
-                            <h4 className="column__title">Trending</h4>
-                            <a href="#" className="line-link">
+                        <div className={styles.column}>
+                            <h4 className={styles.columnTitle}>Trending</h4>
+                            <a href="#" className={styles.lineLink}>
                                 New Season
                             </a>
                         </div>
                     </nav>
-                    <button onClick={closeMenu} className="menu__back unbutton">
+                    <button
+                        onClick={() => alert('no')}
+                        className={styles.menuBack + ' ' + styles.unbutton}
+                    >
                         <svg
                             width="10"
                             height="182"

@@ -1,10 +1,10 @@
-import Link from 'next/link'
 import { gsap } from 'gsap'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
+import Menu from './Menu/Menu'
+import Content from './Content/Content'
+import Cover from './Cover/Cover'
 import styles from './Header.module.scss'
-import Menu from '../Menu/Menu'
 
 const Header = () => {
     const menuRef = useRef<HTMLDivElement>(null)
@@ -144,32 +144,16 @@ const Header = () => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
 
-            <main>
-                <div className="content">
-                    <div className="content__img content__img--left" ref={imgRef1}>
-                        <Image src="/img1.jpg" width={700} height={800} />
-                    </div>
-                    <div className="content__img content__img--main" ref={imgRef2}>
-                        <Image src="/image2.jpg" layout="fill" />
-                    </div>
-                    <div className="content__img content__img--right" ref={imgRef3}>
-                        <Image src="/img3.jpg" width={500} height={800} />
-                    </div>
-                </div>
-                <div className="cover-wrap" aria-hidden="true" ref={wrapRef}>
-                    <div className="cover" ref={coverRef}>
-                        <div className="cover__inner" ref={coverInnerRef}>
-                            <Image src="/cover.jpg" alt="Cart" layout="fill" />
-                        </div>
-                    </div>
-                </div>
+            <div className={styles.container}>
+                <Content imgRef1={imgRef1} imgRef2={imgRef2} imgRef3={imgRef3} />
+                <Cover coverRef={coverRef} coverInnerRef={coverInnerRef} wrapRef={wrapRef} />
                 <Menu
                     openMenu={openMenu}
                     closeMenu={closeMenu}
                     menuRef={menuRef}
                     menuContentRef={menuContentRef}
                 />
-            </main>
+            </div>
         </>
     )
 }
