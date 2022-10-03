@@ -1,0 +1,53 @@
+.container {
+    background: #e8ebeb;
+    margin: 3.75rem -6.5rem;
+    .page {
+        padding: 0 6.5rem;
+        display: flex;
+    }
+    .leftBlock {
+        margin-top: 40px;
+        width: 50%;
+    }
+    .title {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 59px;
+    }
+    .heading {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        padding: 0;
+        margin-top: 40px;
+    }
+    .text {
+        font-weight: 300;
+        margin-top: -10px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .moreLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 320px;
+        height: 80px;
+        border: 1px solid #000000;
+        border-radius: 30px;
+        margin-top: 60px;
+        color: #000000;
+        &:hover {
+            color: var(--color-bg);
+            background: var(--color-link-menu);
+        }
+    }
+
+    .imageBlock {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

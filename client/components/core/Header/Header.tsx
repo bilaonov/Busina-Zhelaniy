@@ -44,9 +44,9 @@ const Header = () => {
             .addLabel('start', 0)
             .add(() => {
                 if (menuStatus.isOpen) {
-                    menuRef.current?.classList.add('menu--open')
+                    menuRef.current?.classList.add('menuOpen')
                 } else {
-                    menuRef.current?.classList.remove('menu--open')
+                    menuRef.current?.classList.remove('menuOpen')
                 }
             }, 'start')
             .to(
@@ -78,7 +78,7 @@ const Header = () => {
             .to(
                 imgRef1.current,
                 {
-                    y: (position) => `${(position = -10)}%`,
+                    x: (position) => `${(position = -20)}%`,
                 },
 
                 'start',
@@ -94,21 +94,21 @@ const Header = () => {
             .to(
                 imgRef3.current,
                 {
-                    y: (position) => `${(position = -20)}%`,
+                    x: (position) => `${(position = 20)}%`,
                 },
 
                 'start',
             )
 
-            .addLabel('menu', 0.5)
+            .addLabel(styles.menu, 0.5)
             .to(
                 menuContentRef.current,
                 {
                     duration: 1,
-                    startAt: { y: '-100%' },
+                    startAt: { y: '-300%' },
                     y: '0%',
                 },
-                'menu',
+                styles.menu,
             )
     }, [])
 
@@ -144,7 +144,7 @@ const Header = () => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
 
-            <div className={styles.container}>
+            <div className={styles.main}>
                 <Content imgRef1={imgRef1} imgRef2={imgRef2} imgRef3={imgRef3} />
                 <Cover coverRef={coverRef} coverInnerRef={coverInnerRef} wrapRef={wrapRef} />
                 <Menu

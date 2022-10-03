@@ -1,19 +1,18 @@
+//@ts-nochek
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import AboutMe from '../components/AboutMe/AboutMe'
+import SalesTop from '../components/SalesTop/SalesTop'
+import Container from '../components/ui/Container/Container'
+import Heading from '../components/ui/Heading/Heading'
 
 const Home: NextPage = () => {
     return (
         <>
-            <Head>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap"
-                    rel="stylesheet"
-                />
-
-                <title>Busina Zhelaniy</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
+            <Container>
+                <Heading>Лидеры продаж</Heading>
+                <SalesTop />
+                <AboutMe />
+            </Container>
         </>
     )
 }

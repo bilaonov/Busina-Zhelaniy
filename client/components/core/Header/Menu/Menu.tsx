@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { RefObject } from 'react'
+import { MouseEvent, RefObject, useState } from 'react'
 import styles from '../Header.module.scss'
+import MenuContent from '../../../ui/MenuContent/MenuContent'
+import Auth from '../../../../pages/auth'
+import Search from '../../../../pages/search'
+import Category from '../../../Category/Category'
+import Cart from '../../../../pages/cart'
+import Wishlist from '../../../../pages/wishlist'
 
 interface MenuProps {
     openMenu: (event: React.MouseEvent<HTMLElement>) => void
@@ -11,102 +17,114 @@ interface MenuProps {
 }
 
 const Menu = ({ openMenu, closeMenu, menuRef, menuContentRef }: MenuProps) => {
+    const [visibleContent, setVisibleContent] = useState<
+        'auth' | 'search' | 'cart' | 'wishlist' | 'category'
+    >('category')
+
+    const HandleCategoryVisible = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>): void => {
+        e.preventDefault()
+        setVisibleContent('category')
+        openMenu(e)
+    }
+
+    const HandleSearchVisible = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>): void => {
+        e.preventDefault()
+        setVisibleContent('search')
+        openMenu(e)
+    }
+
+    const HandleCartVisible = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>): void => {
+        e.preventDefault()
+        setVisibleContent('cart')
+        openMenu(e)
+    }
+
+    const HandleWishListVisible = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>): void => {
+        e.preventDefault()
+        setVisibleContent('wishlist')
+        openMenu(e)
+    }
+
+    const HandleAuthVisible = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>): void => {
+        e.preventDefault()
+        setVisibleContent('auth')
+        openMenu(e)
+    }
+
     return (
-        <div className={styles.menu} ref={menuRef}>
+        <div className={styles.menu + ' ' + styles.menuOpen} ref={menuRef}>
             <div className={styles.menuTop}>
                 <nav className={styles.menuNavTop}>
-                    <div className={styles.lineLink} onClick={openMenu}>
+                    <div onClick={(e) => HandleCategoryVisible(e)} className={styles.lineLink}>
                         <Image src="/icons8-jewel.svg" width="20" height="20" alt="Search" />
                         Иследовать
                     </div>
                 </nav>
-
-                <h2 className={styles.menuTitle}>Busina Zhelaniy</h2>
+                <Link className={styles.menuTitle} href="/">
+                    <a className={styles.menuTitleLink}>Busina Zhelaniy</a>
+                </Link>
 
                 <div className={styles.menuSide}>
                     <ul>
                         <li>
-                            <Link href="/">
-                                <Image
-                                    src="/search-svgrepo-com.svg"
-                                    width="24"
-                                    height="24"
-                                    alt="Search"
-                                />
+                            <Link href="/search">
+                                <a onClick={(e) => HandleSearchVisible(e)}>
+                                    <Image
+                                        src="/search-svgrepo-com.svg"
+                                        width="24"
+                                        height="24"
+                                        alt="Search"
+                                    />
+                                </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/cart">
-                                <Image
-                                    src="/bag-svgrepo-com.svg"
-                                    width="24"
-                                    height="24"
-                                    alt="Cart"
-                                />
+                                <a onClick={(e) => HandleCartVisible(e)}>
+                                    <Image
+                                        src="/bag-svgrepo-com.svg"
+                                        width="24"
+                                        height="24"
+                                        alt="Cart"
+                                    />
+                                </a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/blog/hello-world">
-                                <Image
-                                    src="/add-favorite-svg.svg"
-                                    width="24"
-                                    height="24"
-                                    alt="Wishlist"
-                                />
+                            <Link href="/wishlist">
+                                <a onClick={(e) => HandleWishListVisible(e)}>
+                                    <Image
+                                        src="/add-favorite-svg.svg"
+                                        width="24"
+                                        height="24"
+                                        alt="Wishlist"
+                                    />
+                                </a>
                             </Link>
                         </li>
                         <li>
                             <Link href="/auth">
-                                <Image
-                                    src="/account-svg.svg"
-                                    width="24"
-                                    height="24"
-                                    alt="account"
-                                />
+                                <a onClick={(e) => HandleAuthVisible(e)}>
+                                    {' '}
+                                    <Image
+                                        src="/account-svg.svg"
+                                        width="24"
+                                        height="24"
+                                        alt="account"
+                                    />
+                                </a>
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div className={styles.menuContentWrap}>
-                <div
-                    className={styles.menuContent}
-                    ref={menuContentRef}
-                    onClick={() => alert('ttys')}
-                >
-                    <nav className={styles.menuNavContent}>
-                        <div className={styles.column}>
-                            <h4 className={styles.columnTitle}>New In</h4>
-                            <a href="#" className={styles.lineLink}>
-                                Blouses
-                            </a>
-                            <h4 className={styles.columnTitle}>Discounts</h4>
-                            <a href="#" className={styles.lineLink}>
-                                T-Shirts
-                            </a>
-                        </div>
-                        <div className={styles.column}>
-                            <h4 className={styles.columnTitle}>Trending</h4>
-                            <a href="#" className={styles.lineLink}>
-                                New Season
-                            </a>
-                        </div>
-                    </nav>
-                    <button
-                        onClick={() => alert('no')}
-                        className={styles.menuBack + ' ' + styles.unbutton}
-                    >
-                        <svg
-                            width="10"
-                            height="182"
-                            viewBox="0 0 10 121"
-                            preserveAspectRatio="xMidYMin meet"
-                        >
-                            <path d="M5 0 .5 9h9L5 0Zm.5 120.5V8h-1v113h1v-.5Z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+            <MenuContent menuContentRef={menuContentRef} closeMenu={closeMenu}>
+                {visibleContent === 'category' && <Category />}
+                {visibleContent === 'search' && <Search />}
+                {visibleContent === 'cart' && <Cart />}
+                {visibleContent === 'wishlist' && <Wishlist />}
+                {visibleContent === 'auth' && <Auth />}
+            </MenuContent>
         </div>
     )
 }

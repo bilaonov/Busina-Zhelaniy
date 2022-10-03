@@ -1,17 +1,16 @@
-import { FC } from "react";
-import { layoutProps } from "../../../types/Layout/Layout";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import { FC } from 'react'
+import { LayoutProps } from '../../../types/Layout/Layout'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
 
-
-const Layout: FC<layoutProps> = ({children}) => {
-  return (
-    <>
-        <Header/>
-        {children}
-        <Footer/>
-    </>
-  )
+const Layout: FC<LayoutProps> = ({ children }) => {
+    return (
+        <>
+            <Header />
+            {children}
+            <Footer />
+        </>
+    )
 }
 
 export default Layout

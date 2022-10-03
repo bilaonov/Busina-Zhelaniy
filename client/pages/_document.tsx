@@ -12,6 +12,10 @@ export default function Document() {
                     href="https://fonts.googleapis.com/css2?family=Fasthand&display=swap"
                     rel="stylesheet"
                 />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+                    rel="stylesheet"
+                ></link>
                 <title>Busina Zhelaniy</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
