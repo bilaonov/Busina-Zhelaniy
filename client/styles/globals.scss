@@ -9,8 +9,21 @@
     font-size: 17px;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #4f4f4f;
+}
+
 body {
-    height: 3000px;
+    height: 100%;
     margin: 0;
     --color-text: #000;
     --color-text-menu: #000;
@@ -68,6 +81,17 @@ body #cdawrap {
         opacity: 1;
         transform: scale3d(0.5, 0.5, 1);
     }
+}
+
+#arrow {
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000000 !important;
+    border-right: 2px solid #000000 !important;
+    margin: 1px 0 0 50px;
+    transform: rotate(45deg);
+    display: inline-block;
+    transition: 1s;
 }
 
 a {

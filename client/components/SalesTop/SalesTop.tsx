@@ -1,12 +1,17 @@
-import React from 'react'
+//@ts-nocheck
+import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import Image from 'next/image'
 import styles from './SaleTop.module.scss'
 import Link from 'next/link'
 
 const data = [
     {
+        id: 1,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1044_33f4748cc2-u6rg7-18k-r_f1_g0.jpg&w=1920&q=100',
+        imageUri2:
+            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
         colorName: 'Rele',
         color: ['#C5A041', '#DFD368', '#DBDBD4'],
@@ -15,8 +20,11 @@ const data = [
         review: 133,
     },
     {
+        id: 2,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1016_a0237d9a88-u10rg9-18k-y_f1_g0.jpg&w=1920&q=100',
+        imageUri2:
+            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
         colorName: 'Rele',
         color: ['#C5A041', '#DFD368', '#DBDBD4'],
@@ -25,6 +33,7 @@ const data = [
         review: 133,
     },
     {
+        id: 3,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
@@ -35,6 +44,7 @@ const data = [
         review: 133,
     },
     {
+        id: 4,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F993_83c3e1a561-u8rg1-18k-y_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
@@ -45,6 +55,7 @@ const data = [
         review: 133,
     },
     {
+        id: 5,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F269_9714bc1123-u2rg4-18k-w_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
@@ -55,6 +66,7 @@ const data = [
         review: 133,
     },
     {
+        id: 6,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F271_2cf44eab10-u2rg6-18k-y_f1_g0.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
@@ -69,9 +81,9 @@ const data = [
 const SalesTop = () => {
     return (
         <div className={styles.container}>
-            {data.map((product): any => (
-                <>
-                    <div className={styles.items}>
+            {data &&
+                data.map((product): any => (
+                    <div className={styles.items} key={product.id}>
                         <div className={styles.imgBlock}>
                             <div className={styles.image2}>
                                 <Image src="/heart.svg" width={30} height={30} />
@@ -100,8 +112,7 @@ const SalesTop = () => {
                             </div>
                         </div>
                     </div>
-                </>
-            ))}
+                ))}
         </div>
     )
 }

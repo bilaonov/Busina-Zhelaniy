@@ -5,6 +5,7 @@
     margin: 0;
     font: inherit;
     cursor: pointer;
+    width: 1%;
 }
 
 .unbutton:focus {
@@ -126,15 +127,11 @@
     transform: translateY(-100%);
     padding: 0 var(--menu-padding);
     height: 100%;
-    display: grid;
-
-    justify-content: space-between;
+    display: flex;
     background: var(--color-bg-menu);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    grid-template-rows: 1fr auto;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: 'links links back';
-    z-index: -1;
+    z-index: 1;
+
     padding-bottom: 1rem;
     will-change: transform;
 }
@@ -201,18 +198,8 @@
     flex-wrap: wrap;
     align-self: start;
     margin-top: 5.5vh;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
-    min-width: 15ch;
-    align-items: flex-start;
-}
-
-.columnTitle {
-    margin: 1.5rem 0 0.5rem;
+    height: 100%;
+    width: 99%;
 }
 
 .menuSide {
@@ -233,6 +220,67 @@
             cursor: pointer;
         }
     }
+}
+
+.video-started .frame__content-text,
+.video-started .frame__switch {
+    opacity: 1;
+}
+
+.video {
+    pointer-events: none;
+}
+
+.plane {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+.plane video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: 2;
+}
+
+.frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 6;
+    position: absolute;
+    margin-top: 100px;
+    width: 100%;
+    height: 100vh;
+}
+
+.frameContent {
+    text-align: center;
+}
+.frameContentTitle {
+    margin: 0;
+    padding-bottom: 1rem;
+    line-height: 1;
+    font-size: 8vw;
+    font-weight: 300;
+    font-family: Fasthand;
+    color: #fff;
+    position: relative;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.frameContentText {
+    font-size: 26px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff;
 }
 
 .active {

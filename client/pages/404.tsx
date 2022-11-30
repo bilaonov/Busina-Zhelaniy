@@ -1,15 +1,12 @@
-import Head from 'next/head'
+import Meta from '../components/core/Meta/Meta'
 
 const Errors = () => {
-  return (
-    <>
-    <Head>
-      <title>Error: 404</title>
-    </Head>
-        <div>404 нету</div>
-    </>
-
-  )
+    return (
+        <>
+            <Meta title="Error 404" />
+            <div>404 нету</div>
+        </>
+    )
 }
 
 export default Errors
