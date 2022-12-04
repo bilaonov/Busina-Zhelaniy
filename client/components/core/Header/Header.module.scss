@@ -48,18 +48,6 @@
     }
 }
 
-.contentImgLeft {
-    grid-area: img-left;
-}
-
-.contentImgMain {
-    grid-area: img-main;
-}
-
-.contentImgRight {
-    grid-area: img-right;
-}
-
 .coverWrap {
     display: grid;
     pointer-events: none;
@@ -111,7 +99,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--color-bg-menu);
+    background: var(--color-bg);
     border-radius: var(--border-radius);
 }
 
@@ -128,7 +116,7 @@
     padding: 0 var(--menu-padding);
     height: 100%;
     display: flex;
-    background: var(--color-bg-menu);
+    background: var(--color-bg);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     z-index: 1;
 

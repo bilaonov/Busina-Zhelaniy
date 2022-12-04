@@ -1,13 +1,5 @@
 .category {
     width: 100%;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 29px;
-    font-family: 'Source Serif 4', serif;
-    font-weight: 300;
-}
-
-.categoryTitle {
 }
 
 .categorySelect {
@@ -19,37 +11,48 @@
     height: 100%;
 }
 
-.selectBlock {
+.selectBlock,
+.categoryBlock2 {
     width: 100%;
     height: 87%;
     border-right: 1px solid #000;
 }
 
-.selectItems {
+.selectItems,
+.selectItems2 {
     div {
+        margin-top: 20px;
         display: flex;
         align-items: center;
-        &:hover {
-            background: #fff;
-        }
     }
+
     p {
         width: 80%;
         cursor: pointer;
-        padding-left: 10px;
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--color-text);
+        &:hover {
+            color: var(--color-text-hover);
+        }
     }
 }
 
-.categoryBlock2 {
-    border-right: 1px solid #000;
-    height: 87%;
+.categoryText {
     text-align: center;
+}
+
+.selectItems2 {
     div {
-        display: flex;
-        align-items: center;
         justify-content: center;
-        &:hover {
-            background: rgb(179, 179, 179);
-        }
+    }
+    p {
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: 300;
+        width: auto;
+    }
+    span {
+        margin-left: 5px;
     }
 }

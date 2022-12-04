@@ -43,39 +43,6 @@ const data = [
         ratingReview: 4.3,
         review: 133,
     },
-    {
-        id: 4,
-        imageUri:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F993_83c3e1a561-u8rg1-18k-y_f1_g0.jpg&w=1920&q=100',
-        title: 'Lynn Pendant',
-        colorName: 'Rele',
-        color: ['#C5A041', '#DFD368', '#DBDBD4'],
-        price: '10000',
-        ratingReview: 4.3,
-        review: 133,
-    },
-    {
-        id: 5,
-        imageUri:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F269_9714bc1123-u2rg4-18k-w_f1_g0.jpg&w=1920&q=100',
-        title: 'Lynn Pendant',
-        colorName: 'Rele',
-        color: ['#C5A041', '#DFD368', '#DBDBD4'],
-        price: '9999',
-        ratingReview: 4.3,
-        review: 133,
-    },
-    {
-        id: 6,
-        imageUri:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F271_2cf44eab10-u2rg6-18k-y_f1_g0.jpg&w=1920&q=100',
-        title: 'Lynn Pendant',
-        colorName: 'Rele',
-        color: ['#C5A041', '#DFD368', '#DBDBD4'],
-        price: '1400',
-        ratingReview: 4.3,
-        review: 133,
-    },
 ]
 
 const SalesTop = () => {
