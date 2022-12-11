@@ -2,7 +2,7 @@
 
 .authPages {
     width: 100%;
-    font-size: 22px;
+    font-size: var(--font-size-title);
 }
 
 .authContent {
@@ -29,7 +29,7 @@
     text-align: center;
 }
 .authTitle {
-    font-size: 24px;
+    font-size: var(--font-text-medium);
     text-align: center;
 }
 
@@ -76,7 +76,7 @@
 .authRestorePass {
     p {
         text-align: center;
-        font-size: 16px;
+        font-size: var(--font-size-large);
         cursor: pointer;
         color: var(--color-text);
         &:hover {

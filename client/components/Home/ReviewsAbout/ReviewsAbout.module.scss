@@ -1,0 +1,91 @@
+.container {
+    height: auto;
+    padding: 3.75rem 0;
+}
+
+.items {
+    width: 100%;
+    display: grid;
+    padding: 30px 0;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr;
+    gap: 1em 1em;
+    height: auto;
+    grid-template-areas: '. . .';
+    img {
+        border-radius: 10px;
+    }
+}
+
+.bloks,
+.bloks2,
+.bloks3 {
+    position: relative;
+    width: 100%;
+    &:hover {
+        z-index: 10;
+    }
+}
+
+.bloks2 {
+    position: relative;
+    top: 100px;
+}
+
+.reviews {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    p {
+        text-align: center;
+    }
+}
+
+.blur {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.58);
+    filter: blur(10px);
+}
+
+.content {
+    position: relative;
+
+    color: #fff;
+}
+
+.socalLink {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 60px;
+    img {
+        cursor: pointer;
+    }
+}
+
+.image {
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.text {
+    padding: 0 10px;
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-indent: 10px;
+}

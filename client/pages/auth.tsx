@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Meta from '../../components/core/Meta/Meta'
-import styles from './auth.module.scss'
-import Image from 'next/image'
-import Link from 'next/link'
-import Title from '../../components/ui/Title/Title'
-import Login from './login/login'
-import Registration from './registration/registration'
+import Meta from '../components/core/Meta/Meta'
+import styles from '../styles/auth.module.scss'
+
+import Title from '../components/ui/Title/Title'
+
+import Registration from './registration'
+import Login from './login'
 
 const Auth = () => {
-    const [isVisible, setIsVisible] = useState<'login' | 'registration'>('registration')
+    const [isVisible, setIsVisible] = useState<'login' | 'registration'>('login')
     const handleVisibleLogin = () => {
         setIsVisible('login')
     }

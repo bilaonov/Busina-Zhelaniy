@@ -111,17 +111,13 @@
 }
 
 .menuContent {
-    overflow: hidden;
-    transform: translateY(-100%);
     padding: 0 var(--menu-padding);
     height: 100%;
     display: flex;
     background: var(--color-bg);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     z-index: 1;
-
     padding-bottom: 1rem;
-    will-change: transform;
 }
 
 .menuBack {

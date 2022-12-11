@@ -2,18 +2,14 @@
     width: 100%;
     display: grid;
     padding: 60px 0;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 88px;
-    justify-self: center;
-    grid-row-gap: 60px;
-    height: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr;
+    gap: 1em 1em;
+    grid-template-areas: '. . .';
 
     .items {
-        grid-area: auto / auto / auto / auto;
+        cursor: pointer;
         color: var(--color-text);
-        max-width: 550px;
-        width: 100%;
     }
     .imgBlock {
         position: relative;
@@ -22,8 +18,10 @@
         }
     }
     .image1 {
-        border-radius: 30px;
-        height: 450px;
+        height: 500px;
+
+        img {
+        }
     }
     .image2 {
         position: absolute;

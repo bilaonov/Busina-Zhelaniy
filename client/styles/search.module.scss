@@ -1,0 +1,92 @@
+.searchPages {
+    width: 100%;
+    font-size: var(--font-size-title);
+}
+
+.searchContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 4px 0px;
+    grid-template-areas: '. . .';
+    height: 100%;
+}
+
+.searchBlock {
+    width: 100%;
+    height: 87%;
+    border-right: 1px solid #000;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.searchInput {
+    padding-right: var(--padding-smail);
+}
+
+.searchTitle {
+    text-align: center;
+}
+
+.searchProduct {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    border-bottom: 1px solid #000;
+}
+
+.product {
+    overflow-y: scroll;
+}
+
+.searchLeftBloks {
+    width: 70%;
+}
+
+.searchProductName {
+    font-size: var(--font-size-title);
+}
+
+.searchProductText {
+    font-size: var(--font-size-text);
+}
+
+.searchProductPrice {
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-text-large);
+    font-family: 'Great Vibes';
+}
+
+.searchProductColor {
+    display: flex;
+    margin-left: 30px;
+    span {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-left: 10px;
+        &:first-child {
+            margin: 0;
+        }
+    }
+}
+
+.searchProductImage {
+}
+
+.searchPriceBlocks {
+    display: flex;
+    align-items: center;
+}
+
+.searchRightBloks {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}

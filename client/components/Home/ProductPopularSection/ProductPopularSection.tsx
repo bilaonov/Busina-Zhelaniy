@@ -1,17 +1,16 @@
-//@ts-nocheck
-import React, { useEffect, useState } from 'react'
-import { useRef } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import styles from './SaleTop.module.scss'
+import styles from './ProductPopularSection.module.scss'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const data = [
     {
         id: 1,
         imageUri:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1044_33f4748cc2-u6rg7-18k-r_f1_g0.jpg&w=1920&q=100',
+            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1010_740afb6524-u10pt2-18k-y_v1_r0-large.jpg&w=1920&q=100',
         imageUri2:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
+            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1010_e60a75f87b-u10pt2-18k-y_m1_-large.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
         colorName: 'Rele',
         color: ['#C5A041', '#DFD368', '#DBDBD4'],
@@ -24,7 +23,7 @@ const data = [
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1016_a0237d9a88-u10rg9-18k-y_f1_g0.jpg&w=1920&q=100',
         imageUri2:
-            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
+            'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_5bd4a96cf9-u10rg12-18k-w_m1_-large.jpg&w=1920&q=100',
         title: 'Lynn Pendant',
         colorName: 'Rele',
         color: ['#C5A041', '#DFD368', '#DBDBD4'],
@@ -36,6 +35,7 @@ const data = [
         id: 3,
         imageUri:
             'https://unsaid.com/_next/image?url=https%3A%2F%2Funsaid.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F1018_9869e7264f-u10rg12-18k-r_f1_g0.jpg&w=1920&q=100',
+
         title: 'Lynn Pendant',
         colorName: 'Rele',
         color: ['#C5A041', '#DFD368', '#DBDBD4'],
@@ -45,23 +45,56 @@ const data = [
     },
 ]
 
-const SalesTop = () => {
+const ProductPopularSection = () => {
+    const [hover, setHover] = useState<boolean[]>([])
+
+    const mouseOver = (index: number) => {
+        setHover((c) => {
+            return {
+                ...c,
+                [index]: true,
+            }
+        })
+    }
+
+    const mouseOut = (index: number) => {
+        setHover((c) => {
+            return {
+                ...c,
+                [index]: false,
+            }
+        })
+    }
+
     return (
         <div className={styles.container}>
             {data &&
-                data.map((product): any => (
-                    <div className={styles.items} key={product.id}>
+                data.map((product, index): any => (
+                    <div
+                        className={styles.items}
+                        key={product.id}
+                        onMouseEnter={() => {
+                            mouseOver(index)
+                        }}
+                        onMouseLeave={() => {
+                            mouseOut(index)
+                        }}
+                    >
                         <div className={styles.imgBlock}>
                             <div className={styles.image2}>
                                 <Image src="/heart.svg" width={30} height={30} />
                             </div>
-                            <Image
-                                className={styles.image1}
-                                src={product.imageUri}
-                                alt="Cart"
-                                width={500}
-                                height={450}
-                            />
+                            <div className={styles.image1}>
+                                <Image
+                                    src={
+                                        hover[index] && product.imageUri2
+                                            ? product.imageUri2
+                                            : product.imageUri
+                                    }
+                                    alt="Cart"
+                                    layout="fill"
+                                />
+                            </div>
                         </div>
 
                         <div className={styles.block}>
@@ -84,4 +117,4 @@ const SalesTop = () => {
     )
 }
 
-export default SalesTop
+export default ProductPopularSection

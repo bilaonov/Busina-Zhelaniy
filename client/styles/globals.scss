@@ -1,12 +1,6 @@
 $primary: #0077ff;
 $dark: #000;
 
-@font-face {
-    font-family: 'Cormorant-Light';
-    font-weight: 400;
-    src: url('/fonts/ofont.ru_Constantine.ttf');
-}
-*,
 *::after,
 *::before {
     box-sizing: border-box;
@@ -32,7 +26,6 @@ $dark: #000;
 body {
     height: 100%;
     margin: 0;
-
     --color-text: rgb(57, 57, 57);
     --color-text-hover: #000;
     --color-text-menu: #000;
@@ -42,15 +35,22 @@ body {
     --color-link: #fff;
     --color-link-hover: #fff;
     --color-link-menu: #000;
-    --color-link-social: #ca5d2b;
     --border-radius: 2rem;
     --menu-padding: 1rem;
-    --color-text-title: #ee8233;
+    --padding-smail: 0.625rem;
+    --color-text-title: #ee8233
+    --font-size-heading: 2.9rem;
+    --font-text-large: 2rem;
+    --font-text-medium: 1.75rem;
+    --font-size-title: 1.375rem;
+    --font-size-text: 1.125;
+    --font-size-smail: 1rem;
     color: var(--color-text);
     background-color: var(--color-bg);
-    font-family: Montserrat;
+    font-family: 'Cormorant Garamond', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 body #cdawrap {
@@ -198,10 +198,10 @@ a:focus-visible {
         width: 100%;
         border: 0;
 
-        padding: 16px 12px 0 12px;
+        padding: 16px 5px 0 5px;
         height: 56px;
         font-size: 22px;
-        font-weight: 400;
+        font-weight: 300;
         background: rgba($dark, 0.02);
         box-shadow: inset 0 -1px 0 rgba($dark, 0.3);
         color: $dark;
