@@ -2,8 +2,12 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+
+    experimental: {
+        newNextLinkBehavior: false,
+    },
     images: {
-        domains: ['unsaid.com'],
+        domains: ['cdn.sanity.io'],
         formats: ['image/avif', 'image/webp'],
     },
 }

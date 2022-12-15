@@ -64,14 +64,14 @@ const Item: React.FC<IReviewProps> = ({ item }) => {
             transition={{ deration: 0.3 }}
             animate={{ y: hover ? -20 : 0 }}
         >
-            <Image className={styles.image} src={item.image} width={550} height={650} />
+            <Image className={styles.image} src={item.image} alt="test" width={550} height={650} />
             <motion.div className={styles.reviews}>
                 <div className={styles.blur}></div>
                 <div className={styles.content}>
                     <p className={styles.name}>{item.author}</p>
                     <p className={styles.text}>{item.text}</p>
                     <div className={styles.socalLink}>
-                        <Image src="/instagramsvg.svg" width={30} height={30} />
+                        <Image src="/instagramsvg.svg" alt="test" width={30} height={30} />
                     </div>
                 </div>
             </motion.div>

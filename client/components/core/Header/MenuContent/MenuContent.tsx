@@ -10,9 +10,9 @@ interface MenuContentProps {
 
 const MenuContent: React.FC<MenuContentProps> = ({ children, setVisible, visible }) => {
     return (
-        <div className={styles.menuContentWrap}>
-            <AnimatePresence>
-                {visible && (
+        <AnimatePresence>
+            {visible && (
+                <div className={styles.menuContentWrap}>
                     <motion.div
                         animate={{ y: '0%', opacity: 1 }}
                         initial={{ y: '-300%', opacity: 0 }}
@@ -35,9 +35,9 @@ const MenuContent: React.FC<MenuContentProps> = ({ children, setVisible, visible
                             </svg>
                         </button>
                     </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+                </div>
+            )}
+        </AnimatePresence>
     )
 }
 

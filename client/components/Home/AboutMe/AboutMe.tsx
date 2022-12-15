@@ -27,13 +27,11 @@ const AboutMe = () => {
                         общества
                     </p>
                     <Link href="/">
-                        <a href="" className={styles.moreLink}>
-                            <div>УЗНАТЬ БОЛЬШЕ</div>
-                        </a>
+                        <a className={styles.moreLink}>УЗНАТЬ БОЛЬШЕ</a>
                     </Link>
                 </div>
                 <div className={styles.imageBlock}>
-                    <Image src="/aboutme.jpg" width={650} height={750} />
+                    <Image src="/aboutme.jpg" alt="aboutme" width={650} height={750} />
                 </div>
             </div>
         </div>

@@ -10,7 +10,12 @@ const CollectionProduct = () => {
         <div className={styles.components}>
             <div className={styles.pages}>
                 <div className={styles.images}>
-                    <Image src="/ImageAboutUsRewiews.jpg" width={650} height={780} />
+                    <Image
+                        src="/ImageAboutUsRewiews.jpg"
+                        alt="AboutUsRewiews"
+                        width={650}
+                        height={780}
+                    />
                 </div>
                 <div className={styles.content}>
                     <h3 className={styles.title}>BZ</h3>
@@ -19,7 +24,7 @@ const CollectionProduct = () => {
                         by Unsaid.
                     </Heading>
                     <Link href="/">
-                        <a>Узнать больше {'>'}</a>
+                        <a id="lineLink">Узнать больше {'>'}</a>
                     </Link>
                 </div>
             </div>

@@ -1,26 +1,43 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import AboutMe from '../components/Home/AboutMe/AboutMe'
 import CollectionProduct from '../components/Home/CollectionProduct/CollectionProduct'
-
 import ProductPopularSection from '../components/Home/ProductPopularSection/ProductPopularSection'
 import ReviewsAbout from '../components/Home/ReviewsAbout/ReviewsAbout'
+import VideoContent from '../components/Home/VideoContent/VideoContent'
 import Container from '../components/ui/Container/Container'
-import Heading from '../components/ui/Heading/Heading'
+import { ICategory } from '../lib/sanity_studio/types/category.types'
+import { IProducts } from '../lib/sanity_studio/types/products.types'
+import { fetchCategories } from '../utils/fetchCategories'
+import { fetchProducts } from '../utils/fetchProducts'
 
-const Home: NextPage = () => {
+interface Props {
+    categories: ICategory[]
+    products: IProducts[]
+}
+
+const Home: NextPage<Props> = ({ categories, products }) => {
     return (
-        <>
+        <div id="home">
+            <VideoContent />
             <Container>
-                <Heading title="Лидеры продаж">
-                    Sculptural motifs crafted with uniquely cut lab-grown diamonds.
-                </Heading>
-                <ProductPopularSection />
+                <ProductPopularSection products={products} />
                 <CollectionProduct />
                 <AboutMe />
                 <ReviewsAbout />
             </Container>
-        </>
+        </div>
     )
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const categories = await fetchCategories()
+    const products = await fetchProducts()
+    return {
+        props: {
+            categories,
+            products,
+        },
+    }
+}

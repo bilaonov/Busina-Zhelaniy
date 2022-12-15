@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../ui/Button/Button'
 import styles from './LoginForm.module.scss'
 
 const LoginForm = () => {
@@ -15,9 +16,7 @@ const LoginForm = () => {
                 <span id="FocusBg"></span>
             </label>
 
-            <button id="Button" role="button">
-                Войти
-            </button>
+            <Button title="Войти" className={styles.btnAdd} type="submit" />
         </div>
     )
 }

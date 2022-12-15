@@ -1,5 +1,10 @@
 .container {
     margin: 3.75rem auto;
-    padding: 0 6.5rem;
+    padding: 3rem 6.5rem;
+    position: relative;
+    z-index: 40;
+    margin-top: -100vh;
+    min-height: screen;
+    background-color: #fff;
     padding-bottom: 5.625rem;
 }

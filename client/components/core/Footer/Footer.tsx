@@ -76,7 +76,7 @@ const Footer = () => {
                 <div className={styles.page}>
                     <div className={styles.walet}>
                         <div>
-                            <Image src="/rusflag.png" width={40} height={25} />
+                            <Image src="/rusflag.png" alt="rusflag" width={40} height={25} />
                         </div>
 
                         <p>RUB</p>
@@ -87,26 +87,36 @@ const Footer = () => {
                         <p>Политика конфиденциальности</p>
                     </div>
                     <div className={styles.socialBlock}>
-                        <Link href="/">
+                        {/* <Link href="/">
                             <a>
-                                <Image src="/social-whatsapp.svg" width={50} height={50} />
+                                <Image
+                                    src="/social-whatsapp.svg"
+                                    alt="whatsapp"
+                                    width={50}
+                                    height={50}
+                                />
                             </a>
                         </Link>
                         <Link href="/">
                             <a>
-                                <Image src="/logo-vk.svg" width={50} height={50} />
+                                <Image src="/logo-vk.svg" alt="vk" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="/">
                             <a>
-                                <Image src="/telegram.svg" width={50} height={50} />
+                                <Image src="/telegram.svg" alt="telegram" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="/">
                             <a>
-                                <Image src="/instagram.svg" width={50} height={50} />
+                                <Image
+                                    src="/instagram.svg"
+                                    alt="instagram"
+                                    width={50}
+                                    height={50}
+                                />
                             </a>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>

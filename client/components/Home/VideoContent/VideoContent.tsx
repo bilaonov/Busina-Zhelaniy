@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import React, { RefObject } from 'react'
-import styles from '../Header.module.scss'
+import styles from './VideoContent.module.scss'
 
-const Content = () => {
+const VideoContent = () => {
     return (
         <div className={styles.content}>
             <div className={styles.frame}>
                 <div className={styles.frameContent}>
-                    <h2 className={styles.frameContentTitle}>Busina Zhelaniy</h2>
-                    <p className={styles.frameContentText}>у нас вам понравиться</p>
+                    <h2 className={styles.frameContentTitle}>
+                        Busina Zhelaniy
+                        {/* <span className={styles.frameContentText}>у нас вам понравиться</span> */}
+                    </h2>
                 </div>
             </div>
 
@@ -27,4 +27,4 @@ const Content = () => {
     )
 }
 
-export default Content
+export default VideoContent

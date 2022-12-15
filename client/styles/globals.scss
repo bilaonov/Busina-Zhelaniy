@@ -129,7 +129,7 @@ a:focus-visible {
     outline-offset: -2px;
 }
 #lineLink {
-    color: #fff;
+    color: rgb(0, 0, 0);
     white-space: nowrap;
     overflow: hidden;
     position: relative;
@@ -143,7 +143,7 @@ a:focus-visible {
 
 #lineLink:hover,
 #lineLink:focus {
-    color: #fff;
+    color: rgb(118, 118, 118);
 }
 
 #lineLink::before {
@@ -161,6 +161,11 @@ a:focus-visible {
 #lineLink:hover::before {
     transform: scaleX(1);
     transform-origin: 100% 50%;
+}
+
+#home {
+
+
 }
 
 #Input {
@@ -233,50 +238,6 @@ a:focus-visible {
     }
 }
 
-#Button {
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #1a1a1a;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: #3b3b3b;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: normal;
-    margin: 0 auto;
-    margin-top: 40px !important;
-    min-height: 40px;
-    min-width: 0;
-    outline: none;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 100ms cubic-bezier(0.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 70%;
-    will-change: transform;
-}
-
-#Button:disabled {
-    pointer-events: none;
-}
-
-#Button:hover {
-    color: #fff;
-    background-color: #1a1a1a;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-}
-
-#Button:active {
-    box-shadow: none;
-    transform: translateY(0);
-}
 
 @media screen and (min-width: 55.5em) {
     body {

@@ -1,12 +1,11 @@
 .footer {
     width: 100%;
-    color: #fff;
-    background-color: var(--color-text-hover);
-
+    color: var(--color-link-menu);
+    background-color: #e8ebeb;
     font-size: 24px;
 
     .title {
-        color: var(--color-bg);
+        color: var(--color-link-menu);
         font-family: 'Great Vibes';
         font-style: normal;
         font-weight: 400;
@@ -24,6 +23,7 @@
             font-weight: 500;
             font-size: 32px;
             line-height: 39px;
+            color: var(--color-link-menu);
         }
     }
 
@@ -50,9 +50,9 @@
         input {
             font-size: 24px;
             text-indent: 10px;
-            background: #212121;
+            background: #d2d2d2;
             border: 1px solid #878787;
-            color: #ffffff;
+            color: #000000;
             border-radius: 20px;
             width: 100%;
             height: 80px;
