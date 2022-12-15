@@ -1,0 +1,35 @@
+.product {
+    padding: 6.7rem;
+    height: 1000px;
+    &Pages {
+        display: flex;
+    }
+    &LeftItems {
+        width: 50%;
+        img {
+            padding-left: 40px;
+        }
+    }
+    &RigthItems {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &Size {
+        display: flex;
+        justify-content: space-between;
+        p {
+            margin-left: 40px;
+        }
+    }
+    &Btn {
+        width: 50%;
+        height: 60px;
+        p {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

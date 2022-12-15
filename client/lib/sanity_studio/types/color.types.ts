@@ -1,9 +1,6 @@
 export interface IColors {
-    map(arg0: (color: IColors) => JSX.Element): import('react').ReactNode
-    colorCode: IColorCode
-    nameColor: string
-    _key: string
-    _type: string
+    hex: string
+    name: string
 }
 
 interface IColorCode {

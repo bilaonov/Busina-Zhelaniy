@@ -12,6 +12,7 @@ interface Props {
 }
 
 const ProductList: NextPage<Props> = ({ products }) => {
+    console.log(products)
     const [hover, setHover] = useState<boolean[]>([])
 
     const mouseOver = (index: number) => {
@@ -59,9 +60,9 @@ const ProductList: NextPage<Props> = ({ products }) => {
                                     <div className={styles.image1}>
                                         <Image
                                             src={urlForImage(
-                                                hover[index] && product.image2
-                                                    ? product.image2
-                                                    : product.image,
+                                                hover[index] && product.imagesModels[0]
+                                                    ? product.imagesModels[0]
+                                                    : product.image[0],
                                             )
                                                 .url()
                                                 .toString()}
@@ -75,20 +76,20 @@ const ProductList: NextPage<Props> = ({ products }) => {
                                     <div className={styles.leftBlock}>
                                         <div className={styles.title}>{product.title}</div>
 
-                                        <>
+                                        {/* <>
                                             <div className={styles.nameColor}>
-                                                {product.colors.nameColor}
+                                                {product.color.name}
                                             </div>
                                             <div className={styles.color}>
-                                                {product.colors.map((color: IColors) => (
+                                                {product.color.map((color: IColors) => (
                                                     <span
                                                         style={{
-                                                            background: color.colorCode.hex,
+                                                            background: color.colorCode?.hex,
                                                         }}
                                                     ></span>
                                                 ))}
                                             </div>
-                                        </>
+                                        </> */}
                                     </div>
 
                                     <div className={styles.rightBlock}>

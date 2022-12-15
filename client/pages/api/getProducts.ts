@@ -9,7 +9,17 @@ type Data = {
 
 const query = groq`*[_type == "products" ] {
     _id,
-      ...
+    price,
+    title,
+    image,
+    imagesModels,
+    description,
+    category,
+    slug,
+    "color": productColor[]{
+        'name': nameColor,
+        'hex': colorCode.hex
+      }
     } | order(_createdAt asc)`
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {

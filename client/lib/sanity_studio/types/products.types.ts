@@ -5,8 +5,8 @@ export interface IProducts {
     _id: string
     _createdAt: string
     _updatedAt: string
-    _rev: string
-    _type: 'products'
+    _rev?: string
+    _type?: 'products'
     description: string
     title: string
     price: number
@@ -19,10 +19,8 @@ export interface IProducts {
         current: string
     }
 
-    colors: IColors
+    color: IColors
 
     image: Image[]
-    image2?: Image[]
-    image3?: Image[]
-    image4?: Image[]
+    imagesModels: Image[]
 }
