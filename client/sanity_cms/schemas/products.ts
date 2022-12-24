@@ -26,7 +26,7 @@ const productsType = defineType({
     },
     {
       name: 'image',
-      title: 'Image',
+      title: 'Добавить только изделия с цветами',
       type: 'array',
       of: [{type: 'image'}],
       options: {
@@ -50,6 +50,26 @@ const productsType = defineType({
       type: 'reference',
       to: [{type: 'category'}],
       validation: (Rule: {required: () => any}) => Rule.required(),
+    },
+    {
+      name: 'size',
+      title: 'Добавить размеры изделия',
+      type: 'array',
+      validation: (Rule: {required: () => any}) => Rule.required(),
+      of: [
+        {
+          name: 'product_size',
+          type: 'string',
+          title: 'Размер изделия',
+          // fields: [
+          //   {
+          //     name: 'product_size',
+          //     type: 'string',
+          //     title: 'Размер изделия',
+          //   },
+          // ],
+        },
+      ],
     },
     {
       name: 'price',
@@ -86,11 +106,21 @@ const productsType = defineType({
         },
       ],
     },
-
     {
       name: 'description',
       title: 'Описание',
       type: 'string',
+    },
+    {
+      name: 'otherImage',
+      title: 'Добавить дополнительные изображение изделия',
+      type: 'array',
+
+      of: [
+        {
+          type: 'image',
+        },
+      ],
     },
   ],
 })

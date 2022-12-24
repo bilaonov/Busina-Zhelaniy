@@ -1,21 +1,32 @@
 .product {
-    padding: 6.7rem;
-    height: 1000px;
+    padding: 0 6.7rem;
+    padding-bottom: 6.7rem;
     &Pages {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        min-height: 100vh;
+        grid-template-areas: '. .';
     }
     &LeftItems {
-        width: 50%;
-        img {
-            padding-left: 40px;
-        }
-    }
-    &RigthItems {
-        width: 50%;
+        padding-left: 40px;
         display: flex;
         align-items: center;
-        flex-direction: column;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
         justify-content: center;
+        flex-direction: column;
+    }
+    &Image1 {
+    }
+    &RigthItems {
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
     &Size {
         display: flex;
@@ -25,11 +36,37 @@
         }
     }
     &Btn {
-        width: 50%;
-        height: 60px;
-        p {
-            display: flex;
-            align-items: center;
+        width: 30%;
+        background-color: #000;
+        color: '#fff' p {
+
         }
+    }
+    &OtherImage {
+        display: flex;
+    }
+    &ModelsImage,
+    &MoreImages {
+        position: relative;
+        width: 50%;
+        align-self: center;
+        height: 900px;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        object-fit: content;
+        img {
+            position: relative;
+            border-radius: 10px;
+        }
+    }
+
+    &InfoText {
+    }
+    &MoreInfo {
+        margin: 120px 0;
+    }
+    &InfoImage {
+        margin: 120px 0;
+        display: flex;
     }
 }

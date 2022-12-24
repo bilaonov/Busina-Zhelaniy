@@ -7,7 +7,7 @@ interface IButton {
     onClick?: () => void
     href?: string
     type?: 'button' | 'reset' | 'submit'
-    title?: string
+    title?: string | number
     variant?: 'default' | 'primary' | 'outline' | 'light'
     style?: React.CSSProperties
     disabled?: boolean

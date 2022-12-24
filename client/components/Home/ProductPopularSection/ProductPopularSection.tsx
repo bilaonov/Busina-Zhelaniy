@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
 import styles from './ProductPopularSection.module.scss'
-
 import { IProducts } from '../../../lib/sanity_studio/types/products.types'
-import { urlForImage } from '../../../lib/sanity_studio/urlForImage'
-import { IColors } from '../../../lib/sanity_studio/types/color.types'
-import ProductList from '../../Product/ProductList/ProductList'
 import Heading from '../../ui/Heading/Heading'
 import Button from '../../ui/Button/Button'
+import ProductList from '../../Product/ProductList/ProductList'
 
 interface Props {
     products: IProducts[]

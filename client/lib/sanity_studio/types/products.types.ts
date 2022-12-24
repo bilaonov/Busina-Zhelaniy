@@ -18,9 +18,9 @@ export interface IProducts {
         _type: 'slug'
         current: string
     }
-
     color: IColors
-
     image: Image[]
-    imagesModels: Image[]
+    imagesModels?: Image[]
+    otherImage?: Image[]
+    size: string[]
 }
