@@ -1,4 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next'
+import Category from '../components/Category/Category'
 import AboutMe from '../components/Home/AboutMe/AboutMe'
 import CollectionProduct from '../components/Home/CollectionProduct/CollectionProduct'
 import ProductPopularSection from '../components/Home/ProductPopularSection/ProductPopularSection'
@@ -23,7 +24,7 @@ const Home: NextPage<Props> = ({ categories, products }) => {
                 <ProductPopularSection products={products} />
                 <CollectionProduct />
                 <AboutMe />
-                <ReviewsAbout />
+                {/* <ReviewsAbout /> */}
             </Container>
         </div>
     )
@@ -31,9 +32,9 @@ const Home: NextPage<Props> = ({ categories, products }) => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
-    const categories = await fetchCategories()
-    const products = await fetchProducts()
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+    const categories: ICategory[] = await fetchCategories()
+    const products: IProducts[] = await fetchProducts()
     return {
         props: {
             categories,

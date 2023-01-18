@@ -1,21 +1,47 @@
 import { groq } from 'next-sanity'
 
+// const productFields = `
+//   _id,
+//   price,
+//   title,
+//   image_models,
+//   description,
+//   category,
+//   slug,
+//   other_images,
+//   product_size,
+//   'product_images': product_images[]{
+//     'name': color_name,
+//     'color': color_hex.hex,
+//     'image': image
+//   }
+
+// `
+
 const productFields = `
-    _id,
-    price,
-    title,
-    image,
-    imagesModels,
-    description,
-    category,
-    slug,
-    otherImage,
-  
-    size,
-    "color": productColor[]{
-        'name': nameColor,
-        'hex': colorCode.hex
-      }
+_id,
+title,
+image_models,
+description,
+category,
+slug,
+other_images,
+defaultProductVariant {
+  color_name,
+  'color': color.hex,
+  images,
+  price,
+  qty,
+  sizes
+},
+variants[]{
+  'color': color.hex,
+  color_name,
+  images,
+  price,
+  qty,
+  sizes
+}
 `
 
 export const findSlugQuery = groq`  *[_type == "products"]{

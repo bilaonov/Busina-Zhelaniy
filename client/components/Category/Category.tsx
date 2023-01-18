@@ -1,9 +1,14 @@
 import React from 'react'
+import { ICategory } from '../../lib/sanity_studio/types/category.types'
 import Meta from '../core/Meta/Meta'
 import Title from '../ui/Title/Title'
 import styles from './Category.module.scss'
 
-const Category = () => {
+interface CategoryProps {
+    categories: ICategory[]
+}
+
+const Category: React.FC<CategoryProps> = ({ categories }) => {
     return (
         <>
             <Meta title="Категории" />
@@ -38,22 +43,13 @@ const Category = () => {
                         </Title>
 
                         <div className={styles.selectItems2}>
-                            <div>
-                                <p>Кольца</p>
-                                <span>(20)</span>
-                            </div>
-                            <div>
-                                <p>Кольца</p>
-                                <span>(20)</span>
-                            </div>
-                            <div>
-                                <p>Кольца</p>
-                                <span>(20)</span>
-                            </div>
-                            <div>
-                                <p>Кольца</p>
-                                <span>(20)</span>
-                            </div>
+                            {categories &&
+                                categories.map((category) => (
+                                    <div>
+                                        <p>{category.title}</p>
+                                        <span>(20)</span>
+                                    </div>
+                                ))}
                         </div>
                     </div>
                 </div>

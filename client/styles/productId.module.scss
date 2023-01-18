@@ -1,6 +1,7 @@
 .product {
     padding: 0 6.7rem;
     padding-bottom: 6.7rem;
+
     &Pages {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -30,17 +31,13 @@
     }
     &Size {
         display: flex;
+        width: 30%;
         justify-content: space-between;
-        p {
-            margin-left: 40px;
-        }
     }
     &Btn {
-        width: 30%;
-        background-color: #000;
-        color: '#fff' p {
+        width: 40%;
 
-        }
+        font-size: 18px;
     }
     &OtherImage {
         display: flex;
@@ -68,5 +65,41 @@
     &InfoImage {
         margin: 120px 0;
         display: flex;
+    }
+    &SizeBloks {
+        display: flex;
+        align-items: center;
+    }
+    &NameColor {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 20px;
+        margin-top: 10px;
+    }
+    &Colors {
+        padding: 20px 20px;
+        width: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    &ColorItem {
+        display: flex;
+
+        span {
+            display: flex;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-left: 10px !important;
+            border: 0.1px solid rgb(167, 167, 167);
+            &:first-child {
+                margin: 0;
+            }
+        }
     }
 }

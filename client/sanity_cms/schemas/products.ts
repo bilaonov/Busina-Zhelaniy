@@ -24,17 +24,9 @@ const productsType = defineType({
       },
       validation: (Rule: {required: () => any}) => Rule.required(),
     },
+
     {
-      name: 'image',
-      title: 'Добавить только изделия с цветами',
-      type: 'array',
-      of: [{type: 'image'}],
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'imagesModels',
+      name: 'image_models',
       title: 'Добавить изображения с моделями',
       type: 'array',
       validation: (Rule: {required: () => any}) => Rule.required(),
@@ -52,57 +44,13 @@ const productsType = defineType({
       validation: (Rule: {required: () => any}) => Rule.required(),
     },
     {
-      name: 'size',
-      title: 'Добавить размеры изделия',
+      title: 'Variants',
+      name: 'variants',
       type: 'array',
-      validation: (Rule: {required: () => any}) => Rule.required(),
       of: [
         {
-          name: 'product_size',
-          type: 'string',
-          title: 'Размер изделия',
-          // fields: [
-          //   {
-          //     name: 'product_size',
-          //     type: 'string',
-          //     title: 'Размер изделия',
-          //   },
-          // ],
-        },
-      ],
-    },
-    {
-      name: 'price',
-      title: 'Цена',
-      type: 'number',
-      validation: (Rule: {required: () => any}) => Rule.required(),
-    },
-    {
-      name: 'productColor',
-      title: 'Цвета изделия',
-      type: 'array',
-      validation: (Rule: {required: () => any}) => Rule.required(),
-      of: [
-        {
-          name: 'color',
-          type: 'object',
-          title: 'Цвет',
-          fields: [
-            {
-              name: 'nameColor',
-              type: 'string',
-              title: 'Название цвета',
-            },
-            {
-              name: 'colorCode',
-              title: 'Цвет изделия',
-              type: 'color',
-              validation: (Rule: {required: () => any}) => Rule.required(),
-              options: {
-                disableAlpha: true,
-              },
-            },
-          ],
+          title: 'Variant',
+          type: 'productVariant',
         },
       ],
     },
@@ -112,7 +60,7 @@ const productsType = defineType({
       type: 'string',
     },
     {
-      name: 'otherImage',
+      name: 'other_images',
       title: 'Добавить дополнительные изображение изделия',
       type: 'array',
 

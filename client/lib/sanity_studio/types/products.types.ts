@@ -9,7 +9,6 @@ export interface IProducts {
     _type?: 'products'
     description: string
     title: string
-    price: number
     category: {
         _type: 'reference'
         _ref: string
@@ -18,9 +17,23 @@ export interface IProducts {
         _type: 'slug'
         current: string
     }
-    color: IColors
+    image_models?: Image[]
+    other_images?: Image[]
+    variants: ProductVariant[]
+}
+
+interface ProductImage {
+    checkImg(checkImg: any): unknown
+    color: string
+    name: string
     image: Image[]
-    imagesModels?: Image[]
-    otherImage?: Image[]
-    size: string[]
+}
+
+export interface ProductVariant {
+    color: string
+    color_name: string
+    images: Image[]
+    price: number
+    qty: number
+    sizes: string[]
 }

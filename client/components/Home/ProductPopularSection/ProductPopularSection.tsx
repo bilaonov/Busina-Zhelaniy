@@ -15,7 +15,7 @@ const ProductPopularSection: React.FC<Props> = ({ products }) => {
                 Sculptural motifs crafted with uniquely cut lab-grown diamonds.
             </Heading>
             <ProductList products={products} />
-            <Button title="Загрузить больше" type="button" />
+            {/* <Button title="Загрузить больше" type="button" /> */}
         </div>
     )
 }
