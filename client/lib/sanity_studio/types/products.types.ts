@@ -9,6 +9,7 @@ export interface IProducts {
     _type?: 'products'
     description: string
     title: string
+    product_category: string
     category: {
         _type: 'reference'
         _ref: string

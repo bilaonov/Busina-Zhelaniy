@@ -1,4 +1,5 @@
-import React from 'react'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 import { ICategory } from '../../lib/sanity_studio/types/category.types'
 import Meta from '../core/Meta/Meta'
 import Title from '../ui/Title/Title'
@@ -9,6 +10,7 @@ interface CategoryProps {
 }
 
 const Category: React.FC<CategoryProps> = ({ categories }) => {
+    console.log(categories)
     return (
         <>
             <Meta title="Категории" />
@@ -44,10 +46,11 @@ const Category: React.FC<CategoryProps> = ({ categories }) => {
 
                         <div className={styles.selectItems2}>
                             {categories &&
-                                categories.map((category) => (
+                                categories.map((category: ICategory) => (
                                     <div>
-                                        <p>{category.title}</p>
-                                        <span>(20)</span>
+                                        <Link href={`/category/${category.slug.current}/`}>
+                                            {category.title}
+                                        </Link>
                                     </div>
                                 ))}
                         </div>

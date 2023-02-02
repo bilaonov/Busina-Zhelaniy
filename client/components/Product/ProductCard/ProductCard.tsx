@@ -7,7 +7,7 @@ import { urlForImage } from '../../../lib/sanity_studio/urlForImage'
 import Image from 'next/image'
 
 interface Props {
-    products: IProducts
+    products: any
 }
 
 const ProductCard: NextPage<Props> = ({ products }) => {
@@ -25,12 +25,14 @@ const ProductCard: NextPage<Props> = ({ products }) => {
                             alt="Cart"
                             fill
                         />
-                        <Image
-                            src={urlForImage(products.image_models![0]).url().toString()}
-                            className={styles.SecondImage}
-                            alt="Cart"
-                            fill
-                        />
+                        {products.image_models?.length && (
+                            <Image
+                                src={urlForImage(products.image_models![0]).url().toString()}
+                                className={styles.SecondImage}
+                                alt="Cart"
+                                fill
+                            />
+                        )}
                     </div>
                 </div>
 

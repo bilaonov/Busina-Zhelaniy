@@ -26,6 +26,7 @@ description,
 category,
 slug,
 other_images,
+"product_category": category-> slug.current,
 defaultProductVariant {
   color_name,
   'color': color.hex,

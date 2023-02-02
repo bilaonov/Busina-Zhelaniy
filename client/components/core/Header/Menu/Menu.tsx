@@ -8,8 +8,13 @@ import Search from '../../../../pages/search'
 import Category from '../../../Category/Category'
 import Cart from '../../../../pages/cart'
 import Wishlist from '../../../../pages/wishlist'
+import { ICategory } from '../../../../lib/sanity_studio/types/category.types'
 
-const Menu = () => {
+interface Props {
+    categories: ICategory[]
+}
+
+const Menu = ({ categories }: Props) => {
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'category'
     >('category')
@@ -104,7 +109,7 @@ const Menu = () => {
                 </div>
             </div>
             <MenuContent visible={visible} setVisible={setVisible}>
-                {visibleContent === 'category' && <Category />}
+                {visibleContent === 'category' && <Category categories={categories} />}
                 {visibleContent === 'search' && <Search />}
                 {visibleContent === 'cart' && <Cart />}
                 {visibleContent === 'wishlist' && <Wishlist />}

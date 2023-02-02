@@ -1,13 +1,18 @@
 import { FC } from 'react'
-import { LayoutProps } from '../../../types/Layout/Layout'
+import { ICategory } from '../../../lib/sanity_studio/types/category.types'
 import VideoContent from '../../Home/VideoContent/VideoContent'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+export interface LayoutProps {
+    children: React.ReactNode
+    categories: ICategory[]
+}
+
+const Layout: FC<LayoutProps> = ({ children, categories }) => {
     return (
         <>
-            <Header />
+            <Header categories={categories} />
             {children}
             <Footer />
         </>

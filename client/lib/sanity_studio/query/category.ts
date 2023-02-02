@@ -5,3 +5,9 @@ export const categoryQuery = groq`*[_type == "category" ] {
     slug,
       title
         } | order(_createdAt asc)`
+
+export const categoryPathQuery = groq`*[_type == "products" && category-> slug.current == $slug]`
+
+export const categorySlugQuery = groq`*[_type == "category"]{
+    "slug": slug.current
+  }`

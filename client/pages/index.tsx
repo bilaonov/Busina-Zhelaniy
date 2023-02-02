@@ -1,5 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Category from '../components/Category/Category'
+import Layout from '../components/core/Layout/Layout'
 import AboutMe from '../components/Home/AboutMe/AboutMe'
 import CollectionProduct from '../components/Home/CollectionProduct/CollectionProduct'
 import ProductPopularSection from '../components/Home/ProductPopularSection/ProductPopularSection'
@@ -17,16 +18,22 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ categories, products }) => {
+    console.log({
+        categories: categories,
+        data: products,
+    })
     return (
-        <div id="home">
-            <VideoContent />
-            <Container>
-                <ProductPopularSection products={products} />
-                <CollectionProduct />
-                <AboutMe />
-                {/* <ReviewsAbout /> */}
-            </Container>
-        </div>
+        <Layout categories={categories}>
+            <div id="home">
+                <VideoContent />
+                <Container>
+                    <ProductPopularSection products={products} />
+                    <CollectionProduct />
+                    <AboutMe />
+                    {/* <ReviewsAbout /> */}
+                </Container>
+            </div>
+        </Layout>
     )
 }
 
