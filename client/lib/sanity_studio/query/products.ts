@@ -44,6 +44,15 @@ variants[]{
   sizes
 }
 `
+export const productsCountsQuery = groq`
+   [ {"slug": "all", "count": count(*[_type == "products"])} ] + *[_type == "category"] {
+    "slug": slug.current,
+    "count": count(products)
+ }
+`
+export const countAllProducts = groq`
+  count(*[_type=="products"])
+`
 
 export const findSlugQuery = groq`  *[_type == "products"]{
     "slug": slug.current

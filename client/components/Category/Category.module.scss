@@ -1,5 +1,16 @@
 .category {
     width: 100%;
+    a {
+        color: #000;
+        font-size: 22px;
+        &:hover {
+            color: rgb(95, 94, 94);
+        }
+    }
+    span {
+        font-size: 16px;
+        font-family: serif;
+    }
 }
 
 .categorySelect {

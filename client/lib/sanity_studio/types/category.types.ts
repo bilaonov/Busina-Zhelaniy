@@ -4,9 +4,14 @@ export interface ICategory {
     _updatedAt: string
     _rev: string
     _type: 'category'
-    slug: {
+    count?: number | null
+    slug?: {
         _type: 'slug'
-        current: string
+        current?: string
     }
     title: string
+}
+
+export type CategoriesState = {
+    list: ICategory[] | null
 }

@@ -6,13 +6,12 @@ import Header from '../Header/Header'
 
 export interface LayoutProps {
     children: React.ReactNode
-    categories: ICategory[]
 }
 
-const Layout: FC<LayoutProps> = ({ children, categories }) => {
+const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
-            <Header categories={categories} />
+            <Header />
             {children}
             <Footer />
         </>

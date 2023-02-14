@@ -1,8 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, Action, combineReducers, ThunkAction } from '@reduxjs/toolkit'
+import { createWrapper, HYDRATE } from 'next-redux-wrapper'
+import { AnyAction } from '@reduxjs/toolkit'
+import { categoriesSlice } from './categories/categoriesSlice'
 
-export const store = configureStore({
-    reducer: {},
-})
+const makeStore = () =>
+    configureStore({
+        reducer: {
+            [categoriesSlice.name]: categoriesSlice.reducer,
+        },
+        devTools: true,
+    })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppStore = ReturnType<typeof makeStore>
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action>
+
+export const wrapper = createWrapper<AppStore>(makeStore)

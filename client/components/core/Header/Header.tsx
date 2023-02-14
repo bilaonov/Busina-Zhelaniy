@@ -4,10 +4,7 @@ import Content from '../../Home/VideoContent/VideoContent'
 import styles from './Header.module.scss'
 import { ICategory } from '../../../lib/sanity_studio/types/category.types'
 
-interface Props {
-    categories: ICategory[]
-}
-const Header = ({ categories }: Props) => {
+const Header = () => {
     return (
         <>
             <Head>
@@ -15,7 +12,7 @@ const Header = ({ categories }: Props) => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <div className={styles.main}>
-                <Menu categories={categories} />
+                <Menu />
             </div>
         </>
     )

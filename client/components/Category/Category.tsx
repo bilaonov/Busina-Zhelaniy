@@ -1,16 +1,19 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import { ICategory } from '../../lib/sanity_studio/types/category.types'
+import React from 'react'
+
+import { useSelector } from 'react-redux'
+import { selectCategories } from '../../redux/categories/categoriesSlice'
+
+import { CategoriesState, ICategory } from '../../lib/sanity_studio/types/category.types'
+
 import Meta from '../core/Meta/Meta'
 import Title from '../ui/Title/Title'
+
 import styles from './Category.module.scss'
 
-interface CategoryProps {
-    categories: ICategory[]
-}
+const Category: React.FC = () => {
+    const categories: CategoriesState = useSelector(selectCategories)
 
-const Category: React.FC<CategoryProps> = ({ categories }) => {
-    console.log(categories)
     return (
         <>
             <Meta title="Категории" />
@@ -29,14 +32,6 @@ const Category: React.FC<CategoryProps> = ({ categories }) => {
                                 <p>Коллекции</p>
                                 <span id="arrow"></span>
                             </div>
-                            <div>
-                                <p>Ювелирные изделия</p>
-                                <span id="arrow"></span>
-                            </div>
-                            <div>
-                                <p>Ювелирные изделия</p>
-                                <span id="arrow"></span>
-                            </div>
                         </div>
                     </div>
                     <div className={styles.categoryBlock2}>
@@ -45,12 +40,14 @@ const Category: React.FC<CategoryProps> = ({ categories }) => {
                         </Title>
 
                         <div className={styles.selectItems2}>
-                            {categories &&
-                                categories.map((category: ICategory) => (
+                            {categories.list &&
+                                categories.list.map((category: ICategory) => (
                                     <div>
-                                        <Link href={`/category/${category.slug.current}/`}>
-                                            {category.title}
-                                        </Link>
+                                        <Link href={`/category/${category.slug?.current}`}>{`${
+                                            category.title
+                                        } (${
+                                            category.count !== null ? category.count : '0'
+                                        })`}</Link>
                                     </div>
                                 ))}
                         </div>

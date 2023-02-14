@@ -1,9 +1,10 @@
 import { groq } from 'next-sanity'
 
-export const categoryQuery = groq`*[_type == "category" ] {
+export const categoryQuery = groq`[{"title": "Все продукты", "count": count(*[_type == "products"])} ] + *[_type == "category"] {
     _id,
     slug,
-      title
+    title,
+    "count": count(products)
         } | order(_createdAt asc)`
 
 export const categoryPathQuery = groq`*[_type == "products" && category-> slug.current == $slug]`

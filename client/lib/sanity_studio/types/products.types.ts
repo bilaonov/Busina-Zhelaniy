@@ -30,6 +30,11 @@ interface ProductImage {
     image: Image[]
 }
 
+export interface IProductsCounts {
+    count: number
+    slug: string
+}
+
 export interface ProductVariant {
     color: string
     color_name: string
