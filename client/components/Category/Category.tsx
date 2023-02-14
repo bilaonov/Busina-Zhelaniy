@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 import { useSelector } from 'react-redux'
 import { selectCategories } from '../../redux/categories/categoriesSlice'
@@ -11,7 +11,11 @@ import Title from '../ui/Title/Title'
 
 import styles from './Category.module.scss'
 
-const Category: React.FC = () => {
+interface Props {
+    setVisible: Dispatch<SetStateAction<boolean>>
+}
+
+const Category: React.FC<Props> = ({ setVisible }) => {
     const categories: CategoriesState = useSelector(selectCategories)
 
     return (
@@ -42,10 +46,14 @@ const Category: React.FC = () => {
                         <div className={styles.selectItems2}>
                             {categories.list &&
                                 categories.list.map((category: ICategory) => (
-                                    <div>
-                                        <Link href={`/category/${category.slug?.current}`}>{`${
-                                            category.title
-                                        } (${
+                                    <div onClick={() => setVisible(false)}>
+                                        <Link
+                                            href={
+                                                !category.slug
+                                                    ? `/products`
+                                                    : `/category/${category.slug?.current}`
+                                            }
+                                        >{`${category.title} (${
                                             category.count !== null ? category.count : '0'
                                         })`}</Link>
                                     </div>

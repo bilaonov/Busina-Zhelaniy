@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({ products }) => {
     return (
         <div id="home">
             <VideoContent />
-            <Container>
+            <Container className="homeContainer">
                 <ProductPopularSection products={products} />
                 <CollectionProduct />
                 <AboutMe />

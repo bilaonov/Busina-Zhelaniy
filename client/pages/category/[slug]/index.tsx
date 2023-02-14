@@ -1,17 +1,17 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
-import { groq } from 'next-sanity'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Layout from '../../../components/core/Layout/Layout'
-import ProductCard from '../../../components/Product/ProductCard/ProductCard'
+
 import ProductList from '../../../components/Product/ProductList/ProductList'
+import Container from '../../../components/ui/Container/Container'
+import Heading from '../../../components/ui/Heading/Heading'
 import { categoryPathQuery, categorySlugQuery } from '../../../lib/sanity_studio/query/category'
-import { findSlugQuery, productAllQuery } from '../../../lib/sanity_studio/query/products'
+
 import { client } from '../../../lib/sanity_studio/sanity'
 import { ICategory } from '../../../lib/sanity_studio/types/category.types'
 import { IProducts } from '../../../lib/sanity_studio/types/products.types'
 import { fetchCategories } from '../../../utils/fetchCategories'
-import { fetchProducts } from '../../../utils/fetchProducts'
 
 interface Props {
     products: IProducts[]
@@ -20,10 +20,13 @@ interface Props {
 
 const Index: NextPage<Props> = ({ products, categories }) => {
     const router = useRouter()
+    const title = categories.filter((i) => i.slug?.current === router.query.slug)
+
     return (
-        <Layout categories={categories}>
+        <Container>
+            <Heading title={`${title[0].title} ${title[0].count}`} />
             <ProductList products={products} />
-        </Layout>
+        </Container>
     )
 }
 

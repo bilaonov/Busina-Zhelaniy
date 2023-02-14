@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MouseEvent, RefObject, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import styles from '../Header.module.scss'
 import MenuContent from '../MenuContent/MenuContent'
 import Auth from '../../../../pages/auth'
@@ -8,7 +8,6 @@ import Search from '../../../../pages/search'
 import Category from '../../../Category/Category'
 import Cart from '../../../../pages/cart'
 import Wishlist from '../../../../pages/wishlist'
-import { ICategory } from '../../../../lib/sanity_studio/types/category.types'
 
 const Menu = () => {
     const [visibleContent, setVisibleContent] = useState<
@@ -105,7 +104,7 @@ const Menu = () => {
                 </div>
             </div>
             <MenuContent visible={visible} setVisible={setVisible}>
-                {visibleContent === 'category' && <Category />}
+                {visibleContent === 'category' && <Category setVisible={setVisible} />}
                 {visibleContent === 'search' && <Search />}
                 {visibleContent === 'cart' && <Cart />}
                 {visibleContent === 'wishlist' && <Wishlist />}

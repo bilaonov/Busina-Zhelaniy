@@ -2,11 +2,13 @@ import { configureStore, Action, combineReducers, ThunkAction } from '@reduxjs/t
 import { createWrapper, HYDRATE } from 'next-redux-wrapper'
 import { AnyAction } from '@reduxjs/toolkit'
 import { categoriesSlice } from './categories/categoriesSlice'
+import { contentVisibleSlice } from './visibleContent/visibleContentSlice'
 
 const makeStore = () =>
     configureStore({
         reducer: {
             [categoriesSlice.name]: categoriesSlice.reducer,
+            [contentVisibleSlice.name]: contentVisibleSlice.reducer,
         },
         devTools: true,
     })
