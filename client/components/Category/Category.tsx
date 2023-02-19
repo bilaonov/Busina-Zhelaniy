@@ -1,10 +1,8 @@
 import Link from 'next/link'
-import React, { Dispatch, SetStateAction } from 'react'
-
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectCategories } from '../../redux/categories/categoriesSlice'
 
-import { CategoriesState, ICategory } from '../../lib/sanity_studio/types/category.types'
+import { selectCategories } from '../../store/features/categoriesSlice'
 
 import Meta from '../core/Meta/Meta'
 import Title from '../ui/Title/Title'
@@ -16,8 +14,16 @@ interface Props {
 }
 
 const Category: React.FC<Props> = ({ setVisible }) => {
-    const categories: CategoriesState = useSelector(selectCategories)
+    const [data, setData] = useState([])
+    const categories = useSelector(selectCategories)
 
+    useEffect(() => {
+        fetch('http://localhost:3000/api/getProducts')
+            .then((res) => res.json())
+            .then((date) => setData(date))
+    }, [])
+
+    console.log(data)
     return (
         <>
             <Meta title="Категории" />
@@ -59,6 +65,12 @@ const Category: React.FC<Props> = ({ setVisible }) => {
                                     </div>
                                 ))}
                         </div>
+                    </div>
+                    <div className={styles.categoryBlock3}>
+                        {data.products &&
+                            data.products.map((product) => (
+                                <div className={styles.selectItems2}>{product.title}</div>
+                            ))}
                     </div>
                 </div>
             </div>

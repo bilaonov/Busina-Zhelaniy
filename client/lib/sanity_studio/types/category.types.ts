@@ -14,4 +14,6 @@ export interface ICategory {
 
 export type CategoriesState = {
     list: ICategory[] | null
+    pending: boolean
+    error: boolean
 }

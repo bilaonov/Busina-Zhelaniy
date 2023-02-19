@@ -1,12 +1,7 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 
-import { fetchCategories } from '../utils/fetchCategories'
 import { fetchProducts } from '../utils/fetchProducts'
 
-import { setCategories } from '../redux/categories/categoriesSlice'
-import { wrapper } from '../redux/store'
-
-import { ICategory } from '../lib/sanity_studio/types/category.types'
 import { IProducts } from '../lib/sanity_studio/types/products.types'
 
 import AboutMe from '../components/Home/AboutMe/AboutMe'
@@ -15,6 +10,10 @@ import ProductPopularSection from '../components/Home/ProductPopularSection/Prod
 import ReviewsAbout from '../components/Home/ReviewsAbout/ReviewsAbout'
 import VideoContent from '../components/Home/VideoContent/VideoContent'
 import Container from '../components/ui/Container/Container'
+import { ICategory } from '../lib/sanity_studio/types/category.types'
+import { fetchCategories } from '../utils/fetchCategories'
+import { wrapper } from '../store/app/store'
+import { setCategories } from '../store/features/categoriesSlice'
 
 interface Props {
     products: IProducts[]
