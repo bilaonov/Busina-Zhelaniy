@@ -50,6 +50,10 @@ export const productsCountsQuery = groq`
     "count": count(products)
  }
 `
+export const productsCategoriesFilterQuery = groq`*[_type == "products" && category._ref == 244b7a5c-3c18-4ecc-b730-41dfac9339d4] {
+    ${productFields}
+}`
+
 export const countAllProducts = groq`
   count(*[_type=="products"])
 `

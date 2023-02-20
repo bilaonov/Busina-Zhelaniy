@@ -2,68 +2,107 @@
     width: 100%;
     a {
         color: #000;
-        font-size: 22px;
+        font-size: var(--font-size-title);
         &:hover {
             color: rgb(95, 94, 94);
         }
     }
     span {
-        font-size: 16px;
+        font-size: var(--font-size-smail);
         font-family: serif;
     }
-}
 
-.categorySelect {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 4px 0px;
-    grid-template-areas: '. . .';
-    height: 100%;
-}
-
-.selectBlock,
-.categoryBlock2 {
-    width: 100%;
-    height: 87%;
-    border-right: 1px solid #000;
-}
-
-.selectItems,
-.selectItems2 {
-    div {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
+    &Block {
+        // border-right: solid 1px #000;
+        padding: 0 30px;
+        height: 90%;
+    }
+    &Block:nth-child(2) {
+        text-align: center;
     }
 
-    p {
-        width: 80%;
-        cursor: pointer;
-        font-size: 22px;
-        font-weight: 300;
-        color: var(--color-text);
-        &:hover {
-            color: var(--color-text-hover);
+    &Block:nth-child(3) {
+        border: none;
+    }
+
+    &Select {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 4px 0px;
+        grid-template-areas: '. . .';
+        height: 100%;
+    }
+
+    &Title {
+        font-size: var(--font-size-title);
+    }
+
+    &Products {
+        display: flex;
+        margin-top: 10px;
+        &Title {
+            font-size: 18px;
+        }
+
+        &Description {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        &Images {
+            img {
+                border-radius: 10px;
+            }
+        }
+        &Price {
+            font-family: 'Great Vibes';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            display: flex;
+            align-items: flex-end;
+            margin-right: 10px;
+        }
+        &Wishlist {
+            cursor: pointer;
+            z-index: 100;
+        }
+        &Other {
+            display: flex;
+            margin-left: 10px;
+            flex-direction: column;
         }
     }
-}
 
-.categoryText {
-    text-align: center;
-}
-
-.selectItems2 {
-    div {
-        justify-content: center;
+    &Items {
     }
-    p {
+
+    &Item {
+        font-size: 18px;
+        span {
+            margin-left: 5px;
+        }
+    }
+
+    &Box {
         cursor: pointer;
-        font-size: 22px;
-        font-weight: 300;
-        width: auto;
-    }
-    span {
-        margin-left: 5px;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        width: 100%;
+        &:last-child {
+            border: none;
+        }
+        &:hover {
+            background-color: rgb(209, 209, 209);
+        }
+        p {
+            width: 90%;
+            font-size: var(--font-size-text);
+        }
+        span {
+            margin-top: 5px;
+        }
     }
 }
