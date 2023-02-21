@@ -2,17 +2,20 @@
     cursor: pointer;
     color: var(--color-text);
 }
+
 .imgBlock {
     position: relative;
-    img {
-        object-fit: cover;
-    }
+    overflow: hidden;
     .MainImage {
         z-index: 1;
+    }
+    .SecondImage {
+        opacity: 0;
     }
     &:hover {
         .SecondImage {
             z-index: 2;
+            opacity: 1;
         }
     }
 }

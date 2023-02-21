@@ -24,13 +24,13 @@ const Category: React.FC<Props> = ({ setVisible }) => {
     const [data, setData] = useState<IProducts[] | undefined>()
     const [categoryID, setCategoryID] = useState<any>()
     const [isVisible, setIsVisible] = useState<'jewelry' | 'collection' | null>(null)
-
+    
     const categories = useSelector(selectCategories)
 
     useEffect(() => {
         client.fetch(productAllQuery).then((date) => setData(date))
     }, [])
-
+   
     return (
         <>
             <Meta title="Категории" />
@@ -129,11 +129,13 @@ const Category: React.FC<Props> = ({ setVisible }) => {
                                                                     )
                                                                         .url()
                                                                         .toString()}
+                                                                    
                                                                     alt="Cart"
                                                                     width={100}
                                                                     height={100}
                                                                 />
                                                             </div>
+
                                                             <div
                                                                 className={
                                                                     styles.categoryProductsOther
