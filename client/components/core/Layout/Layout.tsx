@@ -1,6 +1,6 @@
+import { AnimatePresence, domAnimation, LazyMotion } from 'framer-motion'
+
 import { FC } from 'react'
-import { ICategory } from '../../../lib/sanity_studio/types/category.types'
-import VideoContent from '../../Home/VideoContent/VideoContent'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 
@@ -11,9 +11,13 @@ export interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
-            <Header />
-            {children}
-            <Footer />
+            <LazyMotion features={domAnimation}>
+                <AnimatePresence mode="wait">
+                    <Header />
+                    {children}
+                    <Footer />
+                </AnimatePresence>
+            </LazyMotion>
         </>
     )
 }

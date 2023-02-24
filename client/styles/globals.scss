@@ -34,7 +34,8 @@ body {
     --color-bg-menu: #e0e0e0;
     --color-link: #fff;
     --color-link-hover: #fff;
-    --color-link-menu: #000;
+    --color-link-hover-bg: #000;
+    --color-link-menu: rgb(78, 78, 78);
     --border-radius: 2rem;
     --menu-padding: 1rem;
     --padding-smail: 0.625rem;
@@ -42,6 +43,7 @@ body {
     --font-size-heading: 2.9rem;
     --font-size-large: 2rem;
     --font-size-medium: 1.75rem;
+    --font-size-link: 1.5rem;
     --font-size-title: 1.375rem;
     --font-size-text: 1.125;
     --font-size-smail: 1rem;
@@ -93,8 +95,9 @@ body #cdawrap {
 }
 
 #arrow {
-    width: 8px;
-    height: 8px;
+    
+    width: 10px;
+    height: 10px;
     border-top: 1px solid var(--color-text) !important;
     border-right: 1px solid var(--color-text) !important;
     transform: rotate(45deg);

@@ -25,19 +25,6 @@
         border: none;
     }
 
-    &Select {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 4px 0px;
-        grid-template-areas: '. . .';
-        height: 100%;
-    }
-
-    &Title {
-        font-size: var(--font-size-title);
-    }
-
     &Products {
         display: flex;
         margin-top: 10px;

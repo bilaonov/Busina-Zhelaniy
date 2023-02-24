@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 
-export const categoryQuery = groq`[{"title": "Все продукты", "count": count(*[_type == "products"])} ] + *[_type == "category"] {
+export const categoryQuery = groq`[{"slug": {"current": "all"}, "title": "Все продукты", "count": count(*[_type == "products"])} ] + *[_type == "category"] {
     _id,
     slug,
     title,

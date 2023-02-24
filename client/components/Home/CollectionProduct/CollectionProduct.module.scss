@@ -7,8 +7,16 @@
     align-items: center;
 }
 
-.images {
+.leftContent {
     width: 50%;
+}
+
+.images {
+    overflow: hidden;
+    max-width: 600px;
+    position: relative;
+    height: 700px;
+    width: 100%;
 }
 
 .content {

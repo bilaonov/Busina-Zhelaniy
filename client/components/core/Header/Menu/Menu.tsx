@@ -5,14 +5,14 @@ import styles from '../Header.module.scss'
 import MenuContent from '../MenuContent/MenuContent'
 import Auth from '../../../../pages/auth'
 import Search from '../../../../pages/search'
-import Category from '../../../Category/Category'
 import Cart from '../../../../pages/cart'
 import Wishlist from '../../../../pages/wishlist'
+import Navbar from '../NavBar/Navbar'
 
 const Menu = () => {
     const [visibleContent, setVisibleContent] = useState<
-        'auth' | 'search' | 'cart' | 'wishlist' | 'category'
-    >('category')
+        'auth' | 'search' | 'cart' | 'wishlist' | 'navbar'
+    >('navbar')
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -23,7 +23,7 @@ const Menu = () => {
         e.preventDefault()
         switch (openMenu) {
             case 'category':
-                setVisibleContent('category')
+                setVisibleContent('navbar')
                 break
             case 'search':
                 setVisibleContent('search')
@@ -46,7 +46,7 @@ const Menu = () => {
             <div className={styles.menuTop}>
                 <nav className={styles.menuNavTop}>
                     <div
-                        onClick={(e) => HandleCategoryVisible(e, 'category')}
+                        onClick={(e) => HandleCategoryVisible(e, 'navbar')}
                         className={styles.lineLink}
                     >
                         <Image src="/icons8-jewel.svg" width="20" height="20" alt="Search" />
@@ -104,7 +104,7 @@ const Menu = () => {
                 </div>
             </div>
             <MenuContent visible={visible} setVisible={setVisible}>
-                {visibleContent === 'category' && <Category setVisible={setVisible} />}
+                {visibleContent === 'navbar' && <Navbar setVisible={setVisible} />}
                 {visibleContent === 'search' && <Search />}
                 {visibleContent === 'cart' && <Cart />}
                 {visibleContent === 'wishlist' && <Wishlist />}

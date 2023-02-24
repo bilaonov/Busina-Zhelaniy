@@ -7,12 +7,10 @@ import { IProducts, ProductVariant } from '../../lib/sanity_studio/types/product
 import { urlForImage } from '../../lib/sanity_studio/urlForImage'
 import Button from '../../components/ui/Button/Button'
 import styles from '../../styles/productId.module.scss'
-import { useRouter } from 'next/router'
 import Select from '../../components/ui/Select/Select'
-import { IColors } from '../../lib/sanity_studio/types/color.types'
-import { SetStateAction, useEffect, useRef, useState } from 'react'
+import {  useState } from 'react'
 import { variantSolver } from '../../utils/groqResolver'
-import BlurImage from '../../components/ui/BlurImage/BlurImage'
+
 
 interface ProductProps {
     product: IProducts
@@ -42,7 +40,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 <div className={styles.productLeftItems}>
                     {currentItems.images.map((image) => (
                         <div className={styles.productImage1}>
-                            <BlurImage
+                            <Image
                                 src={urlForImage(image).url().toString()}
                                 alt="Cart"
                                 width={700}
@@ -90,7 +88,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 {product.image_models &&
                     product.image_models.map((img) => (
                         <div className={styles.productModelsImage}>
-                            <BlurImage src={urlForImage(img).url().toString()} alt="Cart" fill />
+                            <Image src={urlForImage(img).url().toString()} alt="Cart" fill />
                         </div>
                     ))}
             </div>
@@ -108,7 +106,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                         {product.other_images &&
                             product.other_images?.map((img) => (
                                 <div className={styles.productMoreImages}>
-                                    <BlurImage
+                                    <Image
                                         src={urlForImage(img).url().toString()}
                                         fill
                                         alt="Cart"

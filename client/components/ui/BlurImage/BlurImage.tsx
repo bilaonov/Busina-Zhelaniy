@@ -15,7 +15,7 @@ const BlurImage: React.FC<BlurImageProps> = ({ src, alt, className, fill, width,
     const [isLoading, setLoading] = useState(true)
 
     return (
-        <div className={styles.blur} style={{ width: width, height: height }}>
+        <div className={styles.blur}>
             <Image
                 alt={alt}
                 src={src}
