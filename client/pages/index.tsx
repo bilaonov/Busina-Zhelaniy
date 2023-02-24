@@ -27,7 +27,6 @@ const Home: NextPage<Props> = ({ products }) => {
                 <ProductPopularSection products={products} />
                 <CollectionProduct />
                 <AboutMe />
-                <ReviewsAbout />
             </Container>
         </div>
     )

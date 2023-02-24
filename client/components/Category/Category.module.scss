@@ -2,6 +2,7 @@
     width: 100%;
     a {
         color: #000;
+        text-align: center;
         font-size: var(--font-size-title);
         &:hover {
             color: rgb(95, 94, 94);
@@ -10,6 +11,15 @@
     span {
         font-size: var(--font-size-smail);
         font-family: serif;
+    }
+    &CenterContent {
+        border-right: 1px solid #000;
+        display: flex;
+        justify-content: center;
+    }
+
+    &Title {
+        text-align: center;
     }
 
     &Block {
@@ -26,18 +36,28 @@
     }
 
     &Products {
+        &:hover {
+            opacity: 0.8;
+        }
         display: flex;
-        margin-top: 10px;
+        margin: 20px;
+
         &Title {
-            font-size: 18px;
+            font-size: var(--font-size-title);
+            color: #000;
         }
 
         &Description {
-            font-size: 12px;
             margin-top: 5px;
+            font-size: var(--font-size-smail);
+            color: rgb(77, 77, 77);
         }
 
         &Images {
+            max-width: 130px;
+            width: 100%;
+            height: 130px;
+            position: relative;
             img {
                 border-radius: 10px;
             }
@@ -46,18 +66,15 @@
             font-family: 'Great Vibes';
             font-style: normal;
             font-weight: 400;
-            font-size: 24px;
+            font-size: 32px;
             display: flex;
             align-items: flex-end;
-            margin-right: 10px;
         }
-        &Wishlist {
-            cursor: pointer;
-            z-index: 100;
-        }
+
         &Other {
             display: flex;
-            margin-left: 10px;
+            margin-left: 15px;
+
             flex-direction: column;
         }
     }
@@ -66,7 +83,8 @@
     }
 
     &Item {
-        font-size: 18px;
+        font-size: var(--font-size-link);
+
         span {
             margin-left: 5px;
         }

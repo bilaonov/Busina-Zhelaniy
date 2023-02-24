@@ -11,7 +11,10 @@ interface Props {
 const ProductList: NextPage<Props> = ({ products }) => {
     return (
         <div className={styles.container}>
-            {products && products.map((product: IProducts) => <ProductCard products={product} />)}
+            {products &&
+                products.map((product: IProducts) => (
+                    <ProductCard products={product} key={product._id} />
+                ))}
         </div>
     )
 }

@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
     const [isVisible, setIsVisible] = useState<
         'jewelry' | 'collection' | 'gift' | 'materials' | null
     >(null)
-    console.log(isVisible)
+
     return (
         <div className={styles.nav}>
             <div className={styles.navLeftContent}>

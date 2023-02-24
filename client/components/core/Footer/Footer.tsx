@@ -62,7 +62,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={styles.mailing}>
-                    <div>
+                    <div className={styles.box}>
                         <h3>
                             ПРИСОЕДИНЯЙТЕСЬ К ПРЕКРАСНОЙ
                             <br /> КОМАНДЕ

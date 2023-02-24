@@ -1,22 +1,26 @@
 .footer {
     width: 100%;
+
     color: var(--color-link-menu);
     background-color: #e8ebeb;
     font-size: 24px;
-
+    overflow-x: hidden;
     .title {
         color: var(--color-link-menu);
-        font-family: 'Great Vibes';
+        font-family: 'Fasthand';
         font-style: normal;
         font-weight: 400;
         font-size: 62px;
         line-height: 80px;
         text-align: center;
-        padding-top: 60px;
+        padding: 1rem 0;
+    }
+
+    .box {
     }
 
     .items {
-        padding: 5rem 0;
+        padding: 3rem 6.5rem;
         display: flex;
 
         h3 {
@@ -33,7 +37,7 @@
     }
     .support {
         display: flex;
-        width: 80%;
+        width: 50%;
 
         li {
             padding-top: 20px;
@@ -45,8 +49,8 @@
 
     .mailing {
         width: 50%;
-        display: flex;
-        justify-content: flex-end;
+        justify-content: end !important;
+        display: flex !important;
         input {
             font-size: 24px;
             text-indent: 10px;
@@ -70,10 +74,11 @@
     }
 
     .page {
-        margin: 0 2rem;
+        margin: 0 10rem;
         height: 70px;
         display: flex;
         align-items: center;
+        justify-content: end;
     }
 
     .walet {

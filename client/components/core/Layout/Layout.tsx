@@ -12,11 +12,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <LazyMotion features={domAnimation}>
-                <AnimatePresence mode="wait">
-                    <Header />
-                    {children}
-                    <Footer />
-                </AnimatePresence>
+                <Header />
+                {children}
+                <Footer />
             </LazyMotion>
         </>
     )
