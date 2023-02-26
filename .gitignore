@@ -6,6 +6,10 @@ node_modules
 .pnp.js
 .env
 .vscode
+/.vscode
+vscode
+.DS_Store
+DS_Store
 
 # testinggit
 /coverage
