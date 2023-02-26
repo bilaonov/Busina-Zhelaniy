@@ -7,7 +7,7 @@ const Cart = () => {
         <>
             <Meta title="Корзина" />
 
-            <div>Корзина</div>
+            <div>Корзинаdd</div>
         </>
     )
 }
