@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import { createLogger } from 'redux-logger'
+import { authSlice } from '../features/authSlice'
 import { categoriesSlice } from '../features/categoriesSlice'
 
 const logger = createLogger()
@@ -9,8 +10,9 @@ const makeStore = () =>
     configureStore({
         reducer: {
             categories: categoriesSlice.reducer,
+            auth: authSlice.reducer,
         },
-        middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(logger),
+        // middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(logger),
     })
 
 export type AppStore = ReturnType<typeof makeStore>

@@ -14,6 +14,7 @@ import { ICategory } from '../lib/sanity_studio/types/category.types'
 import { fetchCategories } from '../utils/fetchCategories'
 import { wrapper } from '../store/app/store'
 import { setCategories } from '../store/features/categoriesSlice'
+import { SessionProvider } from '../components/Auth/SessionProvider/sessionProvider'
 
 interface Props {
     products: IProducts[]
@@ -21,14 +22,14 @@ interface Props {
 
 const Home: NextPage<Props> = ({ products }) => {
     return (
-        <div id="home">
+        <SessionProvider>
             <VideoContent />
             <Container className="homeContainer">
                 <ProductPopularSection products={products} />
                 <CollectionProduct />
                 <AboutMe />
             </Container>
-        </div>
+        </SessionProvider>
     )
 }
 

@@ -1,3 +1,6 @@
+
+
+
 $primary: #0077ff;
 $dark: #000;
 
@@ -173,13 +176,14 @@ a:focus-visible {
 #Input {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     border-radius: 3px;
     overflow: hidden;
     #Label {
         position: absolute;
         top: 0px;
         left: 12px;
+        width: 500px;
         font-size: 22px;
         color: rgba($dark, 0.5);
         font-weight: 500;
@@ -194,7 +198,7 @@ a:focus-visible {
         left: 0;
         width: 100%;
         height: 100%;
-
+        margin-left: 10px;
         z-index: -1;
         transform: scaleX(0);
         transform-origin: left;
@@ -205,8 +209,8 @@ a:focus-visible {
         width: 100%;
         border: 0;
 
-        padding: 16px 5px 0 5px;
-        height: 56px;
+        padding: 16px 5px 0 15px;
+        height: 50px;
         font-size: 22px;
         font-weight: 300;
         background: rgba($dark, 0.02);

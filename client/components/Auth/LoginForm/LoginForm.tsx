@@ -7,7 +7,7 @@ const LoginForm = () => {
         <div className={styles.authForm}>
             <label htmlFor="inp" id="Input">
                 <input type="email" id="inp" placeholder="&nbsp;" />
-                <span id="Label">Введите почту</span>
+                <span id="Label">Введите email</span>
                 <span id="FocusBg"></span>
             </label>
             <label htmlFor="inp" id="Input">
