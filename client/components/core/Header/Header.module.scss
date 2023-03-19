@@ -1,3 +1,5 @@
+@import '../../../styles/vars';
+
 .main {
     max-width: 100%;
     position: sticky;
@@ -104,7 +106,6 @@
         width: 20%;
         display: flex;
         align-items: center;
-
         span,
         div {
             display: flex;
@@ -149,14 +150,14 @@
 }
 
 .lineLink {
-    color: var(--color-link-menu);
+    color: $link-menu;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
     display: inline-block;
     cursor: pointer;
     img {
-        margin-right: 20px;
+        margin-right: 5px;
         position: relative;
     }
 }

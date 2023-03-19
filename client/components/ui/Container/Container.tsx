@@ -8,7 +8,11 @@ interface ContainerProps {
 
 const Container: React.FC<ContainerProps> = ({ children, className }) => {
     const rootClassName = cName(styles[`${className}`], styles.container)
-    return <div className={rootClassName}>{children}</div>
+    return (
+        <div className={rootClassName}>
+            <div className={styles.box}>{children}</div>
+        </div>
+    )
 }
 
 export default Container

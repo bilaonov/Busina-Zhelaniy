@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import styles from './ProductCard.module.scss'
+import React from 'react'
 import Link from 'next/link'
 import { NextPage } from 'next'
+
 import { urlForImage } from '../../../lib/sanity_studio/urlForImage'
 import BlurImage from '../../ui/BlurImage/BlurImage'
+
+import styles from './ProductCard.module.scss'
+import { IProducts } from '../../../lib/sanity_studio/types/products.types'
 interface Props {
-    products: any
+    products: IProducts
 }
 
 const ProductCard: NextPage<Props> = ({ products }) => {
     return (
         <Link href={`/product/${products.slug.current}`}>
             <a>
-                <div className={styles.items} key={products._id}>
-                    <div className={styles.imgBlock}>
-                        <div className={styles.image2}>
-                            {/* <BlurImage src="/heart.svg" alt="heart" width={30} height={30} /> */}
+                <div className={styles.product} key={products._id}>
+                    <div className={styles.productImageBlock}>
+                        <div className={styles.productImageHeart}>
+                            <BlurImage src="/heart.svg" alt="heart" width={30} height={30} />
                         </div>
-                        <div className={styles.image1}>
+                        <div className={styles.productImages}>
                             <BlurImage
                                 src={urlForImage(products.variants[0].images[0]).url().toString()}
                                 className={styles.MainImage}
@@ -39,13 +42,15 @@ const ProductCard: NextPage<Props> = ({ products }) => {
                         </div>
                     </div>
 
-                    <div className={styles.block}>
-                        <div className={styles.leftBlock}>
-                            <div className={styles.title}>{products.title}</div>
+                    <div className={styles.productBox}>
+                        <div className={styles.productLeftBox}>
+                            <div className={styles.productTitle}>{products.title}</div>
                         </div>
 
-                        <div className={styles.rightBlock}>
-                            <div className={styles.price}>{products.variants[0].price} p</div>
+                        <div className={styles.productRightBox}>
+                            <div className={styles.productPrice}>
+                                {products.variants[0].price} p
+                            </div>
                         </div>
                     </div>
                 </div>

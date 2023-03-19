@@ -50,7 +50,6 @@ export const authSlice = createSlice<IAuthState, SliceCaseReducers<IAuthState>>(
                 state.session = []
                 return
             }
-            state.session = state.session
         },
     },
     extraReducers: (builder) => {

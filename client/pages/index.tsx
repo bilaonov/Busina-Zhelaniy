@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import type { NextPage } from 'next'
 
 import { fetchProducts } from '../utils/fetchProducts'
 
@@ -7,7 +7,6 @@ import { IProducts } from '../lib/sanity_studio/types/products.types'
 import AboutMe from '../components/Home/AboutMe/AboutMe'
 import CollectionProduct from '../components/Home/CollectionProduct/CollectionProduct'
 import ProductPopularSection from '../components/Home/ProductPopularSection/ProductPopularSection'
-import ReviewsAbout from '../components/Home/ReviewsAbout/ReviewsAbout'
 import VideoContent from '../components/Home/VideoContent/VideoContent'
 import Container from '../components/ui/Container/Container'
 import { ICategory } from '../lib/sanity_studio/types/category.types'
@@ -26,8 +25,8 @@ const Home: NextPage<Props> = ({ products }) => {
             <VideoContent />
             <Container className="homeContainer">
                 <ProductPopularSection products={products} />
-                <CollectionProduct />
-                <AboutMe />
+                {/* <CollectionProduct />
+                <AboutMe /> */}
             </Container>
         </SessionProvider>
     )

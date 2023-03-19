@@ -1,21 +1,46 @@
 .container {
-    margin: 3.75rem auto;
-    padding: 3rem 6.5rem;
+    margin: 3rem auto;
+    padding: 3rem 3rem;
     position: relative;
     z-index: 40;
     min-height: screen;
-
     background-color: #fff;
     padding-bottom: 5.625rem;
+    @media (max-width: 1365.98px) {
+        margin: 1rem auto;
+        padding: 2rem 2rem;
+        padding-bottom: 2.625rem;
+    }
+    @media (max-width: 991.98px) {
+        margin: 1rem auto;
+        padding: 1rem 1rem;
+        padding-bottom: 2.625rem;
+    }
+    @media (max-width: 767.98px) {
+        margin: 1rem auto;
+        padding: 0.8rem 0.8rem;
+        padding-bottom: 1.625rem;
+    }
 }
 
 .homeContainer {
-    margin: 3.75rem auto;
-    padding: 3rem 6.5rem;
     position: relative;
     z-index: 40;
     margin-top: -100vh;
     min-height: screen;
-    background-color: #fff;
-    padding-bottom: 5.625rem;
+    @media (max-width: 991.98px) {
+        margin-top: -50vh;
+    }
+    @media (max-width: 767.98px) {
+        margin-top: -30vh;
+    }
+    @media (max-width: 479.98px) {
+        margin-top: 0vh;
+    }
+}
+
+.box {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
 }

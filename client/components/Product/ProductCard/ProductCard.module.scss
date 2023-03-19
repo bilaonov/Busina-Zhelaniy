@@ -1,115 +1,124 @@
-.items {
-    cursor: pointer;
-    color: var(--color-text);
-}
+@import '../../../styles/vars';
 
-.imgBlock {
-    position: relative;
-    overflow: hidden;
-    .MainImage {
-        z-index: 1;
-    }
-    .SecondImage {
-        opacity: 0;
-    }
-    &:hover {
+.product {
+    cursor: pointer;
+    color: $textColor;
+    &ImageBlock {
+        position: relative;
+        overflow: hidden;
+        .MainImage {
+            z-index: 1;
+        }
         .SecondImage {
-            z-index: 2;
-            opacity: 1;
+            opacity: 0;
+        }
+        &:hover {
+            .SecondImage {
+                z-index: 2;
+                opacity: 1;
+            }
+        }
+        @media (max-width: $breakpoint768) {
+            padding-top: 20px;
         }
     }
-}
-.image1 {
-    height: 500px;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    &ImageHeart {
         position: absolute;
-    }
-}
-
-.image2 {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    z-index: 2;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-        color: var(--color-text);
-    }
-}
-.block {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-}
-.leftBlock {
-    width: 50%;
-    margin: 0 16px;
-    div:not(:first-child) {
-        margin-top: 10px;
-    }
-}
-.title {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-}
-.nameColor {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
-}
-.color {
-    display: flex;
-    span {
+        top: 20px;
+        right: 30px;
+        z-index: 2;
         cursor: pointer;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin-left: 10px;
-        &:first-child {
-            margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            color: $textColor;
         }
     }
-}
-.rightBlock {
-    width: 50%;
-    margin: 10px 16px;
-    text-align: right;
-    div:last-child {
-        display: flex;
-        justify-content: flex-end;
+
+    &Images {
+        position: relative;
+        height: 400px;
+        max-width: 600px;
+        width: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+        @media (max-width: $breakpoint1536) {
+            height: 300px;
+            max-width: 350px;
+        }
+        @media (max-width: $breakpoint1366) {
+            max-width: 300px;
+            height: 250px;
+        }
+        @media (max-width: $breakpoint992) {
+            max-width: 220px;
+            height: 190px;
+        }
+        @media (max-width: $breakpoint768) {
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 76.25%; /* 16:9 ratio */
+            height: auto;
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
-}
+    &Box {
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+        @media (max-width: $breakpoint1366) {
+            margin-top: 5px;
+        }
+        @media (max-width: $breakpoint768) {
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+    }
+    &LeftBox {
+    }
+    &Title {
+        font-weight: 400;
+        font-size: $smail;
 
-.price {
-    font-family: 'Great Vibes';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-}
-.reviewBlock {
-    margin-top: 10px;
-}
-.ratingReview {
-}
-.review {
-}
-
-.product:hover .frontImage {
-    transform: scale(1.05);
-    opacity: 0;
-}
-
-.product:hover .backImage {
-    transform: scale(1.05);
-    z-index: 0;
-    opacity: 1;
+        @media (max-width: $breakpoint1366) {
+            font-size: $maxsmail;
+        }
+        @media (max-width: $breakpoint992) {
+            font-size: $maxsmail;
+        }
+        @media (max-width: $breakpoint768) {
+            font-size: $smail;
+            font-weight: 300;
+        }
+    }
+    .RightBox {
+        width: 100%;
+    }
+    &Price {
+        font-family: $font-secondary;
+        font-style: normal;
+        font-weight: 400;
+        font-size: $title;
+        @media (max-width: $breakpoint1366) {
+            font-size: $smail;
+        }
+        @media (max-width: $breakpoint768) {
+            font-size: $text;
+        }
+        @media (max-width: $breakpoint480) {
+            font-size: $maxsmail;
+        }
+    }
 }

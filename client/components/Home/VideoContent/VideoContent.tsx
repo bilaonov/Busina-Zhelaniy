@@ -2,17 +2,14 @@ import styles from './VideoContent.module.scss'
 
 const VideoContent = () => {
     return (
-        <div className={styles.content}>
-            <div className={styles.frame}>
-                <div className={styles.frameContent}>
-                    <h2 className={styles.frameContentTitle}>
-                        Busina Zhelaniy
-                        {/* <span className={styles.frameContentText}>у нас вам понравиться</span> */}
-                    </h2>
+        <div className={styles.video}>
+            <div className={styles.videoFrame}>
+                <div className={styles.videoContent}>
+                    <h2 className={styles.videoTitle}>Busina Zhelaniy</h2>
                 </div>
             </div>
 
-            <div className={styles.plane} data-duration="2.5">
+            <div className={styles.videoPlane} data-duration="2.5">
                 <video
                     autoPlay={true}
                     muted

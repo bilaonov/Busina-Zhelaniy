@@ -1,8 +1,10 @@
+@import '../../../styles/vars';
+
 .heading {
     font-family: 'Cormorant Garamond';
     font-style: normal;
     font-weight: 300;
-    font-size: 3rem;
+    font-size: $heading;
     text-align: center;
     color: #000000;
 
@@ -11,9 +13,21 @@
     .text {
         font-style: normal;
         font-weight: 300;
-        font-size: 24px;
+        font-size: $link;
         color: #000000;
         display: block;
         // text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        @media (max-width: $breakpoint1366) {
+            font-size: $text;
+        }
+        @media (max-width: $breakpoint768) {
+            font-size: $smail;
+        }
+    }
+    @media (max-width: $breakpoint1366) {
+        font-size: $large;
+    }
+    @media (max-width: $breakpoint768) {
+        font-size: $medium;
     }
 }

@@ -1,4 +1,6 @@
-.content {
+@import '../../../styles/vars';
+
+.video {
     width: 100%;
     height: 200vh;
     overflow: hidden;
@@ -6,66 +8,73 @@
     top: 0;
     max-width: auto;
     height: screen;
-}
-
-.video-started .frame__content-text,
-.video-started .frame__switch {
     opacity: 1;
-}
+    @media (max-width: $breakpoint992) {
+        height: 120vh;
+    }
+    @media (max-width: $breakpoint768) {
+        height: 70vh;
+    }
+    @media (max-width: $breakpoint480) {
+        height: 40vh;
+    }
+    &Plane {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        z-index: 2;
+        @media (max-width: $breakpoint992) {
+            height: 70vh;
+        }
+        @media (max-width: $breakpoint768) {
+            height: 40vh;
+        }
+        @media (max-width: $breakpoint480) {
+            height: 40vh;
+        }
+        video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            -o-object-fit: cover;
+            object-fit: cover;
+            z-index: 2;
+            pointer-events: none;
+        }
+    }
 
-.video {
-    pointer-events: none;
-}
+    &Frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 6;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        @media (max-width: $breakpoint992) {
+            height: 70vh;
+        }
+        @media (max-width: $breakpoint768) {
+            height: 40vh;
+        }
+        @media (max-width: $breakpoint480) {
+            height: 40vh;
+        }
+    }
 
-.plane {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    z-index: 2;
-}
-
-.plane video {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    -o-object-fit: cover;
-    object-fit: cover;
-    z-index: 2;
-}
-
-.frame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 6;
-    position: absolute;
-
-    width: 100%;
-    height: 100vh;
-}
-
-.frameContent {
-    text-align: center;
-}
-.frameContentTitle {
-    margin: 0;
-
-    font-size: 8vw;
-    font-weight: 300;
-    font-family: Fasthand;
-    color: #fff;
-    position: relative;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-}
-
-.frameContentText {
-    display: block;
-    margin-top: -50px;
-    font-size: 26px;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: #fff;
+    &Content {
+        text-align: center;
+    }
+    &Title {
+        margin: 0;
+        font-size: 8vw;
+        font-weight: 300;
+        font-family: $font-company;
+        color: $linkColor;
+        position: relative;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
 }
