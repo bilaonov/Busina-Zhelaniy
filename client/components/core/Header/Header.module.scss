@@ -24,7 +24,20 @@
     grid-template-rows: 3rem 1fr;
     grid-template-areas: 'top ' 'content';
     pointer-events: none;
-
+    @media (max-width: $breakpoint768) {
+        top: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        grid-template-rows: 2.5rem 1fr;
+    }
+    @media (max-width: $breakpoint480) {
+        top: 0.8rem;
+        left: 0.2rem;
+        right: 0.2rem;
+        bottom: 0.2rem;
+        grid-template-rows: 2rem 1fr;
+    }
     &.menuOpen {
         pointer-events: auto;
     }
@@ -40,21 +53,57 @@
     }
 
     &Title {
-        text-align: center;
         width: 60%;
-        margin: 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        @media (max-width: $breakpoint480) {
+            width: 80%;
+        }
     }
+    &OpenTitleMenu {
+        @media (max-width: $breakpoint768) {
+            display: none;
+            img {
+                display: none;
+            }
+            p {
+                display: none;
+            }
+        }
+    }
+    &Burger {
+        img {
+            display: none;
+        }
 
+        @media (max-width: $breakpoint768) {
+            img {
+                display: block;
+            }
+        }
+    }
     &TitleLink {
         font-family: Fasthand;
         font-style: normal;
         font-weight: 400;
-        font-size: 36px;
+        font-size: $large;
         padding: 0;
         text-decoration: none;
+        display: flex;
+        align-items: center;
         color: var(--color-text-menu);
         &:hover {
             color: var(--color-text-frame);
+        }
+        @media (max-width: $breakpoint992) {
+            font-size: $medium;
+        }
+        @media (max-width: $breakpoint768) {
+            font-size: $title;
+        }
+        @media (max-width: $breakpoint480) {
+            font-size: $text;
         }
     }
 
@@ -74,6 +123,29 @@
             list-style: none;
             img {
                 cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+            @media (max-width: $breakpoint992) {
+                img {
+                    width: 20px;
+                }
+                padding-left: 15px;
+            }
+            @media (max-width: $breakpoint768) {
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+                padding-left: 10px;
+            }
+            @media (max-width: $breakpoint480) {
+                display: none;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+                padding-left: 10px;
             }
         }
     }
@@ -110,6 +182,11 @@
         div {
             display: flex;
             align-items: center;
+        }
+        @media (max-width: $breakpoint768) {
+        }
+        @media (max-width: $breakpoint480) {
+            width: 20% !important;
         }
     }
 

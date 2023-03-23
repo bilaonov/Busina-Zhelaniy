@@ -68,18 +68,26 @@ const Header = () => {
                                 onClick={(e) => HandleCategoryVisible(e, 'navbar')}
                                 className={styles.lineLink}
                             >
-                                <Image
-                                    src="/icons8-jewel.svg"
-                                    width="20"
-                                    height="20"
-                                    alt="Search"
-                                />
-                                Иследовать
+                                <div className={styles.menuOpenTitleMenu}>
+                                    <Image
+                                        src="/icons8-jewel.svg"
+                                        width="20"
+                                        height="20"
+                                        alt="Search"
+                                    />
+
+                                    <p>Иследовать</p>
+                                </div>
+                                <div className={styles.menuBurger}>
+                                    <Image src="/burger.png" width="20" height="20" alt="Search" />
+                                </div>
                             </div>
                         </nav>
-                        <Link className={styles.menuTitle} href="/">
-                            <a className={styles.menuTitleLink}>Busina Zhelaniy</a>
-                        </Link>
+                        <div className={styles.menuTitle}>
+                            <Link href="/">
+                                <a className={styles.menuTitleLink}>Busina Zhelaniy</a>
+                            </Link>
+                        </div>
 
                         <div className={styles.menuSide}>
                             <ul>
