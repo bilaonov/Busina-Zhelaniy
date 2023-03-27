@@ -11,6 +11,9 @@ interface NavbarProps {
     setVisible: Dispatch<SetStateAction<boolean>>
 }
 
+
+
+
 const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
     const [isVisible, setIsVisible] = useState<
         'jewelry' | 'collection' | 'gift' | 'materials' | null
