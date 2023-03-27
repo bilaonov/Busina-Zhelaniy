@@ -1,5 +1,10 @@
 import type { NextPage } from 'next'
 
+import { wrapper } from '../store/app/store'
+import { setCategories } from '../store/features/categoriesSlice'
+
+import { ICategory } from '../lib/sanity_studio/types/category.types'
+import { fetchCategories } from '../utils/fetchCategories'
 import { fetchProducts } from '../utils/fetchProducts'
 
 import { IProducts } from '../lib/sanity_studio/types/products.types'
@@ -9,10 +14,6 @@ import CollectionProduct from '../components/Home/CollectionProduct/CollectionPr
 import ProductPopularSection from '../components/Home/ProductPopularSection/ProductPopularSection'
 import VideoContent from '../components/Home/VideoContent/VideoContent'
 import Container from '../components/ui/Container/Container'
-import { ICategory } from '../lib/sanity_studio/types/category.types'
-import { fetchCategories } from '../utils/fetchCategories'
-import { wrapper } from '../store/app/store'
-import { setCategories } from '../store/features/categoriesSlice'
 import { SessionProvider } from '../components/Auth/SessionProvider/sessionProvider'
 
 interface Props {
@@ -25,8 +26,8 @@ const Home: NextPage<Props> = ({ products }) => {
             <VideoContent />
             <Container className="homeContainer">
                 <ProductPopularSection products={products} />
-                {/* <CollectionProduct />
-                <AboutMe /> */}
+                <CollectionProduct />
+                {/* <AboutMe /> */}
             </Container>
         </SessionProvider>
     )

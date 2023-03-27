@@ -15,6 +15,8 @@ import { IAuthState, signOut, userState } from '../../../store/features/authSlic
 import { supabase } from '../../../lib/supabase'
 import Button from '../../ui/Button/Button'
 
+
+
 const Header = () => {
     const dispatch = useDispatch()
     const data: IAuthState = useSelector(userState)

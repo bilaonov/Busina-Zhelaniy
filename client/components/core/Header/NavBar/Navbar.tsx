@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Image from 'next/image'
 import BlurImage from '../../../ui/BlurImage/BlurImage'
 
@@ -99,6 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
                     </div>
                 </div>
             </div>
+
             {isVisible === 'jewelry' && <Category setVisible={setVisible} />}
             {isVisible === 'collection' && <Collection />}
 

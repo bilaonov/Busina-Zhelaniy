@@ -1,50 +1,45 @@
-.components {
+@import '../../../styles/vars';
+
+.box {
     padding: 3.75rem 0;
-}
-
-.pages {
-    display: flex;
-    align-items: center;
-}
-
-.leftContent {
-    width: 50%;
-}
-
-.images {
-    overflow: hidden;
-    max-width: 600px;
-    position: relative;
-    height: 700px;
-    width: 100%;
-}
-
-.content {
-    margin-top: -50px;
-    width: 50%;
-    text-align: center;
-    div {
-        padding: 20px 0;
+    &Pages {
+        display: flex;
+        align-items: center;
     }
-    a {
-        color: var(--color-link-menu);
-        font-size: var(--font-size-title);
+    &LeftContent {
+        width: 50%;
     }
-}
-
-.title {
-    font-family: 'Fasthand';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    letter-spacing: 0.325em;
-    text-transform: uppercase;
-    color: #000000;
-}
-
-.heading {
-    margin-top: -20px;
+    &Images {
+        overflow: hidden;
+        max-width: 600px;
+        position: relative;
+        height: 700px;
+        width: 100%;
+        img {
+            object-fit: cover;
+        }
+    }
+    &RightContent {
+        width: 50%;
+        text-align: center;
+        div {
+            padding: 10px 0;
+        }
+        a {
+            color: $link-menu;
+            font-size: $title;
+        }
+    }
+    &Title {
+        font-family: $font-company;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 4rem;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        letter-spacing: 0.325em;
+        text-transform: uppercase;
+        color: #000000;
+    }
 }

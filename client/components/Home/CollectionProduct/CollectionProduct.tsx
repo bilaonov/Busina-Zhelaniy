@@ -1,28 +1,28 @@
-import React from 'react'
-import styles from './CollectionProduct.module.scss'
-import Image from 'next/image'
-import Heading from '../../ui/Heading/Heading'
 import Link from 'next/link'
+
+import Heading from '../../ui/Heading/Heading'
 import BlurImage from '../../ui/BlurImage/BlurImage'
+
+import styles from './CollectionProduct.module.scss'
 
 const CollectionProduct = () => {
     return (
-        <div className={styles.components}>
-            <div className={styles.pages}>
-                <div className={styles.leftContent}>
-                    <div className={styles.images}>
+        <div className={styles.box}>
+            <div className={styles.boxPages}>
+                <div className={styles.boxLeftContent}>
+                    <div className={styles.boxImages}>
                         <BlurImage src="/ImageAboutUsRewiews.jpg" alt="AboutUsRewiews" fill />
                     </div>
                 </div>
 
-                <div className={styles.content}>
-                    <h3 className={styles.title}>BZ</h3>
-                    <Heading className={styles.heading} title="The Reminiscence Ring">
+                <div className={styles.boxRightContent}>
+                    <h3 className={styles.boxTitle}>BZ</h3>
+                    <Heading className={styles.boxHeading} title="The Reminiscence Ring">
                         Behind the science and craft of the world’s largest lab-grown diamond ring,
                         by Unsaid.
                     </Heading>
-                    <Link href="/">
-                        <a id="lineLink">Узнать больше {'>'}</a>
+                    <Link href="/" id="lineLink">
+                        <a>Узнать больше {'>'}</a>
                     </Link>
                 </div>
             </div>

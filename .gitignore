@@ -5,11 +5,6 @@ node_modules
 /.pnp
 .pnp.js
 .env
-.vscode
-/.vscode
-vscode
-.DS_Store
-DS_Store
 
 # testinggit
 /coverage
@@ -25,6 +20,11 @@ DS_Store
 .DS_Store
 *.pem
 
+.gitignore
+bower_components/
+node_modules/
+.vscode/
+hidetext.txt
 # debug
 npm-debug.log*
 yarn-debug.log*
