@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ProductList: NextPage<Props> = ({ products }) => {
-    console.log(products)
+
     return (
         <div className={styles.container}>
             {products &&

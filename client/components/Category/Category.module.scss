@@ -111,3 +111,21 @@
         }
     }
 }
+
+.mobile {
+    width: 100%;
+    &Content {
+    }
+    &Category {
+        margin: 0 auto;
+        text-align: center;
+    }
+    a {
+        color: #000;
+    }
+    &Link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

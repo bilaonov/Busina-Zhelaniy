@@ -14,7 +14,6 @@ interface productsProps {
 }
 
 const Products: NextPage<productsProps> = ({ products }) => {
-    console.log(products)
     return (
         <Container>
             <div className={styles.products}>
