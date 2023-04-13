@@ -14,13 +14,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IAuthState, signOut, userState } from '../../../store/features/authSlice'
 import { supabase } from '../../../lib/supabase'
 import Button from '../../ui/Button/Button'
-
-
+import Mobile from '../../ui/Adoptation/Mobile/Mobile'
+import Desktop from '../../ui/Adoptation/Desktop/Desktop'
 
 const Header = () => {
     const dispatch = useDispatch()
     const data: IAuthState = useSelector(userState)
-
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'navbar'
     >('navbar')
@@ -70,20 +69,40 @@ const Header = () => {
                                 onClick={(e) => HandleCategoryVisible(e, 'navbar')}
                                 className={styles.lineLink}
                             >
-                                <div className={styles.menuOpenTitleMenu}>
+                                {!visible && (
+                                    <div className={styles.menuOpenTitleMenu}>
+                                        <Image
+                                            src="/icons8-jewel.svg"
+                                            width="20"
+                                            height="20"
+                                            alt="Search"
+                                        />
+
+                                        <p>Иследовать</p>
+                                    </div>
+                                )}
+
+                                {!visible && (
+                                    <Mobile className={styles.menuBurger}>
+                                        <Image
+                                            src="/burger.png"
+                                            width="20"
+                                            height="20"
+                                            alt="Search"
+                                        />
+                                    </Mobile>
+                                )}
+                            </div>
+                            {visible && (
+                                <div className={styles.menuClose} onClick={() => setVisible(false)}>
                                     <Image
-                                        src="/icons8-jewel.svg"
+                                        src="/closeicon.png"
                                         width="20"
                                         height="20"
                                         alt="Search"
                                     />
-
-                                    <p>Иследовать</p>
                                 </div>
-                                <div className={styles.menuBurger}>
-                                    <Image src="/burger.png" width="20" height="20" alt="Search" />
-                                </div>
-                            </div>
+                            )}
                         </nav>
                         <div className={styles.menuTitle}>
                             <Link href="/">

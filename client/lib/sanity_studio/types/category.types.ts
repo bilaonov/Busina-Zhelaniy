@@ -19,7 +19,7 @@ export type CategoriesState = {
 }
 
 export interface ICategoryVariable {
-    category_slug: string | undefined
-    category_title: string
-    product_count: number | undefined | null
+    value?: string | undefined
+    label?: string
+    product_count?: number | null
 }

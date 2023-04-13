@@ -1,17 +1,26 @@
 import classnames from 'classnames'
 import Image from 'next/image'
 import React from 'react'
+import CreatableSelect from 'react-select/creatable'
+import { ICategory } from '../../../lib/sanity_studio/types/category.types'
 import styles from './Select.module.scss'
 
 interface SelectProps {
-    size: string[]
+    size?: string[]
+    options?: ICategory[]
 }
 
-const Select: React.FC<SelectProps> = ({ size }) => {
+const Select: React.FC<SelectProps> = ({ size, options }) => {
     const cName = classnames(styles.column, styles.formSelect)
+
     return (
-        <div className={styles.column}>
-            <select>{size && size.map((value) => <option>{value}</option>)}</select>
+        <div>
+            <select className={styles.select}>
+                {options &&
+                    options.map((value) => (
+                        <option className={styles.selectOption} value={value.title}></option>
+                    ))}
+            </select>
         </div>
     )
 }

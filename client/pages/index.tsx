@@ -24,11 +24,11 @@ const Home: NextPage<Props> = ({ products }) => {
     return (
         <SessionProvider>
             <VideoContent />
-            <Container className="homeContainer">
+            {/* <Container className="homeContainer">
                 <ProductPopularSection products={products} />
                 <CollectionProduct />
-                {/* <AboutMe /> */}
-            </Container>
+                <AboutMe />
+            </Container> */}
         </SessionProvider>
     )
 }

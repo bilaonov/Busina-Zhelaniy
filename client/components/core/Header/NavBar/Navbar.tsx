@@ -8,15 +8,10 @@ import Collection from '../../../Collection/Collection'
 import { useMediaQuery } from 'react-responsive'
 import Mobile from '../../../ui/Adoptation/Mobile/Mobile'
 import Desktop from '../../../ui/Adoptation/Desktop/Desktop'
+import Tablet from '../../../ui/Adoptation/Tablet/Tablet'
 
 interface NavbarProps {
     setVisible: Dispatch<SetStateAction<boolean>>
-}
-
-
-const Tablet = ({ children }: any) => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 })
-    return isTablet ? children : null
 }
 
 const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
@@ -112,24 +107,123 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
 
                     {isVisible === 'jewelry' && <Category setVisible={setVisible} />}
                     {isVisible === 'collection' && <Collection />}
+                    {!isVisible && (
+                        <>
+                            <div className={styles.navCenterContent}>
+                                <div className={styles.navImage}>
+                                    <BlurImage src="/models1.avif" fill alt="" />
+                                </div>
+                            </div>
+                            <div className={styles.navRightContent}>
+                                <div className={styles.navImage}>
+                                    <BlurImage src="/models2.jpeg" fill alt="" />
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
-
-                {!isVisible && (
-                    <>
-                        <div className={styles.navCenterContent}>
-                            <div className={styles.navImage}>
-                                <BlurImage src="/models1.avif" fill alt="" />
+            </Desktop>
+            <Tablet>
+                {isVisible === null && (
+                    <div className={styles.tabletNav}>
+                        <div className={styles.tabletNavContent}>
+                            <p className={styles.tabletNavTitle}>НАВИГАЦИЯ</p>
+                            <div className={styles.tabletNavSection}>
+                                <div className={styles.tabletNavLinks}>
+                                    <Link href={'/'}>
+                                        <a className={styles.tabletNavLink}>
+                                            <p>Главная</p>
+                                            <span id="arrow"></span>
+                                        </a>
+                                    </Link>
+                                </div>
+                                <div className={styles.tabletNavLinks}>
+                                    <Link href={'/store'}>
+                                        <a className={styles.tabletNavLink}>
+                                            <p>Наш магазин</p>
+                                            <span id="arrow"></span>
+                                        </a>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className={styles.tabletNavContent}>
+                                <p className={styles.tabletNavTitle}>МАГАЗИН</p>
+                                <div className={styles.tabletNavSection}>
+                                    <div className={styles.tabletNavLinks}>
+                                        <div onClick={() => setIsVisible('jewelry')}>
+                                            <div className={styles.tabletNavLink}>
+                                                <p>Ювелирные изделия</p>
+                                                <span id="arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.tabletNavLinks}>
+                                        <div onClick={() => setIsVisible('collection')}>
+                                            <div className={styles.tabletNavLink}>
+                                                <p>Коллекции</p>
+                                                <span id="arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.tabletNavLinks}>
+                                        <div onClick={() => setIsVisible('gift')}>
+                                            <div className={styles.tabletNavLink}>
+                                                <p>Подарки</p>
+                                                <span id="arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.tabletNavLinks}>
+                                        <div onClick={() => setIsVisible('materials')}>
+                                            <div className={styles.tabletNavLink}>
+                                                <p>Материалы</p>
+                                                <span id="arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                className={styles.tabletNavContent}
+                                onMouseEnter={() => setIsVisible(null)}
+                            >
+                                <p className={styles.tabletNavTitle}>УЗНАТЬ БОЛЬШЕ</p>
+                                <div className={styles.tabletNavSection}>
+                                    <div className={styles.tabletLinks}>
+                                        <Link href={'/'}>
+                                            <a className={styles.tabletNavLink}>
+                                                <p>Наша история</p>
+                                                <span id="arrow"></span>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                    <div className={styles.tabletLinks}>
+                                        <Link href={'/'}>
+                                            <a className={styles.tabletNavLink}>
+                                                <p> Обслуживание клиентов</p>
+                                                <span id="arrow"></span>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className={styles.navRightContent}>
+                    </div>
+                )}
+                {!isVisible && (
+                    <>
+                        <div className={styles.tabletRightContent}>
                             <div className={styles.navImage}>
                                 <BlurImage src="/models2.jpeg" fill alt="" />
                             </div>
                         </div>
                     </>
                 )}
-            </Desktop>
-            <Tablet>Tablet</Tablet>
+                {isVisible === 'jewelry' && (
+                    <Category setIsVisible={setIsVisible} setVisible={setVisible} />
+                )}
+                {isVisible === 'collection' && <Collection />}
+            </Tablet>
             <Mobile>
                 {isVisible === null && (
                     <div className={styles.mobileNav}>
