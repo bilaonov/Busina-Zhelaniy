@@ -1,7 +1,7 @@
 @import '../../../Category/Category.module.scss';
 @import '../../../../styles/vars';
+
 .nav {
-    font-family: Montserrat;
     width: 100%;
     display: grid;
     grid-template-columns: 0.8fr 1fr 1fr;
@@ -9,16 +9,8 @@
     font-weight: 200;
     grid-template-areas: 'left center right';
     height: 90%;
-    &Con {
-        display: none;
-    }
-    @media (max-width: $breakpoint992) {
-        grid-template-areas: 'left right';
-        grid-template-columns: 0.8fr 1fr;
-    }
-    @media (max-width: $breakpoint768) {
-        display: block;
-    }
+    font-size: $title;
+
     a {
         color: $link-menu;
         display: flex;
@@ -76,8 +68,6 @@
         }
     }
 
-    &Section {
-    }
     &Title {
         font-size: $maxsmail;
         font-weight: 200;
@@ -100,7 +90,6 @@
 }
 
 .tabletNav {
-    font-family: Montserrat;
     width: 100%;
     display: grid;
     grid-template-columns: 0.8fr 1fr;
@@ -173,7 +162,6 @@
 }
 
 .mobileNav {
-    font-family: Montserrat;
     font-weight: 200;
     margin: 0 auto;
     text-align: center;

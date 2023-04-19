@@ -24,7 +24,7 @@
     grid-template-rows: 3rem 1fr;
     grid-template-areas: 'top ' 'content';
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.95;
     @media (max-width: $breakpoint768) {
         top: 0.5rem;
         left: 0.5rem;
@@ -47,23 +47,25 @@
         z-index: 100;
         padding: 0 20px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 1fr;
         gap: 0px 0px;
-        grid-template-areas: 'open title-logo link';
+        grid-template-areas: 'open-menu title-logo  link';
         height: 100%;
         align-content: center;
         align-items: center;
 
-        background: rgb(255, 255, 255);
+        background: rgb(228, 228, 228);
         border-radius: var(--border-radius);
+        @media (max-width: $breakpoint480) {
+            padding: 0 10px;
+        }
     }
 
     &Title {
         grid-area: title-logo;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-self: center;
+
         @media (max-width: $breakpoint480) {
         }
     }
@@ -75,8 +77,7 @@
         font-size: $large;
         padding: 0;
         text-decoration: none;
-        display: flex;
-        align-items: center;
+
         color: var(--color-text-menu);
         &:hover {
             color: var(--color-text-frame);
@@ -94,10 +95,7 @@
 
     &Side {
         grid-area: link;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
+        justify-self: flex-end;
         ul {
             display: flex;
             align-items: center;
@@ -148,7 +146,7 @@
         padding: 0 var(--menu-padding);
         height: 100%;
         display: flex;
-        background: var(--color-bg);
+        background: rgb(228, 228, 228);
         border-radius: 0 0 var(--border-radius) var(--border-radius);
         z-index: 1;
         padding-bottom: 1rem;
@@ -156,9 +154,8 @@
 
     &NavTop {
         overflow: hidden;
-        grid-area: open;
-        display: flex;
-        align-items: flex-start;
+        grid-area: open-menu;
+
         span,
         div {
             display: flex;

@@ -1,7 +1,7 @@
 @import '../../styles/vars';
 .category {
     width: 100%;
-    font-family: Montserrat;
+
     a {
         color: #000;
         text-align: center;
@@ -12,14 +12,15 @@
     }
     span {
         font-size: var(--font-size-smail);
-        font-family: serif;
     }
     &CenterContent {
         border-right: 1px solid #000;
         display: flex;
         justify-content: center;
     }
-
+    &RightContent {
+        padding-left: 10px;
+    }
     &Title {
         text-align: center;
         margin-top: 20px;
@@ -141,7 +142,6 @@
     }
 }
 .tablet {
-    font-family: Montserrat;
     font-weight: 200;
     width: 100%;
     display: flex;

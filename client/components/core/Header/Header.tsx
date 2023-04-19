@@ -16,13 +16,15 @@ import { supabase } from '../../../lib/supabase'
 import Button from '../../ui/Button/Button'
 import Mobile from '../../ui/Adoptation/Mobile/Mobile'
 import Desktop from '../../ui/Adoptation/Desktop/Desktop'
+import Tablet from '../../ui/Adoptation/Tablet/Tablet'
+import { useMediaQuery } from 'react-responsive'
 
 const Header = () => {
     const dispatch = useDispatch()
     const data: IAuthState = useSelector(userState)
     const [visibleContent, setVisibleContent] = useState<
-        'auth' | 'search' | 'cart' | 'wishlist' | 'navbar'
-    >('navbar')
+        'auth' | 'search' | 'cart' | 'wishlist' | 'navbar' | null
+    >(null)
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -32,7 +34,7 @@ const Header = () => {
     ): void => {
         e.preventDefault()
         switch (openMenu) {
-            case 'category':
+            case 'navbar':
                 setVisibleContent('navbar')
                 break
             case 'search':
@@ -55,6 +57,12 @@ const Header = () => {
         dispatch(signOut(await supabase.auth.signOut()))
     }
 
+    const handleCloseMenu = () => {
+        setVisibleContent(null)
+        setVisible(false)
+    }
+    const isMobile = useMediaQuery({ maxWidth: 767 })
+
     return (
         <>
             <Head>
@@ -65,12 +73,12 @@ const Header = () => {
                 <div className={styles.menu + ' ' + styles.menuOpen}>
                     <div className={styles.menuTop}>
                         <nav className={styles.menuNavTop}>
-                            <div
-                                onClick={(e) => HandleCategoryVisible(e, 'navbar')}
-                                className={styles.lineLink}
-                            >
-                                {!visible && (
-                                    <div className={styles.menuOpenTitleMenu}>
+                            {!isMobile && !visible && (
+                                <div>
+                                    <div
+                                        className={styles.lineLink}
+                                        onClick={(e) => HandleCategoryVisible(e, 'navbar')}
+                                    >
                                         <Image
                                             src="/icons8-jewel.svg"
                                             width="20"
@@ -80,21 +88,23 @@ const Header = () => {
 
                                         <p>Иследовать</p>
                                     </div>
-                                )}
+                                </div>
+                            )}
 
-                                {!visible && (
-                                    <Mobile className={styles.menuBurger}>
+                            {!visible && (
+                                <Mobile className={styles.menuBurger}>
+                                    <div onClick={(e) => HandleCategoryVisible(e, 'navbar')}>
                                         <Image
                                             src="/burger.png"
                                             width="20"
                                             height="20"
                                             alt="Search"
                                         />
-                                    </Mobile>
-                                )}
-                            </div>
+                                    </div>
+                                </Mobile>
+                            )}
                             {visible && (
-                                <div className={styles.menuClose} onClick={() => setVisible(false)}>
+                                <div className={styles.menuClose} onClick={handleCloseMenu}>
                                     <Image
                                         src="/closeicon.png"
                                         width="20"

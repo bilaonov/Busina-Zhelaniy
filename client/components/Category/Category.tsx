@@ -1,22 +1,24 @@
-import Link from 'next/link'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
+import { selectCategories } from '../../store/features/categoriesSlice'
+
 import { productAllQuery } from '../../lib/sanity_studio/query/products'
 import { client } from '../../lib/sanity_studio/sanity'
+
 import { ICategory, ICategoryVariable } from '../../lib/sanity_studio/types/category.types'
 import { IProducts } from '../../lib/sanity_studio/types/products.types'
 
-import { selectCategories } from '../../store/features/categoriesSlice'
 import Desktop from '../ui/Adoptation/Desktop/Desktop'
 import Mobile from '../ui/Adoptation/Mobile/Mobile'
-
-import Image from 'next/image'
-import styles from './Category.module.scss'
 import CategoryVariables from './CategoryVariables/CategoryVariables'
 import Select from 'react-select'
 import Tablet from '../ui/Adoptation/Tablet/Tablet'
-import { useMediaQuery } from 'react-responsive'
+import CategoryList from './CategoryList/CategoryList'
+import CategoryCount from './CategoryCount/CategoryCount'
+import Image from 'next/image'
+import styles from './Category.module.scss'
+
 interface Props {
     setVisible: Dispatch<SetStateAction<boolean>>
     setIsVisible?: any
@@ -27,6 +29,7 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
     const [categoryVariables, setCategoryVariables] = useState<ICategoryVariable | null>({
         value: 'all',
         label: 'Все продукты',
+        product_count: 0,
     })
 
     const categories = useSelector(selectCategories)
@@ -49,9 +52,6 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
 
         return options
     }
-    const isDesktop = useMediaQuery({ minWidth: 992 })
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 })
-    const isMobile = useMediaQuery({ maxWidth: 767 })
 
     return (
         <>
@@ -59,7 +59,7 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                 <div className={styles.categoryCenterContent}>
                     <div className={styles.categoryContent}>
                         <div className={styles.categoryTitle}>
-                            <h3>Ювелирные изделия</h3>
+                            <p>Ювелирные изделия</p>
                         </div>
 
                         <div className={styles.categoryItems}>
@@ -67,62 +67,22 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                                 categories.list.map(
                                     (category: ICategory) =>
                                         category.count !== null && (
-                                            <div
-                                                onClick={handleMenuClose}
-                                                onMouseEnter={() => {
-                                                    setCategoryVariables({
-                                                        value: category.slug.current,
-                                                        label: category.title,
-                                                        product_count: category.count,
-                                                    })
-                                                }}
-                                                key={category._id}
-                                            >
-                                                <Link
-                                                    href={
-                                                        category.slug?.current === 'all'
-                                                            ? `/products`
-                                                            : `/category/${category.slug.current}`
-                                                    }
-                                                    key={category._id}
-                                                >
-                                                    <a>
-                                                        <p className={styles.categoryItem}>
-                                                            {category.title}
-                                                            <span>
-                                                                (
-                                                                {category.count !== null
-                                                                    ? category.count
-                                                                    : '0'}
-                                                                )
-                                                            </span>
-                                                        </p>
-                                                    </a>
-                                                </Link>
-                                            </div>
+                                            <CategoryList
+                                                category={category}
+                                                handleMenuClose={handleMenuClose}
+                                                setCategoryVariables={setCategoryVariables}
+                                            />
                                         ),
                                 )}
                         </div>
                     </div>
                 </div>
-                <div className={styles.navRightContent}>
+                <div className={styles.categoryRightContent}>
                     {categoryVariables?.value && (
-                        <div className={styles.categoryTitle} onClick={handleMenuClose}>
-                            <Link
-                                href={
-                                    categoryVariables?.value === 'all'
-                                        ? `/products`
-                                        : `/category/${categoryVariables?.value}`
-                                }
-                            >
-                                <a id="lineLink">
-                                    Посмотреть{' '}
-                                    {`${categoryVariables.value !== 'all' ? `все` : ''} ${
-                                        categoryVariables?.label
-                                    } (${categoryVariables?.product_count})`}
-                                </a>
-                            </Link>
-                        </div>
+                        <CategoryCount
+                            handleMenuClose={handleMenuClose}
+                            categoryVariables={categoryVariables}
+                        />
                     )}
 
                     {data &&
@@ -137,6 +97,7 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                         )}
                 </div>
             </Desktop>
+
             <Tablet>
                 <div className={styles.tablet}>
                     <div className={styles.tabletLeftContent}>
@@ -149,39 +110,11 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                                     categories.list.map(
                                         (category: ICategory) =>
                                             category.count !== null && (
-                                                <div
-                                                    onClick={handleMenuClose}
-                                                    onMouseEnter={() => {
-                                                        setCategoryVariables({
-                                                            value: category.slug.current,
-                                                            label: category.title,
-                                                            product_count: category.count,
-                                                        })
-                                                    }}
-                                                    key={category._id}
-                                                >
-                                                    <Link
-                                                        href={
-                                                            category.slug?.current === 'all'
-                                                                ? `/products`
-                                                                : `/category/${category.slug.current}`
-                                                        }
-                                                        key={category._id}
-                                                    >
-                                                        <a>
-                                                            <p className={styles.tabletItem}>
-                                                                {category.title}
-                                                                <span>
-                                                                    (
-                                                                    {category.count !== null
-                                                                        ? category.count
-                                                                        : '0'}
-                                                                    )
-                                                                </span>
-                                                            </p>
-                                                        </a>
-                                                    </Link>
-                                                </div>
+                                                <CategoryList
+                                                    category={category}
+                                                    handleMenuClose={handleMenuClose}
+                                                    setCategoryVariables={setCategoryVariables}
+                                                />
                                             ),
                                     )}
                             </div>
@@ -189,22 +122,10 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                     </div>
                     <div className={styles.tabletRightContent}>
                         {categoryVariables?.value && (
-                            <div className={styles.tabletTitle} onClick={handleMenuClose}>
-                                <Link
-                                    href={
-                                        categoryVariables?.value === 'all'
-                                            ? `/products`
-                                            : `/category/${categoryVariables?.value}`
-                                    }
-                                >
-                                    <a id="lineLink">
-                                        Посмотреть{' '}
-                                        {`${categoryVariables.value !== 'all' ? `все` : ''} ${
-                                            categoryVariables?.label
-                                        } (${categoryVariables?.product_count})`}
-                                    </a>
-                                </Link>
-                            </div>
+                            <CategoryCount
+                                handleMenuClose={handleMenuClose}
+                                categoryVariables={categoryVariables}
+                            />
                         )}
 
                         {data &&
@@ -222,8 +143,8 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
             </Tablet>
             <Mobile>
                 <div className={styles.mobile}>
-                    <div className={styles.mobileBack} onClick={() => setIsVisible(null)}>
-                        <p>Назад</p>
+                    <div className={styles.tabletBack} onClick={() => setIsVisible(null)}>
+                        <Image src="/backicon.webp" width="20" height="20" alt="Search" />
                     </div>
 
                     <Select
@@ -243,22 +164,10 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
                             ) : null,
                         )}
                     {categoryVariables?.value && (
-                        <div className={styles.categoryTitle} onClick={handleMenuClose}>
-                            <Link
-                                href={
-                                    categoryVariables?.value === 'all'
-                                        ? `/products`
-                                        : `/category/${categoryVariables?.value}`
-                                }
-                            >
-                                <a id="lineLink">
-                                    Посмотреть{' '}
-                                    {`${
-                                        categoryVariables.value !== 'all' ? 'все' : ''
-                                    } ${categoryVariables?.label?.toLocaleLowerCase()}`}
-                                </a>
-                            </Link>
-                        </div>
+                        <CategoryCount
+                            handleMenuClose={handleMenuClose}
+                            categoryVariables={categoryVariables}
+                        />
                     )}
                 </div>
             </Mobile>

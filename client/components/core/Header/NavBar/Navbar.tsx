@@ -2,14 +2,13 @@ import Link from 'next/link'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import BlurImage from '../../../ui/BlurImage/BlurImage'
 
-import styles from './NavBar.module.scss'
 import Category from '../../../Category/Category'
 import Collection from '../../../Collection/Collection'
-import { useMediaQuery } from 'react-responsive'
 import Mobile from '../../../ui/Adoptation/Mobile/Mobile'
 import Desktop from '../../../ui/Adoptation/Desktop/Desktop'
 import Tablet from '../../../ui/Adoptation/Tablet/Tablet'
 
+import styles from './NavBar.module.scss'
 interface NavbarProps {
     setVisible: Dispatch<SetStateAction<boolean>>
 }
