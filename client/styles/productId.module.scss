@@ -1,19 +1,35 @@
-.product {
-    padding: 0 6.7rem;
-    padding-bottom: 6.7rem;
+@import './vars';
 
+.product {
+    margin: 0rem auto;
+    padding: 0rem 3rem;
+    padding-bottom: 5.625rem;
+    @media (max-width: $breakpoint1366) {
+        margin: 1rem auto;
+        padding: 2rem 2rem;
+        padding-bottom: 2.625rem;
+    }
+    @media (max-width: $breakpoint992) {
+        margin: 1rem auto;
+        padding: 1rem 1rem;
+        padding-bottom: 2.625rem;
+    }
+    @media (max-width: $breakpoint768) {
+        margin: 1rem auto;
+        padding: 0.8rem 0.8rem;
+        padding-bottom: 1.625rem;
+    }
     &Pages {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        gap: 0px 0px;
-        min-height: 100vh;
-        grid-template-areas: '. .';
+        height: 100vh;
+        display: flex;
+        width: 100%;
+        position: relative;
+        align-items: center;
     }
     &LeftItems {
-        padding-left: 40px;
+        width: 50%;
         display: flex;
-        align-items: center;
+        align-items: start;
     }
 
     &Item {
@@ -23,21 +39,45 @@
         flex-direction: column;
     }
     &Image1 {
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: 800px;
+            object-fit: contain;
+        }
+        @media (max-width: $breakpoint1366) {
+            max-width: 400px;
+            width: 100%;
+            height: 400px;
+            img {
+                max-width: 500px;
+                height: 400px;
+                width: 100%;
+            }
+        }
     }
     &RigthItems {
+        width: 50%;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
     &Size {
         display: flex;
-        width: 30%;
-        justify-content: space-between;
+        gap: 30px;
+    }
+    &Select {
+        display: flex;
     }
     &Btn {
-        width: 40%;
-
+        height: 60px;
         font-size: 18px;
+        display: flex;
+        align-items: center;
+        font-size: 26px;
+        font-family: $font-company;
     }
     &OtherImage {
         display: flex;
@@ -78,13 +118,15 @@
         margin-top: 10px;
     }
     &Colors {
-        padding: 20px 20px;
-        width: 30%;
+        padding-top: 20px;
         margin: 0 auto;
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        p {
+            margin-top: 10px;
+        }
     }
     &ColorItem {
         display: flex;

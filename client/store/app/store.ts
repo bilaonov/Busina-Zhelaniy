@@ -3,6 +3,7 @@ import { createWrapper } from 'next-redux-wrapper'
 import { createLogger } from 'redux-logger'
 import { authSlice } from '../features/authSlice'
 import { categoriesSlice } from '../features/categoriesSlice'
+import { wishListSlice } from '../features/wishlistSlice'
 
 const logger = createLogger()
 
@@ -11,6 +12,7 @@ const makeStore = () =>
         reducer: {
             categories: categoriesSlice.reducer,
             auth: authSlice.reducer,
+            wishList: wishListSlice.reducer,
         },
         // middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(logger),
     })

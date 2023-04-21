@@ -7,10 +7,10 @@ import { IProducts, ProductVariant } from '../../lib/sanity_studio/types/product
 import { urlForImage } from '../../lib/sanity_studio/urlForImage'
 import Button from '../../components/ui/Button/Button'
 import styles from '../../styles/productId.module.scss'
-import Select from '../../components/ui/Select/Select'
-import {  useState } from 'react'
-import { variantSolver } from '../../utils/groqResolver'
 
+import { useState } from 'react'
+import { variantSolver } from '../../utils/groqResolver'
+import Select from 'react-select'
 
 interface ProductProps {
     product: IProducts
@@ -34,6 +34,17 @@ const Product: React.FC<ProductProps> = ({ product }) => {
         })
     }
 
+    const formatOptions = () => {
+        const options =
+            currentItems.sizes &&
+            currentItems.sizes.map((size: string) => ({
+                value: size,
+                label: size,
+            }))
+
+        return options
+    }
+
     return (
         <div className={styles.product} key={product._id}>
             <div className={styles.productPages}>
@@ -43,8 +54,8 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             <Image
                                 src={urlForImage(image).url().toString()}
                                 alt="Cart"
-                                width={700}
-                                height={700}
+                                width={1209}
+                                height={1200}
                             />
                         </div>
                     ))}
@@ -53,33 +64,40 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                 <div className={styles.productRigthItems}>
                     <div className={styles.productItem}>
                         <Heading title={product.title}>{product.description}</Heading>
-                        <div className={styles.productColors}>
-                            <div className={styles.productColorItem}>
-                                {product.variants?.map((colors, index) => (
-                                    <div onClick={() => variantHandler(index)}>
-                                        <span
-                                            style={{
-                                                background: colors.color,
-                                            }}
-                                        ></span>
-                                    </div>
-                                ))}
+                        <div>
+                            <div className={styles.productColors}>
+                                <div className={styles.productColorItem}>
+                                    {product.variants?.map((colors, index) => (
+                                        <div onClick={() => variantHandler(index)}>
+                                            <span
+                                                style={{
+                                                    background: colors.color,
+                                                }}
+                                            ></span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p>{currentItems.color_name}</p>
                             </div>
-                            <div>{currentItems.color_name}</div>
+                            <div className={styles.productSize}>
+                                <div className={styles.productSizeBloks}>
+                                    <p>Размер:</p>
+                                    <Select
+                                        className={styles.productSelect}
+                                        options={formatOptions()}
+                                        placeholder="Выберите размер"
+                                    />
+                                </div>
+                                <div>
+                                    <p>Узнать размер?</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className={styles.productSize}>
-                            <div className={styles.productSizeBloks}>
-                                <p>Размер:</p>
-                                <Select size={currentItems.sizes} />
-                            </div>
-
-                            <p>Узнать размер?</p>
-                        </div>
                         <Button
                             variant="default"
                             className={styles.productBtn}
-                            title={`${currentItems.price}p - Добавить в корзину`}
+                            title={`${currentItems.price}P - Добавить в корзину`}
                         />
                     </div>
                 </div>

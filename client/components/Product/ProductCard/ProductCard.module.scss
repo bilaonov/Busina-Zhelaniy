@@ -24,15 +24,16 @@
     }
     &ImageHeart {
         position: absolute;
-        top: 20px;
-        right: 30px;
-        z-index: 2;
+        top: 5px;
+        right: 5px;
+        z-index: 999999;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+
         &:hover {
-            color: $textColor;
+            background: #fff;
         }
     }
 

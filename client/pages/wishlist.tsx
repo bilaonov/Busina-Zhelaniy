@@ -1,15 +1,16 @@
 import Head from 'next/head'
 import React from 'react'
 import Meta from '../components/core/Meta/Meta'
+import Favorite from '../components/Favorite/Favorite'
 
-const Wishlist = () => {
+const WishList = () => {
     return (
         <>
             <Meta title="Избранное" />
 
-            <div>Избранное</div>
+            <Favorite />
         </>
     )
 }
 
-export default Wishlist
+export default WishList

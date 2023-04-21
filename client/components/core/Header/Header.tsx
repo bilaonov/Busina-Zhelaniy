@@ -8,7 +8,7 @@ import MenuContent from './MenuContent/MenuContent'
 import Navbar from './NavBar/Navbar'
 import Search from '../../../pages/search'
 import Cart from '../../../pages/cart'
-import Wishlist from '../../../pages/wishlist'
+
 import Auth from '../../../pages/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import { IAuthState, signOut, userState } from '../../../store/features/authSlice'
@@ -18,9 +18,12 @@ import Mobile from '../../ui/Adoptation/Mobile/Mobile'
 import Desktop from '../../ui/Adoptation/Desktop/Desktop'
 import Tablet from '../../ui/Adoptation/Tablet/Tablet'
 import { useMediaQuery } from 'react-responsive'
+import { getFavorite } from '../../../store/features/wishlistSlice'
+import WishList from '../../../pages/wishList'
 
 const Header = () => {
     const dispatch = useDispatch()
+    const favoriteCount = useSelector(getFavorite)
     const data: IAuthState = useSelector(userState)
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'navbar' | null
@@ -144,6 +147,9 @@ const Header = () => {
                                 </li>
                                 <li>
                                     <a onClick={(e) => HandleCategoryVisible(e, 'wishlist')}>
+                                        {favoriteCount.length ? (
+                                            <span>{favoriteCount.length}</span>
+                                        ) : null}
                                         <Image
                                             src="/add-favorite-svg.svg"
                                             width="24"
@@ -180,7 +186,7 @@ const Header = () => {
                         {visibleContent === 'navbar' && <Navbar setVisible={setVisible} />}
                         {visibleContent === 'search' && <Search />}
                         {visibleContent === 'cart' && <Cart />}
-                        {visibleContent === 'wishlist' && <Wishlist />}
+                        {visibleContent === 'wishlist' && <WishList />}
                         {visibleContent === 'auth' && <Auth />}
                     </MenuContent>
                 </div>

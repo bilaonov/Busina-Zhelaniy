@@ -1,0 +1,63 @@
+@import '../../styles/vars';
+.pages {
+    width: 100%;
+    font-family: $font-primary;
+    overflow: auto;
+    height: 80vh;
+}
+
+.favorite {
+    width: 100%;
+    z-index: 199;
+    &Product {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        height: 200px;
+    }
+    &Info {
+        width: 100%;
+        position: relative;
+    }
+    &Image {
+        cursor: pointer;
+        img {
+            border-radius: 20px;
+        }
+    }
+    &Title {
+        cursor: pointer;
+        font-size: $medium;
+    }
+    &Description {
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        padding-top: 0px;
+        width: 500px;
+    }
+
+    &AddCartBtn {
+        position: absolute;
+        bottom: 0;
+        text-decoration: underline;
+    }
+
+    &Remove {
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &RemoveBtn {
+        cursor: pointer;
+    }
+
+    &Price {
+        font-family: $font-secondary;
+        font-size: 36px;
+    }
+}
