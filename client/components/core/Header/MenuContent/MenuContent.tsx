@@ -9,9 +9,7 @@ interface MenuContentProps {
 }
 
 const MenuContent: React.FC<MenuContentProps> = ({ children, setVisible, visible }) => {
-    useEffect(() => {
-        console.log({ click: visible, onClick: setVisible })
-    }, [setVisible, visible])
+    useEffect(() => {}, [setVisible, visible])
 
     return (
         <AnimatePresence>

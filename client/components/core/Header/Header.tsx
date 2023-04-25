@@ -20,10 +20,12 @@ import Tablet from '../../ui/Adoptation/Tablet/Tablet'
 import { useMediaQuery } from 'react-responsive'
 import { getFavorite } from '../../../store/features/wishlistSlice'
 import WishList from '../../../pages/wishList'
+import { getCart } from '../../../store/features/cartSlice'
 
 const Header = () => {
     const dispatch = useDispatch()
     const favoriteCount = useSelector(getFavorite)
+    const cartCount = useSelector(getCart)
     const data: IAuthState = useSelector(userState)
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'navbar' | null
@@ -59,6 +61,8 @@ const Header = () => {
     const onSignOut = async () => {
         dispatch(signOut(await supabase.auth.signOut()))
     }
+
+
 
     const handleCloseMenu = () => {
         setVisibleContent(null)
@@ -136,6 +140,7 @@ const Header = () => {
                                     </a>
                                 </li>
                                 <li>
+                                    {cartCount.length ? <span>{cartCount.length}</span> : null}
                                     <a onClick={(e) => HandleCategoryVisible(e, 'cart')}>
                                         <Image
                                             src="/bag-svgrepo-com.svg"

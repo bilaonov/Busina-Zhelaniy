@@ -1,13 +1,11 @@
-import { createAction, createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-import { HYDRATE } from 'next-redux-wrapper'
-import fetchCategories from '../thunk/fetchCategoriesThunk'
 import { IProducts } from '../../lib/sanity_studio/types/products.types'
 
 interface WishListState {
     items: IProducts[]
 }
-const hydrate = createAction<RootState>(HYDRATE)
+
 
 const initialState: WishListState = {
     items: [],

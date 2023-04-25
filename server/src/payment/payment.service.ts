@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as YooKassa from 'yookassa';
-import { PaymentStatusDto } from './dto/payment-status.dto.ts ';
+import {
+  PaymentResponse,
+  PaymentStatusDto,
+} from './dto/payment-status.dto.ts ';
 import { PaymentDto } from './dto/payment.dto';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 const yooKassa = new YooKassa({
   shopId: process.env.SHOP_ID,
@@ -10,10 +14,18 @@ const yooKassa = new YooKassa({
 
 @Injectable()
 export class PaymentService {
-  async payment(dto: PaymentDto) {
-    const payment = await yooKassa.createPayment({
+  private supabaseClient: SupabaseClient;
+  constructor() {
+    this.supabaseClient = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_KEY,
+    );
+  }
+
+  async payment(paymentDto: PaymentDto) {
+    const payment = {
       amount: {
-        value: dto.amount.toFixed(2),
+        value: paymentDto.amount.toFixed(2),
         currency: 'RUB',
       },
       payment_method_data: {
@@ -27,9 +39,25 @@ export class PaymentService {
       },
       /* CHANGE */
       description: 'Order ',
-    });
+    };
+    const { id, confirmation }: PaymentResponse = await yooKassa.createPayment(
+      payment,
+    );
 
-    return payment;
+    const paymentInfo = {
+      order_id: id,
+      amount: paymentDto.amount.toFixed(2),
+      user_info: 'test',
+    };
+
+    const { data, error } = await this.supabaseClient
+      .from('payment')
+      .insert(paymentInfo);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return confirmation.confirmation_url;
   }
 
   async paymentStatus(dto: PaymentStatusDto) {

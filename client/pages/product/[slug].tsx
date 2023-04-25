@@ -11,13 +11,22 @@ import styles from '../../styles/productId.module.scss'
 import { useState } from 'react'
 import { variantSolver } from '../../utils/groqResolver'
 import Select from 'react-select'
+import { cartActions } from '../../store/features/cartSlice'
+import { useDispatch } from 'react-redux'
+import { supabase } from '../../lib/supabase'
 
 interface ProductProps {
     product: IProducts
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {
+    const dispatch = useDispatch()
+
     const [currentItems, setCurrentItems] = useState<ProductVariant>(product.variants[0])
+
+    const handleAddToCart = async (product: IProducts) => {
+        dispatch(cartActions.addToProductCart(product))
+    }
 
     const variantHandler = (index: number) => {
         const { color, images, qty, price, color_name, sizes } = variantSolver(
@@ -95,6 +104,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                         </div>
 
                         <Button
+                            onClick={() => handleAddToCart(product)}
                             variant="default"
                             className={styles.productBtn}
                             title={`${currentItems.price}P - Добавить в корзину`}

@@ -4,5 +4,6 @@ import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [PaymentModule],
+  providers: [],
 })
 export class AppModule {}
