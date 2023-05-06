@@ -26,8 +26,8 @@ const Home: NextPage<Props> = ({ products }) => {
             <VideoContent />
             <Container className="homeContainer">
                 <ProductPopularSection products={products} />
-                {/* <CollectionProduct />
-                <AboutMe /> */}
+                <CollectionProduct />
+                <AboutMe />
             </Container>
         </SessionProvider>
     )

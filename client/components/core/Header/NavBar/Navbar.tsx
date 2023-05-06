@@ -9,11 +9,8 @@ import Desktop from '../../../ui/Adoptation/Desktop/Desktop'
 import Tablet from '../../../ui/Adoptation/Tablet/Tablet'
 
 import styles from './NavBar.module.scss'
-interface NavbarProps {
-    setVisible: Dispatch<SetStateAction<boolean>>
-}
 
-const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
+const Navbar: React.FC = () => {
     const [isVisible, setIsVisible] = useState<
         'jewelry' | 'collection' | 'gift' | 'materials' | null
     >(null)
@@ -104,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
                         </div>
                     </div>
 
-                    {isVisible === 'jewelry' && <Category setVisible={setVisible} />}
+                    {isVisible === 'jewelry' && <Category />}
                     {isVisible === 'collection' && <Collection />}
                     {!isVisible && (
                         <>
@@ -218,9 +215,7 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
                         </div>
                     </>
                 )}
-                {isVisible === 'jewelry' && (
-                    <Category setIsVisible={setIsVisible} setVisible={setVisible} />
-                )}
+                {isVisible === 'jewelry' && <Category setIsVisible={setIsVisible} />}
                 {isVisible === 'collection' && <Collection />}
             </Tablet>
             <Mobile>
@@ -310,9 +305,7 @@ const Navbar: React.FC<NavbarProps> = ({ setVisible }) => {
                         </div>
                     </div>
                 )}
-                {isVisible === 'jewelry' && (
-                    <Category setVisible={setVisible} setIsVisible={setIsVisible} />
-                )}
+                {isVisible === 'jewelry' && <Category setIsVisible={setIsVisible} />}
                 {isVisible === 'collection' && <Collection />}
             </Mobile>
         </>

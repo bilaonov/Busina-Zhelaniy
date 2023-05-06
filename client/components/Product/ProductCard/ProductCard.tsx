@@ -27,8 +27,8 @@ const ProductCard: NextPage<Props> = ({ products }) => {
     }
 
     return (
-        <Link href={`/product/${products.slug.current}`}>
-            <div className={styles.product} key={products._id}>
+        <Link href={`/product/${products.slug.current}`} >
+            <div className={styles.product} >
                 <div className={styles.productImageBlock}>
                     <div className={styles.productImageHeart} onClick={toggleFavoriteHandler}>
                         {!isInFavorite ? (

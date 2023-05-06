@@ -6,6 +6,7 @@ import Title from '../ui/Title/Title'
 import styles from './Favorite.module.scss'
 import Image from 'next/image'
 import { urlForImage } from '../../lib/sanity_studio/urlForImage'
+import Button from '../ui/Button/Button'
 
 interface FavoriteItemProps {
     product: IProducts

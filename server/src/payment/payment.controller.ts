@@ -1,7 +1,6 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   Post,
   UsePipes,
@@ -16,7 +15,7 @@ export class PaymentController {
   constructor(private readonly paymentService: PaymentService) {}
 
   @UsePipes(new ValidationPipe())
-  @HttpCode(200)
+  @HttpCode(200) 
   @Post()
   async createPayment(@Body() dto: PaymentDto) {
     return this.paymentService.payment(dto);

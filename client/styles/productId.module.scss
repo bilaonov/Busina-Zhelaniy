@@ -76,8 +76,9 @@
         font-size: 18px;
         display: flex;
         align-items: center;
-        font-size: 26px;
-        font-family: $font-company;
+        font-size: $smail;
+        font-weight: 400;
+        font-family: $font-main;
     }
     &OtherImage {
         display: flex;
@@ -130,7 +131,6 @@
     }
     &ColorItem {
         display: flex;
-
         span {
             display: flex;
             cursor: pointer;

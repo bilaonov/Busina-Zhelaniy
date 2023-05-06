@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 import MenuContent from './MenuContent/MenuContent'
 import Navbar from './NavBar/Navbar'
 import Search from '../../../pages/search'
@@ -15,30 +15,30 @@ import { IAuthState, signOut, userState } from '../../../store/features/authSlic
 import { supabase } from '../../../lib/supabase'
 import Button from '../../ui/Button/Button'
 import Mobile from '../../ui/Adoptation/Mobile/Mobile'
-import Desktop from '../../ui/Adoptation/Desktop/Desktop'
-import Tablet from '../../ui/Adoptation/Tablet/Tablet'
 import { useMediaQuery } from 'react-responsive'
 import { getFavorite } from '../../../store/features/wishlistSlice'
-import WishList from '../../../pages/wishList'
 import { getCart } from '../../../store/features/cartSlice'
+import WishList from '../../../pages/wishlist'
+import { getVisible, onVisible } from '../../../store/features/megaMenuSlice'
+import { boolean } from 'yup'
 
 const Header = () => {
+    const ref = useRef<any>(null)
     const dispatch = useDispatch()
     const favoriteCount = useSelector(getFavorite)
+    const { visible } = useSelector(getVisible)
     const cartCount = useSelector(getCart)
     const data: IAuthState = useSelector(userState)
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'navbar' | null
     >(null)
 
-    const [visible, setVisible] = useState<boolean>(false)
-
     const HandleCategoryVisible = (
         e: MouseEvent<HTMLElement, globalThis.MouseEvent>,
-        openMenu: string,
+        category: string,
     ): void => {
         e.preventDefault()
-        switch (openMenu) {
+        switch (category) {
             case 'navbar':
                 setVisibleContent('navbar')
                 break
@@ -55,20 +55,25 @@ const Header = () => {
                 setVisibleContent('auth')
                 break
         }
-        setVisible(true)
+        dispatch(onVisible())
     }
 
     const onSignOut = async () => {
         dispatch(signOut(await supabase.auth.signOut()))
     }
 
-
-
     const handleCloseMenu = () => {
+        dispatch(onVisible())
+
         setVisibleContent(null)
-        setVisible(false)
     }
     const isMobile = useMediaQuery({ maxWidth: 767 })
+
+    useEffect(() => {
+        // const onClick = (e: any) => ref.current?.contains(e.target) || dispatch(onVisible())
+        // document.addEventListener('click', onClick)
+        // return () => document.removeEventListener('click', onClick)
+    })
 
     return (
         <>
@@ -76,7 +81,7 @@ const Header = () => {
                 <title>Busina Zhelaniy</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <div className={styles.main}>
+            <div className={styles.main} ref={ref}>
                 <div className={styles.menu + ' ' + styles.menuOpen}>
                     <div className={styles.menuTop}>
                         <nav className={styles.menuNavTop}>
@@ -187,8 +192,8 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                    <MenuContent visible={visible} setVisible={setVisible}>
-                        {visibleContent === 'navbar' && <Navbar setVisible={setVisible} />}
+                    <MenuContent visibleContent={visibleContent}>
+                        {visibleContent === 'navbar' && <Navbar />}
                         {visibleContent === 'search' && <Search />}
                         {visibleContent === 'cart' && <Cart />}
                         {visibleContent === 'wishlist' && <WishList />}

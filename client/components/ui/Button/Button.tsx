@@ -12,7 +12,7 @@ interface IButton {
     style?: React.CSSProperties
     disabled?: boolean
     icon?: React.ReactElement
-    text?: boolean
+    text?: text
     loading?: boolean
     className?: string
 }
@@ -22,6 +22,7 @@ const Button: React.FC<IButton> = ({
     href,
     type,
     title,
+
     variant,
     style,
     disabled,
@@ -42,7 +43,13 @@ const Button: React.FC<IButton> = ({
             >
                 <>
                     {icon && <p className={styles.icon}>{icon}</p>}
-                    {title}
+                    {text ? (
+                        <div>
+                            <span>{text}</span> {title}
+                        </div>
+                    ) : (
+                        <div>{title}</div>
+                    )}
                 </>
             </button>
         </>

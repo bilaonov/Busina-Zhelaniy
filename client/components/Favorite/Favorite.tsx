@@ -7,7 +7,7 @@ import styles from './Favorite.module.scss'
 
 const Favorite = () => {
     const favoriteItems = useSelector(getFavorite)
-    console.log(favoriteItems)
+
     return (
         <div className={styles.pages}>
             {favoriteItems.length ? (

@@ -1,0 +1,148 @@
+@import '../vars';
+.cart {
+    padding: 0;
+    margin-top: -30px;
+    width: 100%;
+    font-family: $font-main;
+    overflow: hidden;
+
+    &Heading {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        &Title {
+            p {
+                font-weight: 500;
+                text-align: center;
+                font-family: $font-main;
+            }
+        }
+        &Text {
+            margin-top: -10px;
+            font-size: $maxsmail;
+            font-family: $font-main;
+            text-align: center;
+            font-weight: 300;
+        }
+    }
+    &ProductBlock {
+        height: 65vh;
+        overflow-y: auto;
+    }
+
+    &BtnAddCheckOut {
+        position: absolute;
+        padding: 20px;
+        font-weight: 400;
+        font-size: $smail;
+        font-family: $font-main;
+        border-end-end-radius: 0px !important;
+        border-end-start-radius: 0px !important;
+    }
+    &BtnBlock {
+        display: flex;
+        margin-top: -7px;
+        justify-content: center;
+    }
+
+    &Product {
+        overflow: auto;
+
+        display: flex;
+        padding-top: 20px;
+        gap: 10px;
+        justify-content: space-between;
+        &Block {
+        }
+        &HeadingBox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &Clear {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        &Title,
+        &Clear {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: $maxsmail;
+
+            span {
+                background: #000000;
+                z-index: 999;
+                width: 20px;
+                height: 20px;
+                transform: matrix(-1, 0.01, -0.01, -1, 0, 0);
+            }
+        }
+        &Text {
+            cursor: pointer;
+            font-size: 16px;
+        }
+        &Image {
+            cursor: pointer;
+            width: 20%;
+            img {
+                width: 100px;
+                height: 100px;
+                left: 0px;
+                top: 1px;
+                border-radius: 30px;
+            }
+        }
+        &Info {
+            cursor: pointer;
+            width: 55%;
+            margin-left: 5px;
+        }
+        &Remove {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        &Color,
+        &Size {
+            font-weight: 200;
+            font-family: $font-main;
+            font-size: $maxsmail;
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            gap: 5px;
+            span {
+                display: flex;
+                cursor: pointer;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+
+                border: 0.1px solid rgb(167, 167, 167);
+                &:first-child {
+                    margin: 0;
+                }
+            }
+        }
+        &RemoveBtn {
+            cursor: pointer;
+        }
+        &Price {
+            padding-right: 1px;
+            font-family: 'Great Vibes';
+            font-size: 26px;
+        }
+    }
+    &Empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        font-size: $title;
+    }
+}

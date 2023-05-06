@@ -24,7 +24,7 @@
     grid-template-rows: 3rem 1fr;
     grid-template-areas: 'top ' 'content';
     pointer-events: none;
-    opacity: 0.95;
+    opacity: 1;
     @media (max-width: $breakpoint768) {
         top: 0.5rem;
         left: 0.5rem;
@@ -156,9 +156,20 @@
         margin-top: -1.35rem;
     }
 
+    &Sidebar {
+        position: absolute;
+        max-width: 550px;
+        width: 100%;
+        right: 0;
+        grid-area: content;
+        overflow: hidden;
+        height: 100vh;
+        margin-top: -1.3rem;
+    }
+
     &Content {
         padding: 0 var(--menu-padding);
-        height: 100%;
+        height: 90%;
         display: flex;
         background: rgb(228, 228, 228);
         border-radius: 0 0 var(--border-radius) var(--border-radius);

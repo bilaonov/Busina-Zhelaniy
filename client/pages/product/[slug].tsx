@@ -10,22 +10,35 @@ import styles from '../../styles/productId.module.scss'
 
 import { useState } from 'react'
 import { variantSolver } from '../../utils/groqResolver'
-import Select from 'react-select'
-import { cartActions } from '../../store/features/cartSlice'
+import Select, { SingleValue } from 'react-select'
+import { addToProductCart } from '../../store/features/cartSlice'
 import { useDispatch } from 'react-redux'
-import { supabase } from '../../lib/supabase'
 
 interface ProductProps {
     product: IProducts
 }
 
+interface ISize {}
+
 const Product: React.FC<ProductProps> = ({ product }) => {
     const dispatch = useDispatch()
 
+    const [size, setSize] = useState<SingleValue<{ value: string; label: string }>>()
     const [currentItems, setCurrentItems] = useState<ProductVariant>(product.variants[0])
 
-    const handleAddToCart = async (product: IProducts) => {
-        dispatch(cartActions.addToProductCart(product))
+    const handleAddToCart = () => {
+        const item = {
+            slug: product.slug.current,
+            id: product._id,
+            image: currentItems.images,
+            title: product.title,
+            color: currentItems.color_name,
+            colorHex: currentItems.color,
+            price: currentItems.price,
+            size: size?.value,
+        }
+        dispatch(addToProductCart(item))
+        
     }
 
     const variantHandler = (index: number) => {
@@ -92,6 +105,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                                 <div className={styles.productSizeBloks}>
                                     <p>Размер:</p>
                                     <Select
+                                        onChange={(e) => setSize(e)}
                                         className={styles.productSelect}
                                         options={formatOptions()}
                                         placeholder="Выберите размер"
@@ -103,12 +117,20 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             </div>
                         </div>
 
-                        <Button
-                            onClick={() => handleAddToCart(product)}
-                            variant="default"
-                            className={styles.productBtn}
-                            title={`${currentItems.price}P - Добавить в корзину`}
-                        />
+                        {size ? (
+                            <Button
+                                onClick={handleAddToCart}
+                                variant="default"
+                                className={styles.productBtn}
+                                title={`${currentItems.price}руб - Добавить в корзину`}
+                            />
+                        ) : (
+                            <Button
+                                variant="default"
+                                className={styles.productBtn}
+                                title={`Выберите размер изделия`}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

@@ -24,6 +24,10 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform;
+    span {
+        font-family: 'Fasthand';
+        color: #ebebeb;
+    }
 }
 
 .btn:disabled {

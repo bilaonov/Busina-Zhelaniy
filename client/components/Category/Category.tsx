@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { selectCategories } from '../../store/features/categoriesSlice'
 
@@ -18,13 +18,14 @@ import CategoryList from './CategoryList/CategoryList'
 import CategoryCount from './CategoryCount/CategoryCount'
 import Image from 'next/image'
 import styles from './Category.module.scss'
+import { onVisible } from '../../store/features/megaMenuSlice'
 
 interface Props {
-    setVisible: Dispatch<SetStateAction<boolean>>
     setIsVisible?: any
 }
 
-const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
+const Category: React.FC<Props> = ({ setIsVisible }) => {
+    const dispatch = useDispatch()
     const [data, setData] = useState<IProducts[] | undefined>()
     const [categoryVariables, setCategoryVariables] = useState<ICategoryVariable | null>({
         value: 'all',
@@ -39,7 +40,7 @@ const Category: React.FC<Props> = ({ setVisible, setIsVisible }) => {
     }, [])
 
     const handleMenuClose = () => {
-        setVisible(false)
+        dispatch(onVisible(false))
     }
     const formatOptions = () => {
         const options =

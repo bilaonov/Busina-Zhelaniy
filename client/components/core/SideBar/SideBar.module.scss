@@ -1,0 +1,17 @@
+@import '../../../styles/vars';
+
+.sidebar {
+    right: 0;
+    top: 0px;
+    position: absolute;
+    z-index: 99;
+    border-radius: 30px;
+
+    background-color: $bg-menu;
+    height: 95vh;
+    max-width: 350px;
+    width: 100%;
+    &Page {
+        margin-top: 50px;
+    }
+}
