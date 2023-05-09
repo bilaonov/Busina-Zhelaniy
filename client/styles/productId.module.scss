@@ -65,18 +65,29 @@
         justify-content: center;
     }
     &Size {
+        width: 100%;
         display: flex;
         gap: 30px;
+        justify-content: center;
+        &Know {
+        }
+        &Blocks {
+        }
+        &Box {
+            display: flex;
+        }
     }
     &Select {
         display: flex;
     }
     &Btn {
+        position: relative;
+        margin-top: 30px;
         height: 60px;
-        font-size: 18px;
+        padding: 20px 50px;
         display: flex;
         align-items: center;
-        font-size: $smail;
+        font-size: $text;
         font-weight: 400;
         font-family: $font-main;
     }

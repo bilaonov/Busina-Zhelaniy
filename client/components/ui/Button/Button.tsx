@@ -41,16 +41,9 @@ const Button: React.FC<IButton> = ({
                 style={style}
                 disabled={disabled}
             >
-                <>
-                    {icon && <p className={styles.icon}>{icon}</p>}
-                    {text ? (
-                        <div>
-                            <span>{text}</span> {title}
-                        </div>
-                    ) : (
-                        <div>{title}</div>
-                    )}
-                </>
+                {icon && <p className={styles.icon}>{icon}</p>}
+
+                {title}
             </button>
         </>
     )

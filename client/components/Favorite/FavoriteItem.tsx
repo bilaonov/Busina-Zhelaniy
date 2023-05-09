@@ -1,12 +1,11 @@
 import { useDispatch } from 'react-redux'
 import { IProducts } from '../../lib/sanity_studio/types/products.types'
-import { wishListActions } from '../../store/features/wishlistSlice'
+import { removeWishList } from '../../store/features/wishlistSlice'
 import Link from 'next/link'
-import Title from '../ui/Title/Title'
 import styles from './Favorite.module.scss'
 import Image from 'next/image'
 import { urlForImage } from '../../lib/sanity_studio/urlForImage'
-import Button from '../ui/Button/Button'
+import { MouseEvent } from 'react'
 
 interface FavoriteItemProps {
     product: IProducts
@@ -14,45 +13,49 @@ interface FavoriteItemProps {
 
 const FavoriteItem: React.FC<FavoriteItemProps> = ({ product }) => {
     const dispatch = useDispatch()
-    const onRemoveFavoriteItem = (productSlug: string) => {
-        dispatch(wishListActions.removeWishList(productSlug))
+
+    const onRemoveFavoriteItem = (
+        e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+        productSlug: string,
+    ) => {
+        e.preventDefault()
+        dispatch(removeWishList(productSlug))
     }
 
     return (
-        <div className={styles.favorite}>
-            <div className={styles.favoriteHeading}>
-                <Title>Товары в израбанном</Title>
-            </div>
-            <Link href={`product/${product.slug.current}`}>
-                <div className={styles.favoriteProduct}>
-                    <div className={styles.favoriteImage}>
+        <Link href={`product/${product.slug.current}`} key={product._id}>
+            <div className={styles.favoriteProduct}>
+                <div className={styles.favoriteProductImage}>
+                    <Image
+                        src={urlForImage(product.variants[0].images[0]).url().toString()}
+                        width={100}
+                        height={100}
+                        alt={product.slug.current}
+                    />
+                </div>
+                <div className={styles.favoriteProductInfo}>
+                    <div>
+                        <div className={styles.favoriteProductText}>{product.title}</div>
+                        <div className={styles.favoriteDescription}>{product.description}</div>
+                    </div>
+                    <div className={styles.favoriteLink}>Перейти к товару</div>
+                </div>
+                <div className={styles.favoriteProductRemove}>
+                    <div
+                        className={styles.favoriteProductRemoveBtn}
+                        onClick={(e) => onRemoveFavoriteItem(e, product.slug.current)}
+                    >
                         <Image
-                            src={urlForImage(product.variants[0].images[0]).url().toString()}
-                            width={200}
-                            height={200}
-                            alt={product.slug.current}
+                            src="/primaryHeart.svg"
+                            alt="delete wishlist"
+                            width={20}
+                            height={20}
                         />
                     </div>
-                    <div className={styles.favoriteInfo}>
-                        <div className={styles.favoriteTitle}>{product.title}</div>
-                        <div className={styles.favoriteDescription}>{product.description}</div>
-                        <div className={styles.favoriteAddCartBtn}>Добавить в карзину</div>
-                    </div>
-                    <div className={styles.favoriteRemove}>
-                        <div
-                            className={styles.favoriteRemoveBtn}
-                            onClick={(e): void => {
-                                e.preventDefault()
-                                onRemoveFavoriteItem(product.slug.current)
-                            }}
-                        >
-                            <Image src="/primaryHeart.svg" alt="heart" width={30} height={30} />
-                        </div>
-                        <div className={styles.favoritePrice}>{product.variants[0].price}p</div>
-                    </div>
+                    <div className={styles.favoriteProductPrice}>{product.variants[0].price}p</div>
                 </div>
-            </Link>
-        </div>
+            </div>
+        </Link>
     )
 }
 

@@ -6,11 +6,12 @@
     display: grid;
     grid-template-columns: 0.8fr 1fr 1fr;
     grid-template-rows: 1fr;
+    margin-top: 3rem;
     font-weight: 200;
     grid-template-areas: 'left center right';
     height: 90%;
     font-size: $title;
-
+    font-family: $font-main;
     a {
         color: $link-menu;
         display: flex;
@@ -18,16 +19,6 @@
 
         &:hover {
             color: $link-hover-bg;
-        }
-    }
-    &Link {
-        display: flex;
-        align-items: center;
-        p {
-            width: 90%;
-        }
-        span {
-            margin-top: 3px;
         }
     }
 
@@ -70,7 +61,8 @@
 
     &Title {
         font-size: $maxsmail;
-        font-weight: 200;
+        font-weight: 500;
+        font-family: $font-main;
     }
     &DropSection {
         margin-top: 10px;
@@ -86,6 +78,15 @@
     &Links {
         cursor: pointer;
         font-size: var(--font-size-link);
+        display: flex;
+        font-size: $smail;
+        align-items: center;
+        p {
+            width: 90%;
+        }
+        span {
+            margin-top: 3px;
+        }
     }
 }
 

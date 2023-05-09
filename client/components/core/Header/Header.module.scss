@@ -54,8 +54,10 @@
         height: 100%;
         align-content: center;
         align-items: center;
-
-        background: rgb(228, 228, 228);
+        box-shadow: 1px -3px 19px 12px rgba(233, 233, 233, 0.73);
+        -webkit-box-shadow: 1px -3px 19px 12px rgba(179, 179, 179, 0.73);
+        -moz-box-shadow: 1px -3px 19px 12px rgba(238, 238, 238, 0.73);
+        background: rgb(255, 255, 255);
         border-radius: var(--border-radius);
         @media (max-width: $breakpoint480) {
             padding: 0 10px;
@@ -152,8 +154,12 @@
         z-index: 2;
         grid-area: content;
         overflow: hidden;
-        height: 100vh;
+        height: 90vh;
         margin-top: -1.35rem;
+        box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
+        -webkit-box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
+        -moz-box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
     }
 
     &Sidebar {
@@ -163,17 +169,23 @@
         right: 0;
         grid-area: content;
         overflow: hidden;
-        height: 100vh;
+        z-index: 1;
+        box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
+        -webkit-box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
+        -moz-box-shadow: 0px -1px 11px 5px rgba(179, 179, 179, 0.63);
         margin-top: -1.3rem;
+
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
     }
 
     &Content {
         padding: 0 var(--menu-padding);
-        height: 90%;
+        height: 90vh;
         display: flex;
-        background: rgb(228, 228, 228);
-        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        background: hsl(0, 0%, 100%);
         z-index: 1;
+
+        z-index: 999999;
         padding-bottom: 1rem;
     }
 
@@ -214,7 +226,6 @@
         display: flex;
         flex-wrap: wrap;
         align-self: start;
-        margin-top: 5.5vh;
         height: 100%;
         width: 99%;
     }

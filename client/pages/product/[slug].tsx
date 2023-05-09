@@ -8,7 +8,7 @@ import { urlForImage } from '../../lib/sanity_studio/urlForImage'
 import Button from '../../components/ui/Button/Button'
 import styles from '../../styles/productId.module.scss'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { variantSolver } from '../../utils/groqResolver'
 import Select, { SingleValue } from 'react-select'
 import { addToProductCart } from '../../store/features/cartSlice'
@@ -18,14 +18,19 @@ interface ProductProps {
     product: IProducts
 }
 
-interface ISize {}
-
 const Product: React.FC<ProductProps> = ({ product }) => {
     const dispatch = useDispatch()
 
     const [size, setSize] = useState<SingleValue<{ value: string; label: string }>>()
     const [currentItems, setCurrentItems] = useState<ProductVariant>(product.variants[0])
+    const [reset, setReset] = useState(false)
 
+    useEffect(() => {
+        if (reset) {
+            setSize(null)
+            setReset(false)
+        }
+    }, [reset])
     const handleAddToCart = () => {
         const item = {
             slug: product.slug.current,
@@ -36,9 +41,13 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             colorHex: currentItems.color,
             price: currentItems.price,
             size: size?.value,
+            count: 0,
         }
         dispatch(addToProductCart(item))
-        
+    }
+
+    const handleReset = () => {
+        setReset(true)
     }
 
     const variantHandler = (index: number) => {
@@ -54,6 +63,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             color_name,
             sizes,
         })
+        handleReset()
     }
 
     const formatOptions = () => {
@@ -108,10 +118,11 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                                         onChange={(e) => setSize(e)}
                                         className={styles.productSelect}
                                         options={formatOptions()}
-                                        placeholder="Выберите размер"
+                                        value={size}
+                                        placeholder={'Выберете размер'}
                                     />
                                 </div>
-                                <div>
+                                <div className={styles.productSizeKnow}>
                                     <p>Узнать размер?</p>
                                 </div>
                             </div>

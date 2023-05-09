@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { MouseEvent, useRef, useState } from 'react'
 import MenuContent from './MenuContent/MenuContent'
 import Navbar from './NavBar/Navbar'
 import Search from '../../../pages/search'
@@ -20,14 +20,13 @@ import { getFavorite } from '../../../store/features/wishlistSlice'
 import { getCart } from '../../../store/features/cartSlice'
 import WishList from '../../../pages/wishlist'
 import { getVisible, onVisible } from '../../../store/features/megaMenuSlice'
-import { boolean } from 'yup'
 
 const Header = () => {
     const ref = useRef<any>(null)
     const dispatch = useDispatch()
     const favoriteCount = useSelector(getFavorite)
     const { visible } = useSelector(getVisible)
-    const cartCount = useSelector(getCart)
+    const { items } = useSelector(getCart)
     const data: IAuthState = useSelector(userState)
     const [visibleContent, setVisibleContent] = useState<
         'auth' | 'search' | 'cart' | 'wishlist' | 'navbar' | null
@@ -68,12 +67,6 @@ const Header = () => {
         setVisibleContent(null)
     }
     const isMobile = useMediaQuery({ maxWidth: 767 })
-
-    useEffect(() => {
-        // const onClick = (e: any) => ref.current?.contains(e.target) || dispatch(onVisible())
-        // document.addEventListener('click', onClick)
-        // return () => document.removeEventListener('click', onClick)
-    })
 
     return (
         <>
@@ -145,7 +138,7 @@ const Header = () => {
                                     </a>
                                 </li>
                                 <li>
-                                    {cartCount.length ? <span>{cartCount.length}</span> : null}
+                                    {items.length ? <span>{items.length}</span> : null}
                                     <a onClick={(e) => HandleCategoryVisible(e, 'cart')}>
                                         <Image
                                             src="/bag-svgrepo-com.svg"

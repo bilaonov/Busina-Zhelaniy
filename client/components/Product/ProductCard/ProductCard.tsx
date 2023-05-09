@@ -9,7 +9,7 @@ import Image from 'next/image'
 import styles from './ProductCard.module.scss'
 import { IProducts } from '../../../lib/sanity_studio/types/products.types'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFavorite, wishListActions } from '../../../store/features/wishlistSlice'
+import { addToWishList, getFavorite, removeWishList } from '../../../store/features/wishlistSlice'
 interface Props {
     products: IProducts
 }
@@ -22,13 +22,13 @@ const ProductCard: NextPage<Props> = ({ products }) => {
 
     const toggleFavoriteHandler = () => {
         !isInFavorite
-            ? dispatch(wishListActions.addToWishList(products))
-            : dispatch(wishListActions.removeWishList(products.slug.current))
+            ? dispatch(addToWishList(products))
+            : dispatch(removeWishList(products.slug.current))
     }
 
     return (
-        <Link href={`/product/${products.slug.current}`} >
-            <div className={styles.product} >
+        <Link href={`/product/${products.slug.current}`}>
+            <div className={styles.product}>
                 <div className={styles.productImageBlock}>
                     <div className={styles.productImageHeart} onClick={toggleFavoriteHandler}>
                         {!isInFavorite ? (

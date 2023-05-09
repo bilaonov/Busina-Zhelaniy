@@ -1,11 +1,12 @@
 @import '../vars';
 .cart {
     padding: 0;
-    margin-top: -30px;
+
     width: 100%;
     font-family: $font-main;
     overflow: hidden;
 
+    margin-top: 1.3rem;
     &Heading {
         display: flex;
         justify-content: center;
@@ -27,29 +28,34 @@
         }
     }
     &ProductBlock {
-        height: 65vh;
-        overflow-y: auto;
+        height: 600px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     &BtnAddCheckOut {
         position: absolute;
-        padding: 20px;
+        padding: 10px 20px;
+
         font-weight: 400;
-        font-size: $smail;
+        font-size: $text;
         font-family: $font-main;
         border-end-end-radius: 0px !important;
         border-end-start-radius: 0px !important;
     }
     &BtnBlock {
+        margin-top: 22px;
         display: flex;
-        margin-top: -7px;
         justify-content: center;
     }
 
     &Product {
         overflow: auto;
-
         display: flex;
+
         padding-top: 20px;
         gap: 10px;
         justify-content: space-between;
@@ -142,7 +148,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50%;
+        height: 50vh;
         font-size: $title;
+        font-weight: 300;
     }
 }

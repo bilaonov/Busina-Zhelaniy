@@ -6,12 +6,11 @@ interface WishListState {
     items: IProducts[]
 }
 
-
 const initialState: WishListState = {
     items: [],
 }
 
-export const wishListSlice = createSlice<WishListState, SliceCaseReducers<WishListState>>({
+export const wishListSlice = createSlice({
     name: 'wishlist',
     initialState,
 
@@ -23,14 +22,12 @@ export const wishListSlice = createSlice<WishListState, SliceCaseReducers<WishLi
             const productSlug = action.payload
             state.items = state.items.filter((item) => item.slug.current !== productSlug)
         },
-        clearCart(state) {
-            state = initialState
-        },
+        clearWishList: () => initialState,
     },
     extraReducers: () => {},
 })
 
-export const wishListActions = wishListSlice.actions
+export const { addToWishList, removeWishList, clearWishList } = wishListSlice.actions
 
 export const getFavorite = (state: RootState) => state.wishList.items
 

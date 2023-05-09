@@ -12,7 +12,7 @@ interface MenuContentProps {
 const MenuContent: React.FC<MenuContentProps> = ({ children, visibleContent }) => {
     const { visible } = useSelector(getVisible)
 
-    const sidebar = visibleContent === 'cart'
+    const sidebar = visibleContent === 'cart' || visibleContent === 'wishlist'
 
     useEffect(() => {})
     return (

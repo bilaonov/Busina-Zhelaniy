@@ -4,7 +4,7 @@ import { RootState } from '../app/store'
 import { Image } from '../../lib/sanity_studio/types/image.types'
 import { toast } from 'react-toastify'
 
-interface ICardProduct {
+export interface ICardProduct {
     id: string
     color: string
     image: Image[]
@@ -12,6 +12,8 @@ interface ICardProduct {
     slug: string
     title: string
     count: number
+    size?: string
+    colorHex: string
 }
 
 interface CartState {
@@ -30,9 +32,14 @@ export const cartSlice = createSlice({
     reducers: {
         addToProductCart: (state: CartState, action: PayloadAction<ICardProduct>) => {
             // state.items.push({ ...action.payload })
-            const findItem = state.items.find((obj) => obj.id === action.payload.id)
+            const findItem = state.items.find(
+                (obj) =>
+                    obj.id === action.payload.id &&
+                    obj.color === action.payload.color &&
+                    obj.size === action.payload.size,
+            )
             if (findItem) {
-                findItem.count++
+                findItem.count = (findItem.count || 0) + 1
             } else {
                 state.items.push({
                     ...action.payload,
@@ -41,13 +48,28 @@ export const cartSlice = createSlice({
             }
 
             state.total_price = state.items.reduce((sum, obj) => {
-                return obj.price * obj.count + sum
+                return obj.price * (obj.count ?? 1) + sum
             }, 0)
         },
-        removeProductCart: (state: CartState, action: PayloadAction<string>) => {
-            const productSlug = action.payload
-            state.items = state.items.filter((item) => item.slug !== productSlug)
-            state.total_price = state.items.reduce((sum, obj) => obj.price - sum, 0)
+        removeProductCart: (
+            state: CartState,
+            action: PayloadAction<{
+                productSlug: string
+                productSize: string
+                productColor: string
+            }>,
+        ) => {
+            const productSlug = action.payload.productSlug
+            const productSize = action.payload.productSize
+            const productColor = action.payload.productColor
+            state.items = state.items.filter(
+                (item) =>
+                    item.slug !== productSlug ||
+                    item.size !== productSize ||
+                    item.color !== productColor,
+            )
+
+            state.total_price = state.items.reduce((sum, obj) => sum + obj.price, 0)
         },
         clearCart: () => initialState,
     },
@@ -55,7 +77,8 @@ export const cartSlice = createSlice({
 
 export const { clearCart, addToProductCart, removeProductCart } = cartSlice.actions
 
-export const getCart = (state: RootState) => state.cart.items
+export const getCart = (state: RootState) => state.cart
+
 export const totalPrice = (state: RootState) => state.cart.total_price
 
 export default cartSlice.reducer

@@ -19,13 +19,19 @@ import CategoryCount from './CategoryCount/CategoryCount'
 import Image from 'next/image'
 import styles from './Category.module.scss'
 import { onVisible } from '../../store/features/megaMenuSlice'
+import CategoryDesktop from './CategoryDesktop/CategoryDesktop'
+import CategoryTablet from './CategoryTablet/CategoryTablet'
+import CategoryMobile from './CategoryMobile/CategoryMobile'
 
 interface Props {
-    setIsVisible?: any
+    setIsVisible?: React.Dispatch<
+        React.SetStateAction<'jewelry' | 'collection' | 'gift' | 'materials' | null>
+    >
 }
 
 const Category: React.FC<Props> = ({ setIsVisible }) => {
     const dispatch = useDispatch()
+    const categories = useSelector(selectCategories)
     const [data, setData] = useState<IProducts[] | undefined>()
     const [categoryVariables, setCategoryVariables] = useState<ICategoryVariable | null>({
         value: 'all',
@@ -33,144 +39,45 @@ const Category: React.FC<Props> = ({ setIsVisible }) => {
         product_count: 0,
     })
 
-    const categories = useSelector(selectCategories)
-
     useEffect(() => {
         client.fetch(productAllQuery).then((date) => setData(date))
     }, [])
 
     const handleMenuClose = () => {
-        dispatch(onVisible(false))
-    }
-    const formatOptions = () => {
-        const options =
-            categories.list &&
-            categories.list.map((category: ICategory) => ({
-                value: category.slug.current,
-                label: `${category.title} (${category.count ? category.count : 0})`,
-                isDisabled: !category.count ? true : false,
-            }))
-
-        return options
+        dispatch(onVisible())
     }
 
     return (
         <>
             <Desktop>
-                <div className={styles.categoryCenterContent}>
-                    <div className={styles.categoryContent}>
-                        <div className={styles.categoryTitle}>
-                            <p>Ювелирные изделия</p>
-                        </div>
-
-                        <div className={styles.categoryItems}>
-                            {categories.list &&
-                                categories.list.map(
-                                    (category: ICategory) =>
-                                        category.count !== null && (
-                                            <CategoryList
-                                                category={category}
-                                                handleMenuClose={handleMenuClose}
-                                                setCategoryVariables={setCategoryVariables}
-                                            />
-                                        ),
-                                )}
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.categoryRightContent}>
-                    {categoryVariables?.value && (
-                        <CategoryCount
-                            handleMenuClose={handleMenuClose}
-                            categoryVariables={categoryVariables}
-                        />
-                    )}
-
-                    {data &&
-                        data.map((product: IProducts) =>
-                            product.product_category === categoryVariables?.value ||
-                            categoryVariables?.value === 'all' ? (
-                                <CategoryVariables
-                                    product={product}
-                                    handleMenuClose={handleMenuClose}
-                                />
-                            ) : null,
-                        )}
-                </div>
+                <CategoryDesktop
+                    data={data}
+                    categories={categories}
+                    handleMenuClose={handleMenuClose}
+                    categoryVariables={categoryVariables}
+                    setCategoryVariables={setCategoryVariables}
+                />
             </Desktop>
 
             <Tablet>
-                <div className={styles.tablet}>
-                    <div className={styles.tabletLeftContent}>
-                        <div className={styles.tabletBack} onClick={() => setIsVisible(null)}>
-                            <Image src="/backicon.webp" width="20" height="20" alt="Search" />
-                        </div>
-                        <div className={styles.tabletContent}>
-                            <div className={styles.tabletItems}>
-                                {categories.list &&
-                                    categories.list.map(
-                                        (category: ICategory) =>
-                                            category.count !== null && (
-                                                <CategoryList
-                                                    category={category}
-                                                    handleMenuClose={handleMenuClose}
-                                                    setCategoryVariables={setCategoryVariables}
-                                                />
-                                            ),
-                                    )}
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.tabletRightContent}>
-                        {categoryVariables?.value && (
-                            <CategoryCount
-                                handleMenuClose={handleMenuClose}
-                                categoryVariables={categoryVariables}
-                            />
-                        )}
-
-                        {data &&
-                            data.map((product: IProducts) =>
-                                product.product_category === categoryVariables?.value ||
-                                categoryVariables?.value === 'all' ? (
-                                    <CategoryVariables
-                                        product={product}
-                                        handleMenuClose={handleMenuClose}
-                                    />
-                                ) : null,
-                            )}
-                    </div>
-                </div>
+                <CategoryTablet
+                    data={data}
+                    categories={categories}
+                    handleMenuClose={handleMenuClose}
+                    categoryVariables={categoryVariables}
+                    setCategoryVariables={setCategoryVariables}
+                    setIsVisible={setIsVisible}
+                />
             </Tablet>
             <Mobile>
-                <div className={styles.mobile}>
-                    <div className={styles.tabletBack} onClick={() => setIsVisible(null)}>
-                        <Image src="/backicon.webp" width="20" height="20" alt="Search" />
-                    </div>
-
-                    <Select
-                        options={formatOptions()}
-                        defaultValue={categoryVariables}
-                        onChange={setCategoryVariables}
-                    />
-
-                    {data &&
-                        data.map((product: IProducts) =>
-                            product.product_category === categoryVariables?.value ||
-                            categoryVariables?.value === 'all' ? (
-                                <CategoryVariables
-                                    product={product}
-                                    handleMenuClose={handleMenuClose}
-                                />
-                            ) : null,
-                        )}
-                    {categoryVariables?.value && (
-                        <CategoryCount
-                            handleMenuClose={handleMenuClose}
-                            categoryVariables={categoryVariables}
-                        />
-                    )}
-                </div>
+                <CategoryMobile
+                    data={data}
+                    setIsVisible={setIsVisible}
+                    categories={categories}
+                    handleMenuClose={handleMenuClose}
+                    categoryVariables={categoryVariables}
+                    setCategoryVariables={setCategoryVariables}
+                />
             </Mobile>
         </>
     )

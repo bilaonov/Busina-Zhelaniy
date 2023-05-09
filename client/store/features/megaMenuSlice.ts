@@ -16,6 +16,9 @@ export const megaMenuSlice = createSlice({
         onVisible: (state) => {
             state.visible = !state.visible
         },
+        closeMenu: (state) => {
+            state.visible = false
+        },
     },
     extraReducers: (builder) => {
         // builder.addCase(hydrate, (state: IAuthState, action) => {
@@ -24,7 +27,7 @@ export const megaMenuSlice = createSlice({
     },
 })
 
-export const { onVisible } = megaMenuSlice.actions
+export const { onVisible, closeMenu } = megaMenuSlice.actions
 
 export const getVisible = (state: RootState) => state.megaMenu
 
