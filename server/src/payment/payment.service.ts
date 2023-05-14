@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import * as YooKassa from 'yookassa';
 import {
   PaymentResponse,
   PaymentStatusDto,
 } from './dto/payment-status.dto.ts ';
-import { PaymentDto } from './dto/payment.dto';
+import { PaymentCheckDto, PaymentDto } from './dto/payment.dto';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 const yooKassa = new YooKassa({
@@ -35,8 +35,9 @@ export class PaymentService {
       confirmation: {
         type: 'redirect',
         /* CHANGE */
-        return_url: 'http://localhost:3000/thanks',
+        return_url: 'http://localhost:3000/checkout',
       },
+      capture: true,
       /* CHANGE */
       description: 'Order ',
     };
@@ -57,14 +58,24 @@ export class PaymentService {
     if (error) {
       throw new Error(error.message);
     }
-    return confirmation.confirmation_url;
+    return { id: id, confirmation_url: confirmation.confirmation_url };
   }
 
-  async paymentStatus(dto: PaymentStatusDto) {
-    /* Confirm Payment */
-    if (dto.event !== 'payment.waiting_for_capture') return;
+  // async paymentStatus(dto: PaymentStatusDto) {
+  //   /* Confirm Payment */
+  //   if (dto.event !== 'payment.waiting_for_capture') return;
 
-    const payment = await yooKassa.capturePayment(dto.object.id);
-    return payment;
+  //   const payment = await yooKassa.capturePayment(dto.object.id);
+  //   console.log(dto);
+  //   return payment;
+  // }
+
+  async paymentCheck(paymentCheckDto: PaymentCheckDto) {
+    try {
+      const data = await yooKassa.getPayment(paymentCheckDto.paymentId);
+      return data;
+    } catch (err) {
+      throw new ForbiddenException(err);
+    }
   }
 }

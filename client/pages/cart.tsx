@@ -23,6 +23,7 @@ const Cart = () => {
 
     const clearCartItem = () => {
         dispatch(clearCart())
+        dispatch(closeMenu())
     }
     const onRemoveCartItem = (productSlug: string, productSize: string, productColor: string) => {
         dispatch(removeProductCart({ productSlug, productSize, productColor }))

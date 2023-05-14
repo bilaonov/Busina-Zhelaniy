@@ -1,0 +1,193 @@
+@import '../vars';
+
+.order {
+    &Pages {
+        display: flex;
+        padding: 40px 3.3rem;
+    }
+
+    &Delivery,
+    .delivery {
+        width: 65%;
+        &Title {
+        }
+        &Select {
+            display: flex;
+            gap: 40px;
+            padding: 20px 0;
+        }
+        &Form {
+            width: 50%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            gap: 20px 5px;
+
+            grid-template-areas:
+                '. .'
+                '. .'
+                '. .'
+                '. .'
+                '. .';
+            justify-content: center;
+            align-content: end;
+            justify-items: center;
+            align-items: end;
+        }
+    }
+    &Box {
+        width: 35%;
+        background: $bg-menu;
+        border-radius: 30px;
+    }
+    &Title {
+        width: 100%;
+        text-align: center;
+        p {
+        }
+    }
+    &Products {
+    }
+
+    &GiftCode {
+        display: flex;
+        background: $bg-menu;
+        .input {
+            background-color: $bg-menu;
+        }
+    }
+
+    &InputBg {
+        input {
+            width: auto !important;
+            background: $bg-menu !important;
+        }
+    }
+
+    &Items {
+        padding: 0 20px;
+    }
+
+    &Info,
+    &TotalAmount {
+        border-bottom: 1px solid #000;
+        padding-bottom: 10px;
+    }
+
+    &TotalPrice,
+    &DeliveryPrice,
+    &TotalAmount {
+        font-size: $text;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            padding: 0;
+            margin: 0;
+            margin-top: 5px;
+            &:last-child {
+                font-family: $font-main;
+                font-size: $smail;
+            }
+        }
+    }
+    &ProductBlock {
+        height: 600px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &Product {
+        overflow: auto;
+        display: flex;
+        padding-top: 20px;
+        gap: 10px;
+        justify-content: space-between;
+        &Block {
+        }
+        &HeadingBox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &Clear {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        &Title,
+        &Clear {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: $maxsmail;
+
+            span {
+                background: #000000;
+                z-index: 999;
+                width: 20px;
+                height: 20px;
+                transform: matrix(-1, 0.01, -0.01, -1, 0, 0);
+            }
+        }
+        &Text {
+            cursor: pointer;
+            font-size: 16px;
+        }
+        &Image {
+            cursor: pointer;
+            width: 20%;
+            img {
+                width: 100px;
+                height: 100px;
+                left: 0px;
+                top: 1px;
+                border-radius: 30px;
+            }
+        }
+        &Info {
+            cursor: pointer;
+            width: 55%;
+            margin-left: 5px;
+        }
+
+        &Color,
+        &Size {
+            font-weight: 200;
+            font-family: $font-main;
+            font-size: $maxsmail;
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            gap: 5px;
+            span {
+                display: flex;
+                cursor: pointer;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+
+                border: 0.1px solid rgb(167, 167, 167);
+                &:first-child {
+                    margin: 0;
+                }
+            }
+        }
+        &RemoveBtn {
+            cursor: pointer;
+        }
+        &Price {
+            width: 25%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 1px;
+            font-family: $font-main;
+            font-size: $smail;
+        }
+    }
+}

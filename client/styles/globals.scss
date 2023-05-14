@@ -174,10 +174,10 @@ a:focus-visible {
     overflow: hidden;
     #Label {
         position: absolute;
-        top: 0px;
+        top: 50%;
         left: 12px;
         width: 500px;
-        font-size: 22px;
+        font-size: 18px;
         color: rgba($dark, 0.5);
         font-weight: 500;
         transform-origin: 0 0;
@@ -202,27 +202,27 @@ a:focus-visible {
         width: 100%;
         border: 0;
 
-        padding: 16px 5px 0 15px;
-        height: 50px;
-        font-size: 22px;
+        padding: 15px 5px 0 15px;
+        height: 40px;
+        font-size: 18px;
         font-weight: 300;
-        background: rgba($dark, 0.02);
+        background: #fff;
         box-shadow: inset 0 -1px 0 rgba($dark, 0.3);
         color: $dark;
         transition: all 0.15s ease;
 
         &:hover {
-            background: rgba($dark, 0.04);
+            background: #fff;
             box-shadow: inset 0 -1px 0 rgba($dark, 0.5);
         }
         &:not(:placeholder-shown) {
             ~ #Label {
-                color: rgba($dark, 0.5);
+                background: #fff;
                 transform: translate3d(0, -20px, 0) scale(0.75);
             }
         }
         &:focus {
-            background: rgba($dark, 0.05);
+            background: #fff;
             outline: none;
             box-shadow: inset 0 -2px 0 $primary;
             ~ #Label {
@@ -236,6 +236,8 @@ a:focus-visible {
         }
     }
 }
+
+
 
 
 @media screen and (min-width: 55.5em) {

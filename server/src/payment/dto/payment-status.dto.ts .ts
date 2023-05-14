@@ -17,6 +17,8 @@ export class PaymentResponse {
   refunded_amount: RefundedAmount;
 }
 
+
+
 export class PaymentStatusDto {
   event:
     | 'payment.succeeded'
