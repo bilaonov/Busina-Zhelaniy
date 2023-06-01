@@ -10,10 +10,11 @@ import Transition from '../components/ui/Transitions/Transition'
 import Button from '../components/ui/Button/Button'
 
 import styles from '../styles/auth.module.scss'
-import { supabase } from '../lib/supabase'
+
 import { useDispatch } from 'react-redux'
 import { AuthResponse } from '@supabase/supabase-js'
 import { signIn } from '../store/features/authSlice'
+import { supabase } from '../lib/supabase'
 
 interface ILoginData {
     email: string
@@ -60,23 +61,23 @@ const Login = () => {
                         </p>
 
                         <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)}>
-                            <label htmlFor="inp" id="Input">
-                                <input
-                                    type="email"
-                                    required={false}
-                                    {...register('email')}
-                                    id="inp"
-                                    placeholder="&nbsp;"
-                                />
-                                {errors.email?.message ? (
-                                    <span id="Label" style={{ color: 'red' }}>
-                                        {errors.email.message.toString()}
-                                    </span>
-                                ) : (
-                                    <span id="Label">Введите почту</span>
-                                )}
-                                <span id="FocusBg"></span>
-                            </label>
+                                <label htmlFor="inp" id="Input">
+                                    <input
+                                        type="email"
+                                        required={false}
+                                        {...register('email')}
+                                        id="inp"
+                                        placeholder="&nbsp;"
+                                    />
+                                    {errors.email?.message ? (
+                                        <span id="Label" style={{ color: 'red' }}>
+                                            {errors.email.message.toString()}
+                                        </span>
+                                    ) : (
+                                        <span id="Label">Введите почту</span>
+                                    )}
+                                    <span id="FocusBg"></span>
+                                </label>
                             <label htmlFor="inp" id="Input">
                                 <input
                                     {...register('password')}

@@ -15,12 +15,15 @@ import ProductPopularSection from '../components/Home/ProductPopularSection/Prod
 import VideoContent from '../components/Home/VideoContent/VideoContent'
 import Container from '../components/ui/Container/Container'
 import { SessionProvider } from '../components/Auth/SessionProvider/sessionProvider'
+import { useEffect } from 'react'
+import { supabase } from '../lib/supabase'
 
 interface Props {
     products: IProducts[]
 }
 
 const Home: NextPage<Props> = ({ products }) => {
+
     return (
         <SessionProvider>
             <VideoContent />

@@ -7,19 +7,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = ({ label, errors, className, ...props }) => {
-    // const rootClassName = cName(className, styles.btn, styles[variant])
     return (
-        <label htmlFor="inp" id="Input" className={className}>
-            <input {...props} />
-
-            {errors ? (
-                <span id="Label" style={{ color: 'red' }}>
-                    {errors.toString()}
-                </span>
-            ) : (
-                <span id="Label">{label}</span>
-            )}
-            <span id="FocusBg"></span>
+        <label htmlFor="inp" id="Input">
+            <input type="tel" id="inp" placeholder="&nbsp;" />
         </label>
     )
 }

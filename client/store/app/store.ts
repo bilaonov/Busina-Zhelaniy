@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
     key: 'entitree_v1',
-    whitelist: ['cart', 'wishList'],
+    whitelist: ['cart', 'wishList', 'auth'],
     version: 5,
     storage,
 }

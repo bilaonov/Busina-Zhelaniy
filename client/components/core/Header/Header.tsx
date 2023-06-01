@@ -161,7 +161,7 @@ const Header = () => {
                                         />
                                     </a>
                                 </li>
-                                {!data.session && !data.session ? (
+                                {data.status === 'IDLE' ? (
                                     <li>
                                         <a onClick={(e) => HandleCategoryVisible(e, 'auth')}>
                                             {' '}

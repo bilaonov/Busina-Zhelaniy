@@ -1,6 +1,7 @@
 @import '../vars';
 
 .order {
+    padding-top: 3.3rem;
     &Pages {
         display: flex;
         padding: 40px 3.3rem;
@@ -9,7 +10,7 @@
     &Delivery,
     .delivery {
         width: 65%;
-        &Title {
+        & &Title {
         }
         &Select {
             display: flex;
@@ -17,7 +18,7 @@
             padding: 20px 0;
         }
         &Form {
-            width: 50%;
+            width: 65%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -189,5 +190,12 @@
             font-family: $font-main;
             font-size: $smail;
         }
+    }
+
+    &Loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 }

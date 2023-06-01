@@ -13,8 +13,7 @@ import Link from 'next/link'
 import { urlForImage } from '../lib/sanity_studio/urlForImage'
 import Image from 'next/image'
 import Button from '../components/ui/Button/Button'
-import { closeMenu, onVisible } from '../store/features/megaMenuSlice'
-import { useEffect } from 'react'
+import { closeMenu } from '../store/features/megaMenuSlice'
 
 const Cart = () => {
     const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ICheckPayment } from '../types/order'
 
-const url = `https://c3c9-89-163-144-216.ngrok-free.app/api/payment`
+const url = `http://localhost:5000/api/payment`
 
 export const postPayment = async (total_price: number) => {
     try {

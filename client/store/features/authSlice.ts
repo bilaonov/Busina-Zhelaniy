@@ -14,12 +14,12 @@ import { RootState } from '../app/store'
 const hydrate = createAction<RootState>(HYDRATE)
 
 export interface IAuthState {
-    session: Session | never[]
+    session: Session | null
     status: RequestStatus
 }
 
 const initialState: IAuthState = {
-    session: [],
+    session: null,
     status: RequestStatus.IDLE,
 }
 
@@ -47,7 +47,8 @@ export const authSlice = createSlice<IAuthState, SliceCaseReducers<IAuthState>>(
         },
         signOut: (state: IAuthState, { payload }: PayloadAction<{ error: CustomError | null }>) => {
             if (!payload.error) {
-                state.session = []
+                state.session = null
+                state.status = RequestStatus.IDLE
                 return
             }
         },
@@ -62,5 +63,6 @@ export const authSlice = createSlice<IAuthState, SliceCaseReducers<IAuthState>>(
 export const { signIn, setLoggedInUserLocal, signOut } = authSlice.actions
 
 export const userState = (state: RootState) => state.auth
+export const userId = (state: RootState) => state.auth.session?.user.id
 
 export default authSlice.reducer
